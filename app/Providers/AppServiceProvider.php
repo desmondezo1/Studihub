@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace StudiHUB\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
