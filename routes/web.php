@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('course-content.course-content');
-});
+Route::get('/', 'CourseContentController@displaycontent');
 
 Route::get('/courses', function () {
     return view('course-content.course-content');

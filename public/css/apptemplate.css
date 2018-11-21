@@ -1,3 +1,18 @@
+
+div.header-image-jumbotron{
+background-image: url(../img/bg-1.jpg);
+background-size:cover;
+background-repeat: no-repeat;
+
+} 
+nav.bg-light{
+    background: #0B316B!important;
+    
+}
+nav.bg-light .nav-item .nav-link{
+    color: #fff;
+}
+
 @media only screen and (max-width: 600px) {
     .navbar-brand{
         margin:0;
