@@ -1,0 +1,39 @@
+
+.display{
+    display: initial;
+}
+
+.display-none{
+    display: none;
+}
+
+.video-box{
+    border-bottom: 3px solid #04114e;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    margin-bottom: 8px;
+    height: 0;
+    overflow: hidden;
+}
+
+.vid-button{
+    margin: 5px;
+    background-color: #04114e;
+    color: #fff!important;
+}
+
+.video-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.notes-container{
+    text-align: justify;
+}

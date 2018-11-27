@@ -1,29 +1,57 @@
-div.header-image-jumbotron{
-    background-image: url(../img/bg-1.jpg);
-    background-size:cover;
-    background-repeat: no-repeat;
-    color: #fff;
-    } 
+    div.header-image-jumbotron{
+         background-image: url(../img/bg-7.jpg);
+         background-size:cover;
+         background-repeat: no-repeat;
+        color: #fff;
+       } 
     .cards {
-        background-color: #fff;
-        min-width: 100%;
-        min-height: 200px;
-        display: flex;
-        padding: 20px 10px;
-        overflow-x: auto;
+         background-color: #fff;
+         min-width: 100%;
+         max-height: 200px;
+         height: 200px;
+         display: flex;
+         padding: 20px 10px;
+         overflow-x: auto;
       }
 
       .card::-webkit-scrollbar {
-        display: none;
-        width: 0 !important;
+         display: none;
+         width: 0 !important;
       }
 
       .card--content {
-        background-color: #e74c3c;
-        min-width: 200px;
-        margin: 5px;
+         background-color: #e74c3c;
+         min-width: 200px;
+         margin: 5px;
       }
 
       .scroll-title{
-          margin-left: 20px;
+         margin-left: 20px;
+         margin-top:10px;
+         
+      }
+      .scroll-title a{
+        color:  #0B316B;
+      }
+
+      .course-details-card-content{
+         background-color: #ffffff;
+         min-width: 200px;
+         max-width: 300px;
+         width: 300px;
+         border-radius: 5px;
+         margin: 20px 0px;
+         /*height: 69px;*/ height: auto;
+         min-height: 69px;
+         margin: 16px 8px;
+         border: 0.5px solid #dee2e6;
+         box-shadow: 0px 4px 41px -21px black;
+      }
+      
+      .course-details-card-content p{
+      margin: 5px;
+      padding: 5px;
+      color: #ee2933;
+      background: #ffffff;
+      border-radius: 5px;
       }

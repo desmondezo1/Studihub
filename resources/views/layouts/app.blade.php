@@ -31,23 +31,36 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/radialprogress.js') }}" defer></script>
+
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <!-- Styles -->
     <link href="{{ URL::asset('css/apptemplate.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/course-content.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/show-topic.css') }}" rel="stylesheet">
+
 
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#" style="margin:0;"><img height="50px" src="{{ asset('img/logo.png') }}" alt="Studihub Logo"></a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+          <a class="navbar-brand" href="/" style="margin:0;">
+                <picture>
+                    <source height="50px" media="(min-width: 481px)" srcset="{{ asset('img/studi-blue.png') }}">
+                    <source height="50px" media="(max-width: 480px)" srcset="{{ asset('img/logo.png') }}">
+                    <img height="50px" src="{{ asset('img/logo.png') }}" alt="Studihub Logo">
+                </picture>
+            <!--<img height="50px" src="{{-- asset('img/logo.png') --}}" alt="Studihub Logo">-->
+        </a>
           <form class="form-inline mx-auto" >
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Learn anything" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control nav-search" placeholder="Learn anything" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
               </form>
 
@@ -58,14 +71,44 @@
           <div class="collapse navbar-collapse " id="navbarNavDropdown"  >
             <ul class="navbar-nav ml-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="#">Blog</a>
               </li>
+                <!-- Authentication Links -->
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    @if (Route::has('register'))
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Dropdown link
@@ -84,15 +127,15 @@
             @yield('sub-header')
 
             @section('suggestions')
-            <span class="alert-danger">Courses Unavailable at the moment</span>
+            
             @show
 
             @section('courses')
-            <span class="alert-danger">Courses Unavailable at the moment</span>
+            
             @show
 
             @section('skills')
-            <span class="alert-danger">Courses Unavailable at the moment</span>
+            
             @show
         </main>
 
@@ -183,8 +226,13 @@
   <!-- Footer -->
   
   @show
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}" defer></script>
+ 
+
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    @yield('script')
+
+
 
 </body>
 </html>

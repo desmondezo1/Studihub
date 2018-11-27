@@ -1,10 +1,15 @@
 
 div.header-image-jumbotron{
-background-image: url(../img/bg-1.jpg);
-background-size:cover;
-background-repeat: no-repeat;
+   background-image: url(../img/bg-1.jpg);
+   background-size:cover;
+   background-repeat: no-repeat;
+   margin-bottom: 10px;
 
 } 
+/*NAV BAR TOGGLE ICON COLOR*/
+/*nav.bg-light .navbar-toggler .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}*/
 nav.bg-light{
     background: #0B316B!important;
     
@@ -12,10 +17,84 @@ nav.bg-light{
 nav.bg-light .nav-item .nav-link{
     color: #fff;
 }
+ nav div input.nav-search{
+     background-color: #061C3E;
+ }
 
+ nav div input.nav-search:focus{
+    background-color: #061C3E;
+    color: #fff;
+ }
+ nav div input.nav-search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(255, 255, 255);
+    opacity: 1; /* Firefox */
+    text-align: center;
+}
+
+nav div input.nav-search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+nav div input.nav-search::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+/*Return Button on screen*/
+.return-button{
+    display: none;
+}
+
+/*SMALL SCREENS*/
 @media only screen and (max-width: 600px) {
     .navbar-brand{
         margin:0;
     }
+    .return-button:hover{
+        box-shadow: 0px 5px 9px -3px #061c3e;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+   
+    .return-button{
+        display: initial;
+        margin: 0px 0px 16px 16px;
+        color: #fff;
+        background-color: #0B316B;
+        box-shadow: 0px 5px 4px -4px #061c3e;
+        padding: 4px 16px;
+        border-radius: 5px;
+    }
+    div.header-image-jumbotron{
+        margin-bottom: 2px;
+    }
 }
 
+/*IPAD SCREEN*/
+@media only screen and (max-width: 768px) {
+    .return-button{
+        display: initial;
+        margin: 0px 0px 16px 16px;
+        box-shadow: 0px 5px 4px -4px #061c3e;
+        color: #fff;
+        background-color: #0B316B;
+        padding: 4px 16px;
+        border-radius: 5px;
+    }
+
+    .return-button:hover{
+        box-shadow: 0px 5px 9px -3px #061c3e;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 999px) {
+    nav div input.nav-search{
+    position: relative;
+    width: 400px!important; 
+    margin-left: 70px;
+    }
+}
