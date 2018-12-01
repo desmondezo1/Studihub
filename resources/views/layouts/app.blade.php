@@ -39,12 +39,14 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
     <!-- Styles -->
     <link href="{{ URL::asset('css/apptemplate.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/course-content.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/show-topic.css') }}" rel="stylesheet">
+    @yield('css')
 
 
 </head>
@@ -127,6 +129,10 @@
             @yield('sub-header')
 
             @section('suggestions')
+            
+            @show
+
+            @section('pricing')
             
             @show
 
@@ -227,6 +233,7 @@
   
   @show
  
+  @yield('buttom-nav')
 
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>

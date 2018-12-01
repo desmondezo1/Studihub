@@ -13,15 +13,17 @@
 
 Route::get('/', 'CourseContentController@displaycontent');
 
-Route::get('/{course_name}', 'CourseContentController@listTopics');
+Route::get('/learn/{course_name}', 'CourseContentController@listTopics');
 
 //Route::post('/topic', 'CourseContentController@getVideo');
 
 Route::get('/learn/{topic_name}','LearnController@index');
 
-Route::get('/{course_name}/{topic_title}','CourseContentController@displayTopicsdetails');
+Route::get('/learn/{course_name}/{topic_title}','CourseContentController@displayTopicsdetails');
 
 Route::get('/about', 'AboutController@about');
+
+Route::get('/pricing','PricingController@index');
 
 Auth::routes();
 
