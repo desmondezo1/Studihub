@@ -15,7 +15,7 @@
     
           @if ($course->count()>0)
            @foreach ($course as $course)
-            <a href="/{{$course->name}}">
+            <a href="learn/{{$course->name}}">
               <div class="card--content">{{$course->name}}</div> 
             </a>
            @endforeach

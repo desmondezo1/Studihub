@@ -17,7 +17,7 @@
 
 @foreach ($topic as $topic)
         <div class="card--content course-details-card-content">
-         <a href="{{url('/learn')}}/{{$topic->title}}" topic="{{$topic->title}}"><div class="container" style="padding: 5px 15px;">
+         <a href="{{url('/learn')}}/{{$course_name}}/{{$topic->title}}" topic="{{$topic->title}}"><div class="container" style="padding: 5px 15px;">
          <div class="row" style="align-items:center;">
            <div class="col-9">
               <p> this is where the topic {{$topic->title}}</p>
