@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Studihub\Models\Tutor;
+use Studihub\Notifications\VerifyTutor;
 
 class RegisterController extends Controller
 {
@@ -77,6 +78,8 @@ class RegisterController extends Controller
             ]);
 
             $student = new Student();
+            $student->email = $data['email'];
+            $student->username = $data['email'];
             $student->firstname = $data['firstname'];
             $student->lastname = $data['lastname'];
             $student->password = bcrypt($data['password']);
