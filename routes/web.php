@@ -11,18 +11,58 @@
 |
 */
 
-Route::get('/', 'CourseContentController@displaycontent');
 
-Route::get('/{course_name}', 'CourseContentController@listTopics');
+/*
+|--------------------------------------------------------------------------
+| FrontEnd Routes
+|--------------------------------------------------------------------------
+*/
 
-//Route::post('/topic', 'CourseContentController@getVideo');
 
-Route::get('/learn/{topic_name}','LearnController@index');
+Route::middleware(['throttle'])->group( function () {
+    Route::group(['middleware' => ['student-guest','tutor-guest']], function () {
+        Route::get('/auth/login','\Studihub\Http\Controllers\Auth\LoginController@getlogin')->name('getLogin');
+        Route::post('/auth/login','\Studihub\Http\Controllers\Auth\LoginController@login')->name('login');
+        Route::get('/auth/register','\Studihub\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('getRegister');
+        Route::post('/auth/register', '\Studihub\Http\Controllers\Auth\RegisterController@register')->name('register');
+        Route::get('/auth/password/forgot', '\Studihub\Http\Controllers\Auth\ForgotPasswordController@create')->name('forgot');
+        Route::post('/auth/password/forgot', '\Studihub\Http\Controllers\Auth\ForgotPasswordController@store')->name('forgot');
+        Route::get('/auth/password/reset/{token}',  '\Studihub\Http\Controllers\Auth\ResetPasswordController@create')->name('password.reset');
+        Route::post('/auth/password/reset', '\Studihub\Http\Controllers\Auth\ResetPasswordController@store')->name('password.reset');
+    });
+    Route::get('/auth/logout', '\Studihub\Http\Controllers\Auth\LoginController@logout')->name('logout');
+});
 
-Route::get('/{course_name}/{topic_title}','CourseContentController@displayTopicsdetails');
+/************************************** Back End Routes For Students***********************************/
 
-Route::get('/about', 'AboutController@about');
+Route::group(['middleware' => ['middleware'=>'student-auth']], function () {
+    Route::get('/student', '\Studihub\Http\Controllers\Student\StudentDashboardController@index')->name('student.index');
 
-Auth::routes();
+});
+/************************************** End Routes For Tutors***********************************/
 
-Route::get('/home', 'HomeController@index')->name('home');
+/************************************** Back End Routes For Tutors***********************************/
+
+Route::group(['middleware' => ['middleware'=>'tutor-auth']], function () {
+    Route::get('/tutor', '\Studihub\Http\Controllers\Tutor\TutorDashboardController@index')->name('tutor.index');
+
+});
+/************************************** Front End Routes For Tutors***********************************/
+
+
+Route::middleware(['throttle'])->group( function () {
+    Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/about', '\Studihub\Http\Controllers\HomeController@about')->name('about');
+    Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+
+    Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');
+
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/

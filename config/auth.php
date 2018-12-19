@@ -41,6 +41,16 @@ return [
             'provider' => 'users',
         ],
 
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
+        'tutor' => [
+            'driver' => 'session',
+            'provider' => 'tutors',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -67,7 +77,17 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => StudiHUB\User::class,
+            'model' => Studihub\Models\User::class,
+        ],
+
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => Studihub\Models\Student::class,
+        ],
+
+        'tutors' => [
+            'driver' => 'eloquent',
+            'model' => Studihub\Models\Tutor::class,
         ],
 
         // 'users' => [
@@ -97,6 +117,19 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'students' => [
+            'provider' => 'students',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'tutors' => [
+            'provider' => 'tutors',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
     ],
 
 ];

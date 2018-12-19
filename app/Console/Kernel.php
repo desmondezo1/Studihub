@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Console;
+namespace Studihub\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

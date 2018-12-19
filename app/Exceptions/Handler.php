@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Exceptions;
+namespace Studihub\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

@@ -1,15 +1,20 @@
 <?php
 
-namespace StudiHUB\Http\Controllers\Auth;
+namespace Studihub\Http\Controllers\Auth;
 
-use StudiHUB\User;
-use StudiHUB\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Studihub\Models\Student;
+use Studihub\Models\User;
+use Studihub\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Studihub\Models\Tutor;
 
 class RegisterController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -28,45 +33,97 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    //protected $redirectTo = '/register/successful';
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware(['students','tutors'])->except('logout');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function showRegistrationForm()
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+        return view('auth.register');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \StudiHUB\User
-     */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if($request->input('type') == 'tutor'){
+            //validate tutor data. You can add more fields.
+            $data = $request->validate([
+                'email' => 'required|string|email|max:255|unique:tutors',
+                'firstname' => 'required|string|max:255',
+                'lastname' => 'required|string|max:255',
+                'password' => 'required|min:6|string|max:255',
+            ]);
+
+            $tutor = new Tutor();
+            $tutor->firstname = $data['firstname'];
+            $tutor->lastname = $data['lastname'];
+            $tutor->email = $data['email'];
+            $tutor->password = bcrypt($data['password']);
+            $tutor->verification_code = $this->vCode();
+            $tutor->save();
+            if($tutor->id != ''){
+                $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
+                return redirect()->route('');
+            }
+        }elseif ($request->input('type') == 'student'){
+            //validate student credentials
+            $data = $request->validate([
+                'email' => 'required|string|email|max:255|unique:students',
+                'firstname' => 'required|string|max:255',
+                'lastname' => 'required|string|max:255',
+                'password' => 'required|string|min:6|max:255|confirmed',
+                'password_confirmation' => 'required|string',
+            ]);
+
+            $student = new Student();
+            $student->firstname = $data['firstname'];
+            $student->lastname = $data['lastname'];
+            $student->password = bcrypt($data['password']);
+            $student->save();
+            if($student->id != ''){
+                return redirect()->route('student.index');
+            }
+        }
+        return back();
+    }
+
+    //Get the guard to authenticate Seller
+    protected function guard()
+    {
+        return Auth::guard(['students','teachers']);
+    }
+
+    public function verifyEmail(Request $request)
+    {
+        $tutor = Tutor::where('email', '=', $request->email)->where('verification_code', '=', $request->code)->first();
+        if($tutor != ''){
+            if ($tutor->verified) {
+                return redirect()->route('login')
+                    ->with('success', 'You have already verified your email.');
+            } elseif ($tutor) {
+                $tutor->verified = 1;
+                $tutor->update();
+
+                return redirect()->route('login')
+                    ->with('success', 'You have successfully verified your email. Please login now.');
+            } else {
+                return redirect()->route('register')
+                    ->withErrors('You have successfully verified your email. Please login now.');
+            }
+        }
+        return redirect()->route('register')
+            ->withErrors("No account found matching verification.Please register if you haven't or contact Admin.");
+    }
+
+    private function vCode(){
+        $salt       = str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+        $len        = strlen($salt);
+        $code   = '';
+        mt_srand(10000000*(double)microtime());
+        for ($i = 0; $i < 12; $i++) {
+            $code .= $salt[mt_rand(0,$len - 1)];
+        }
+        return $code;
     }
 }

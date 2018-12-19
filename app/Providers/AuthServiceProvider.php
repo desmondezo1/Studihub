@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Providers;
+namespace Studihub\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'StudiHUB\Model' => 'StudiHUB\Policies\ModelPolicy',
+        'Studihub\Model' => 'Studihub\Policies\ModelPolicy',
     ];
 
     /**

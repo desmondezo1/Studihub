@@ -155,11 +155,11 @@ return [
         /*
          * Application Service Providers...
          */
-        StudiHUB\Providers\AppServiceProvider::class,
-        StudiHUB\Providers\AuthServiceProvider::class,
-        // StudiHUB\Providers\BroadcastServiceProvider::class,
-        StudiHUB\Providers\EventServiceProvider::class,
-        StudiHUB\Providers\RouteServiceProvider::class,
+        Studihub\Providers\AppServiceProvider::class,
+        Studihub\Providers\AuthServiceProvider::class,
+        // Studihub\Providers\BroadcastServiceProvider::class,
+        Studihub\Providers\EventServiceProvider::class,
+        Studihub\Providers\RouteServiceProvider::class,
         'Illuminate\Html\HtmlServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider'
 

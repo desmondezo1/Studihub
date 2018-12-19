@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Http\Controllers;
+namespace Studihub\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('index');
     }
+
+    public function about(){
+        return view('pages.about');
+    }
+
+    public function contact(){
+        return view('pages.contact');
+    }
+
+
 }

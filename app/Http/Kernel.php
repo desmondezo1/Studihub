@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Http;
+namespace Studihub\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -14,11 +14,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        \StudiHUB\Http\Middleware\CheckForMaintenanceMode::class,
+        \Studihub\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \StudiHUB\Http\Middleware\TrimStrings::class,
+        \Studihub\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \StudiHUB\Http\Middleware\TrustProxies::class,
+        \Studihub\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -28,12 +28,12 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \StudiHUB\Http\Middleware\EncryptCookies::class,
+            \Studihub\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \StudiHUB\Http\Middleware\VerifyCsrfToken::class,
+            \Studihub\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -51,14 +51,20 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \StudiHUB\Http\Middleware\Authenticate::class,
+        'auth' => \Studihub\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \StudiHUB\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \Studihub\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+
+        'student-auth' => \Studihub\Http\Middleware\RedirectStudentIfNotAuthenticated::class,
+        'student-guest' => \Studihub\Http\Middleware\RedirectStudentIfAuthenticated::class,
+        'tutor-auth' => \Studihub\Http\Middleware\RedirectTeacherIfNotAuthenticated::class,
+        'tutor-guest' => \Studihub\Http\Middleware\RedirectTeacherIfAuthenticated::class,
     ];
 }

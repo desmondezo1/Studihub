@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Http\Middleware;
+namespace Studihub\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

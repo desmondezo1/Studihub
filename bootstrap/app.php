@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    StudiHUB\Http\Kernel::class
+    Studihub\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    StudiHUB\Console\Kernel::class
+    Studihub\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    StudiHUB\Exceptions\Handler::class
+    Studihub\Exceptions\Handler::class
 );
 
 /*

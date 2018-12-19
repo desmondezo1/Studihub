@@ -1,6 +1,6 @@
 <?php
 
-namespace StudiHUB\Providers;
+namespace Studihub\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
