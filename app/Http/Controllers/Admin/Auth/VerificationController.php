@@ -1,6 +1,6 @@
 <?php
 
-namespace Studihub\Http\Controllers\Auth;
+namespace Studihub\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

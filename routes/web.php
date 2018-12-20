@@ -21,10 +21,10 @@
 
 Route::middleware(['throttle'])->group( function () {
     Route::group(['middleware' => ['student-guest','tutor-guest']], function () {
-        Route::get('/auth/login','\Studihub\Http\Controllers\Auth\LoginController@getlogin')->name('getLogin');
+        Route::get('/auth/login','\Studihub\Http\Controllers\Auth\LoginController@showLoginForm')->name('getLogin');
         Route::post('/auth/login','\Studihub\Http\Controllers\Auth\LoginController@login')->name('login');
         Route::get('/auth/register','\Studihub\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('getRegister');
-        Route::post('/auth/register', '\Studihub\Http\Controllers\Auth\RegisterController@register')->name('register');
+        Route::post('/auth/register', '\Studihub\Http\Controllers\Auth\RegisterController@register')->name('auth.register');
         Route::get('/auth/password/forgot', '\Studihub\Http\Controllers\Auth\ForgotPasswordController@create')->name('forgot');
         Route::post('/auth/password/forgot', '\Studihub\Http\Controllers\Auth\ForgotPasswordController@store')->name('forgot');
         Route::get('/auth/password/reset/{token}',  '\Studihub\Http\Controllers\Auth\ResetPasswordController@create')->name('password.reset');

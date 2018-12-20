@@ -1,6 +1,6 @@
 <?php
 
-namespace Studihub\Http\Controllers\Auth;
+namespace Studihub\Http\Controllers\Admin\Auth;
 
 use Studihub\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Studihub\Models\Tutor;
 use Studihub\Notifications\VerifyTutor;
+use Studihub\Notifications\StudentRegistrationNotification;
 
 class RegisterController extends Controller
 {
@@ -45,56 +46,98 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    protected function validator(array $data)
     {
-        if($request->input('type') == 'tutor'){
-            //validate tutor data. You can add more fields.
-            $data = $request->validate([
-                'email' => 'required|string|email|max:255|unique:tutors',
+
+        if(request()->input('type') == 'tutor'){
+            return Validator::make($data, [
+                'email' => 'required|string|email|max:255|unique:tutors|unique:students',
                 'firstname' => 'required|string|max:255',
                 'lastname' => 'required|string|max:255',
                 'password' => 'required|min:6|string|max:255',
-            ]);
-
-            $tutor = new Tutor();
-            $tutor->firstname = $data['firstname'];
-            $tutor->lastname = $data['lastname'];
-            $tutor->email = $data['email'];
-            $tutor->password = bcrypt($data['password']);
-            $tutor->verification_code = $this->vCode();
-            $tutor->save();
-            if($tutor->id != ''){
-                $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
-                return redirect()->route('');
-            }
-        }elseif ($request->input('type') == 'student'){
-            //validate student credentials
-            $data = $request->validate([
-                'email' => 'required|string|email|max:255|unique:students',
-                'firstname' => 'required|string|max:255',
-                'lastname' => 'required|string|max:255',
-                'password' => 'required|string|min:6|max:255|confirmed',
                 'password_confirmation' => 'required|string',
             ]);
+        }
 
-            $student = new Student();
-            $student->email = $data['email'];
-            $student->username = $data['email'];
-            $student->firstname = $data['firstname'];
-            $student->lastname = $data['lastname'];
-            $student->password = bcrypt($data['password']);
-            $student->save();
-            if($student->id != ''){
-                return redirect()->route('student.index');
+        return Validator::make($data, [
+            'email' => 'required|string|email|max:255|unique:students|unique:tutors',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'password' => 'required|string|min:6|max:255|confirmed',
+            'password_confirmation' => 'required|string',
+        ]);
+    }
+
+    protected function create(array $data)
+    {
+        if(request()->input('type') == 'tutor'){
+            return Tutor::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'verification_code' => $this->vCode()
+            ]);
+        }
+        return Student::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
+            'username' => $this->generateUsername($data['email']),
+            'password' => bcrypt($data['password']),
+        ]);
+
+    }
+
+    public function register(Request $request)
+    {
+        if($request->input('type') == 'tutor'){
+            $data = [
+                'firstname' => request()->input('firstname'),
+                'lastname' => request()->input('lastname'),
+                'email' => request()->input('email'),
+                'password' => request()->input('password'),
+                'password_confirmation' => request()->input('password_confirmation'),
+            ];
+            $val = $this->validator($data);
+            if($val->passes()){
+                $tutor = $this->create($data);
+                if($tutor->id != ''){
+                    $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
+                    return redirect()->route('tutor.verify');
+                }
             }
+            return back()->withErrors($val);
+        }elseif ($request->input('type') == 'student'){
+            $data = [
+                'firstname' => request()->input('firstname'),
+                'lastname' => request()->input('lastname'),
+                'email' => request()->input('email'),
+                'username' => request()->input('username'),
+                'password' => request()->input('password'),
+                'password_confirmation' => request()->input('password_confirmation'),
+            ];
+            //validate student credentials
+            $val = $this->validator($data);
+            //dd($val);
+            if($val->passes()){
+                $student = $this->create($data);
+                if($student->id != ''){
+                    //Todo: send email notification for registration along with the username
+                    $student->notify(new StudentRegistrationNotification($student));
+                    return redirect()->route('student.index');
+                }
+            }
+            return back()->withErrors($val);
         }
         return back();
+
     }
 
     //Get the guard to authenticate Seller
-    protected function guard()
+    protected function guard($guard)
     {
-        return Auth::guard(['students','teachers']);
+        return Auth::guard($guard);
     }
 
     public function verifyEmail(Request $request)
@@ -128,5 +171,12 @@ class RegisterController extends Controller
             $code .= $salt[mt_rand(0,$len - 1)];
         }
         return $code;
+    }
+
+
+    //use all characters before @ as username
+    private function generateUsername($email){
+        $username = strstr($email, '@', true);
+        return $username;
     }
 }
