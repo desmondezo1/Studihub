@@ -13,6 +13,7 @@ class AdminBaseController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    //admin roles and permissions will be added here.
     public function __construct()
     {
 
