@@ -66,5 +66,9 @@ class Kernel extends HttpKernel
         'student-guest' => \Studihub\Http\Middleware\RedirectStudentIfAuthenticated::class,
         'tutor-auth' => \Studihub\Http\Middleware\RedirectTeacherIfNotAuthenticated::class,
         'tutor-guest' => \Studihub\Http\Middleware\RedirectTeacherIfAuthenticated::class,
+
+        'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
     ];
 }
