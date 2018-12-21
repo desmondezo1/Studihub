@@ -34,7 +34,7 @@
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
                 <li class="nav-item">
-                    @if (Route::has('register'))
+                    @if (Route::has('auth.register'))
                         <a class="nav-link" href="{{ route('auth.register') }}">{{ __('Register') }}</a>
                     @endif
                 </li>
