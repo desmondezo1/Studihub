@@ -25,6 +25,7 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/auth/login','\Studihub\Http\Controllers\Auth\LoginController@login')->name('login');
         Route::get('/auth/register','\Studihub\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('getRegister');
         Route::post('/auth/register', '\Studihub\Http\Controllers\Auth\RegisterController@register')->name('auth.register');
+        Route::post('/auth/register/verify', '\Studihub\Http\Controllers\Auth\RegisterController@verifyEmail')->name('auth.verify');
         Route::get('/auth/password/forgot', '\Studihub\Http\Controllers\Auth\ForgotPasswordController@create')->name('forgot');
         Route::post('/auth/password/forgot', '\Studihub\Http\Controllers\Auth\ForgotPasswordController@store')->name('forgot');
         Route::get('/auth/password/reset/{token}',  '\Studihub\Http\Controllers\Auth\ResetPasswordController@create')->name('password.reset');

@@ -48,7 +48,7 @@ class VerifyTutor extends Notification
             ->greeting('You are welcome!')
             ->line('We are so happy you joined us! You have successfully signed up for a '.config('app.name').'com Student Hub')
             ->line('You are one step away from being part of us and giving lives meaning, You need to verify your email address and activate your account by clicking the button below')
-            ->action('Click on this link to verify your account', url(config('app.url').route('tutor.verify', 'email='.$this->tutor->email.'&code='.$this->token, false)))
+            ->action('Click on this link to verify your account', url(config('app.url').route('auth.verify', 'email='.$this->tutor->email.'&code='.$this->token, false)))
             ->line('Thank you for signing up!.')
             ->line('If you did not create any account with us, no further action is required.');
     }

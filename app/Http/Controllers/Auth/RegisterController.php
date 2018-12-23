@@ -104,7 +104,7 @@ class RegisterController extends Controller
                 $tutor = $this->create($data);
                 if($tutor->id != ''){
                     $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
-                    return redirect()->route('tutor.verify');
+                    return redirect()->route('auth.verify');
                 }
             }
             return back()->withErrors($val);
