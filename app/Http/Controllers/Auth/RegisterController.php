@@ -75,6 +75,7 @@ class RegisterController extends Controller
                 'firstname' => $data['firstname'],
                 'lastname' => $data['lastname'],
                 'email' => $data['email'],
+                'username' => $this->generateUsername($data['email']),
                 'password' => bcrypt($data['password']),
                 'verification_code' => $this->vCode()
             ]);
@@ -96,6 +97,7 @@ class RegisterController extends Controller
                 'firstname' => request()->input('firstname'),
                 'lastname' => request()->input('lastname'),
                 'email' => request()->input('email'),
+                'username' => request()->input('username'),
                 'password' => request()->input('password'),
                 'password_confirmation' => request()->input('password_confirmation'),
             ];

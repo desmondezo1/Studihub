@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionBanksTable extends Migration
+class CreateCourseTutorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateQuestionBanksTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_banks', function (Blueprint $table) {
+        Schema::create('course_tutors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id');
-            $table->integer('question_difficulty');
             $table->integer('course_id');
-            $table->text('question_desc');
-            $table->integer('question_choice_id');
+            $table->integer('tutor_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateQuestionBanksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_banks');
+        Schema::dropIfExists('course_tutors');
     }
 }

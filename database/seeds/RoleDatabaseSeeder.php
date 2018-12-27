@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Studihub\Models\Role;
+use Studihub\Models\Permission;
 class RoleDatabaseSeeder extends Seeder
 {
     /**

@@ -12,7 +12,7 @@ class Topic extends Model
 
     use Sluggable, SluggableScopeHelpers, Taggable;
 
-    protected $table = "topic";
+    protected $table = "topics";
 
     protected $fillable = ['title'];
 
