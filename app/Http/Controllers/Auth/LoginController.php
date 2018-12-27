@@ -70,6 +70,7 @@ class LoginController extends Controller
             $this->username() => 'required',
             'password' => 'required'
         ]);
+        //dd($data);
         $credentials = $this->credentials($request);
         //dd($credentials);
         if ($this->hasTooManyLoginAttempts($request)) {
@@ -104,6 +105,7 @@ class LoginController extends Controller
         $login = request()->input('login');
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         request()->merge([$field => $login]);
+        //dd($field);
         return $field;
     }
 

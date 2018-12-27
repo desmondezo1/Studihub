@@ -127,6 +127,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+            'username.required' => 'Username or Email Field is required',
         ],
     ],
 
@@ -141,6 +142,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'username' => 'Username or Email',
+    ],
 
 ];

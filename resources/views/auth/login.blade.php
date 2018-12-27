@@ -27,10 +27,10 @@
                             <label for="login" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Or Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="login" type="text" class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="{{ __('E-Mail Address Or Username') }}" autofocus>
-                                @if ($errors->has('login'))
+                                <input id="login" type="text" class="form-control{{ ($errors->has('username') or $errors->first('email')) ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="{{ __('E-Mail Address Or Username') }}" autofocus>
+                                @if ($errors->has('username') or $errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('login') }}</strong>
+                                        <strong>{{ ($errors->first('username')) }}</strong>
                                     </span>
                                 @endif
                             </div>
