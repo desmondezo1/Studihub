@@ -4,14 +4,14 @@
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
         <a href="{{url('/')}}" class="return-button">Back</a>
         <div class="container">
-            <h1 class="display-4">Learn {{$course_name}}</h1>
+            <h1 class="display-4">Learn {{$course->name}}</h1>
             <!-- <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p> -->
         </div>
     </div>
 @endsection
 
 @section('courses')
-    <h5 class="scroll-title"><a href="{{url('/')}}" >Home</a> ><a href="{{url('/text')}}" >{{$course_name}}</a></h5>
+    <h5 class="scroll-title"><a href="{{url('/')}}" >Home</a> ><a href="{{url('/text')}}" >{{$course->name}}</a></h5>
     <section class="card" style="flex-wrap: wrap;flex-direction: row;justify-content: center;background-color: #f8f9fa59;">
 
         @foreach ($topic as $topic)

@@ -51,12 +51,13 @@ Route::group(['middleware' => ['middleware'=>'tutor-auth']], function () {
 
 
 Route::middleware(['throttle'])->group( function () {
-    Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+    
+    // Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
     Route::get('/about', '\Studihub\Http\Controllers\HomeController@about')->name('about');
-    Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
-
+    //Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+    Route::get('learn/{slug}','\Studihub\Http\Controllers\CourseController@show')->name('topics.index');
     Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');
-
 });
 
 

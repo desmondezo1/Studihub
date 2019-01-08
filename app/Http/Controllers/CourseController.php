@@ -17,7 +17,8 @@ class CourseController extends Controller
     }
 
     public function show($slug){
-        $topic = Course::find($slug);
-        return view('pages.layouts.courses.show')->with('topic',$topic);
+        $course = Course::find($slug);
+        $topic = Topic::where('course_id', $slug);
+        return view('pages.layouts.courses.show')->with('topic',$topic)->with('course',$course);
     }
 }
