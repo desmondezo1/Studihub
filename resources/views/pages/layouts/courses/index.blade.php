@@ -8,14 +8,19 @@
             <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p>
         </div>
     </div>
+    @component('partials.breadcum', [
+            'page_name' => 'Home',
+            'page_route' => 'home'
+            ])
+    @endcomponent
 @endsection
 
 @section('suggestions')
     <h4 class="scroll-title">Suggestions</h4>
     <section class="cards">
 
-        @if ($course->count()>0)
-            @foreach ($course as $course)
+        @if ($courses->count() > 0)
+            @foreach ($courses as $course)
                 <a href="/{{$course->name}}">
                     <div class="card--content">{{$course->name}}</div>
                 </a>
@@ -40,16 +45,15 @@
 @section('courses')
     <h4 class="scroll-title">Subjects</h4>
     <section class="cards">
-        <div class="card--content">1</div>
-        <div class="card--content">2</div>
-        <div class="card--content">3</div>
-        <div class="card--content">4</div>
-        <div class="card--content">5</div>
-        <div class="card--content">6</div>
-        <div class="card--content">7</div>
-        <div class="card--content">8</div>
-        <div class="card--content">9</div>
-        <div class="card--content">0</div>
+        @foreach ($courses as $course)
+            <div class="card-content p-3">
+                <img class="card-img-top" src="{{ $course->image_path }}" alt="Card image" width="50%">
+                <div class="card-body">
+                    <h4 class="card-title small"><a href="{{ route('courses.show', $course->slug) }}">{{ $course->title }}</a> </h4>
+                    <p class="card-text">Some example text.</p>
+                </div>
+            </div>
+        @endforeach
     </section>
 @endsection
 

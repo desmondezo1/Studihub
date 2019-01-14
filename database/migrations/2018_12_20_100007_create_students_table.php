@@ -19,6 +19,8 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
             $table->string('firstname', 255);
             $table->string('lastname', 255);
+            $table->timestamp('banned_at')->nullable();
+            $table->enum('gender',['male', 'female'])->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

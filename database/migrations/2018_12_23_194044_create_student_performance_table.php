@@ -15,9 +15,9 @@ class CreateStudentPerformanceTable extends Migration
     {
         Schema::create('student_performance', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id');
-            $table->integer('course_id');
-            $table->integer('topic_id');
+            $table->unsignedInteger('student_id');
+            $table->unsignedInteger('course_id');
+            $table->unsignedInteger('topic_id');
             $table->integer('course_completion_percentage');
             $table->integer('topic_completion_percentage');
             $table->float('test_score');

@@ -15,11 +15,12 @@ class CreateQuestionBanksTable extends Migration
     {
         Schema::create('question_banks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id');
+            $table->unsignedInteger('topic_id');
             $table->integer('question_difficulty');
-            $table->integer('course_id');
+            $table->unsignedInteger('course_id');
             $table->text('question_desc');
-            $table->integer('question_choice_id');
+            $table->unsignedInteger('question_choice_id');
+            $table->bigInteger('views')->default(0);
             $table->timestamps();
         });
     }

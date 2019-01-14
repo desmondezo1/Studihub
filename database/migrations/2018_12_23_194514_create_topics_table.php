@@ -17,7 +17,8 @@ class CreateTopicsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->integer('course_id');
+            $table->unsignedInteger('course_id');
+            $table->boolean('isfree')->default(0);
             $table->string('mime_type');
             $table->string('mime_size');
             $table->string('mime_path');

@@ -14,11 +14,11 @@ class TopicsController extends Controller
 
     public function index(){
         $topics = Topic::all();
-        return view('layouts.topics.index')->with('topic',$topics);
+        return view('pages.layouts.topics.index')->with('topic',$topics);
     }
 
     public function show($slug){
         $topic = Topic::find($slug);
-        return view('layouts.topics.show')->with('topic',$topic);
+        return view('pages.layouts.topics.show')->with('topic',$topic);
     }
 }

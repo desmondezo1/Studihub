@@ -14,9 +14,17 @@ class Topic extends Model
 
     protected $table = "topics";
 
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title','slug',
+        'course_id',
+        'notes',
+        'topic_order',
+        'mime_type',
+        'mime_size',
+        'mime_path'
+    ];
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','course_id'];
 
     public function sluggable()
     {
@@ -31,7 +39,8 @@ class Topic extends Model
         return 'slug';
     }
 
-    public function courses() {
-        return $this->hasMany('Studihub\Models\Courses', 'id');
+    public function courses()
+    {
+        return $this->belongsTo('Studihub\Models\Course', 'course_id', 'id');
     }
 }

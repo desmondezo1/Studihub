@@ -3,10 +3,12 @@
 use Faker\Generator as Faker;
 
 $factory->define(Studihub\Models\Course::class, function (Faker $faker) {
+    $path = "img/vlcsnap-error705.png";
     return [
-        'title' => $faker->lexify("Mathematics"),
+        'title' => $faker->sentence(8),
         'slug' => $faker->slug,
         'summary' => $faker->text(150),
-        'image_path' => $faker->image(null,640,480, true,true),
+        'image_path' => $path,
+        'course_category_id' => $faker->randomDigit,
     ];
 });

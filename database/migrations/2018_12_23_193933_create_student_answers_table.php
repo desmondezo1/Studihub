@@ -15,9 +15,9 @@ class CreateStudentAnswersTable extends Migration
     {
         Schema::create('student_answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('question_id');
-            $table->char('student_id');
-            $table->integer('question_choice_id');
+            $table->unsignedInteger('question_id');
+            $table->unsignedInteger('student_id');
+            $table->unsignedInteger('question_choice_id');
             $table->timestamps();
         });
     }

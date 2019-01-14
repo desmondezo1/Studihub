@@ -1,6 +1,6 @@
 <?php
 
-namespace Studihub\Http\Controllers\Auth;
+namespace Studihub\Http\Controllers\Tutor\Auth;
 
 use Illuminate\Http\Request;
 use Studihub\Models\Student;
@@ -35,40 +35,38 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/student';
-
+    protected $redirectTo = '/tutor';
 
     public function __construct()
     {
-        //$this->middleware('student-auth')->except('logout');
+        //$this->middleware(['students','tutors'])->except('logout');
     }
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('tutor.auth.register');
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => 'required|string|email|max:255|unique:students',
+            'email' => 'required|string|email|max:255|unique:tutors',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'password' => 'required|string|min:6|max:255|confirmed',
+            'password' => 'required|min:6|string|max:255',
             'password_confirmation' => 'required|string',
         ]);
     }
 
     protected function create(array $data)
     {
-        return Student::create([
+        return Tutor::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
-            'username' => $this->generateUsername($data['email']),
             'password' => bcrypt($data['password']),
+            'verification_code' => $this->vCode()
         ]);
-
     }
 
     public function register(Request $request)
@@ -77,23 +75,19 @@ class RegisterController extends Controller
             'firstname' => request()->input('firstname'),
             'lastname' => request()->input('lastname'),
             'email' => request()->input('email'),
-            'username' => request()->input('username'),
             'password' => request()->input('password'),
             'password_confirmation' => request()->input('password_confirmation'),
         ];
-        //validate student credentials
         $val = $this->validator($data);
-        //dd($val);
+       // dd($this->create($data));
         if($val->passes()){
-            $student = $this->create($data);
-            if($student->id != ''){
-                //Todo: send email notification for registration along with the username
-                $student->notify(new StudentRegistrationNotification($student));
-                return redirect()->route('student.index');
+            $tutor = $this->create($data);
+            if($tutor->id != ''){
+                $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
+                return redirect()->route('auth.verify');
             }
         }
         return back()->withErrors($val);
-
     }
 
     //Get the guard to authenticate Seller
@@ -102,9 +96,36 @@ class RegisterController extends Controller
         return Auth::guard($guard);
     }
 
-    //use all characters before @ as username
-    private function generateUsername($email){
-        $username = strstr($email, '@', true);
-        return $username;
+    public function verifyEmail(Request $request)
+    {
+        $tutor = Tutor::where('email', '=', $request->email)->where('verification_code', '=', $request->code)->first();
+        if($tutor != ''){
+            if ($tutor->verified) {
+                return redirect()->route('login')
+                    ->with('success', 'You have already verified your email.');
+            } elseif ($tutor) {
+                $tutor->verified = 1;
+                $tutor->update();
+
+                return redirect()->route('login')
+                    ->with('success', 'You have successfully verified your email. Please login now.');
+            } else {
+                return redirect()->route('register')
+                    ->withErrors('You have successfully verified your email. Please login now.');
+            }
+        }
+        return redirect()->route('register')
+            ->withErrors("No account found matching verification.Please register if you haven't or contact Admin.");
+    }
+
+    private function vCode(){
+        $salt       = str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+        $len        = strlen($salt);
+        $code   = '';
+        mt_srand(10000000*(double)microtime());
+        for ($i = 0; $i < 12; $i++) {
+            $code .= $salt[mt_rand(0,$len - 1)];
+        }
+        return $code;
     }
 }

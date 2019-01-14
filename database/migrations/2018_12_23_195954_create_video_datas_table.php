@@ -15,7 +15,7 @@ class CreateVideoDatasTable extends Migration
     {
         Schema::create('video_datas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id');
+            $table->unsignedInteger('topic_id');
             $table->integer('views');
             $table->integer('replayed');
             $table->integer('completed');

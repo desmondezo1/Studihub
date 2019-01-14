@@ -1,6 +1,6 @@
 <?php
 
-namespace Studihub\Http\Controllers\Auth;
+namespace Studihub\Http\Controllers\Tutor\Auth;
 
 use Illuminate\Http\Request;
 use Studihub\Http\Controllers\Controller;
@@ -42,14 +42,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('student-guest')->except('logout');
+        $this->middleware(['student-guest','tutor-guest'])->except('logout');
         $this->lockoutTime = 5;
         $this->maxLoginattempts = 3;
     }
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('tutor.auth.login');
     }
 
     protected function credentials(Request $request)
@@ -59,6 +59,7 @@ class LoginController extends Controller
         return [
             $field => $request->input('login'),
             'password' => $request->password,
+            'verified' => 1,
             'banned' => 0,
         ];
     }
@@ -82,10 +83,10 @@ class LoginController extends Controller
                 ->with('status', 'danger');
         }else
         {
-            if ($this->guard('student')->attempt($credentials, $request->has($remember))
+           if ($this->guard('tutor')->attempt($credentials, $request->has($remember))
             ) {
                 $this->clearLoginAttempts($request);
-                return redirect()->intended('student');
+                return redirect()->intended('tutor');
             } else {
                 $this->incrementLoginAttempts($request);
                 return redirect()->back()

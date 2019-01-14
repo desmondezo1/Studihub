@@ -8,7 +8,7 @@
                 <div class="card-header text-center">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('auth.register') }}">
+                    <form method="POST" action="{{ route('tutor.auth.register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -79,7 +79,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row mb-md-5">
                             <div class="col-md-6 offset-md-6">
                                 <button type="submit" class="btn btn-primary">
