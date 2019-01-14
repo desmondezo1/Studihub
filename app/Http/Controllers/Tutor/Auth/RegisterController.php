@@ -35,7 +35,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/tutor';
+    protected $redirectTo = '/successfull';
 
     public function __construct()
     {
