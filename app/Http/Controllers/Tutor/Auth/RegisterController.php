@@ -35,7 +35,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/successfull';
+    protected $redirectTo = '/tutor/register/verify';
 
     public function __construct()
     {
@@ -84,7 +84,7 @@ class RegisterController extends Controller
             $tutor = $this->create($data);
             if($tutor->id != ''){
                 $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
-                return redirect()->route('auth.verify');
+                return redirect()->route('tutor.verify');
             }
         }
         return back()->withErrors($val);
@@ -118,6 +118,11 @@ class RegisterController extends Controller
             ->withErrors("No account found matching verification.Please register if you haven't or contact Admin.");
     }
 
+    public function shouldVerify()
+    {
+        return view('tutor.auth.verify');
+
+    }
     private function vCode(){
         $salt       = str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
         $len        = strlen($salt);

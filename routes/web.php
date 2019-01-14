@@ -50,7 +50,8 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/tutor/login','\Studihub\Http\Controllers\Tutor\Auth\LoginController@login')->name('tutor.login');
         Route::get('/tutor/register','\Studihub\Http\Controllers\Tutor\Auth\RegisterController@showRegistrationForm')->name('tutor.getRegister');
         Route::post('/tutor/register', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@register')->name('tutor.auth.register');
-        Route::post('/tutor/register/verify', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@verifyEmail')->name('tutor.auth.verify');
+        Route::get('/tutor/register/verify', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@shouldVerify')->name('tutor.auth.verify');
+        Route::post('/tutor/register/verify', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@verifyEmail')->name('tutor.verify');
         Route::get('/tutor/password/forgot', '\Studihub\Http\Controllers\Tutor\Auth\ForgotPasswordController@create')->name('tutor.forgot');
         Route::post('/tutor/password/forgot', '\Studihub\Http\Controllers\Tutor\Auth\ForgotPasswordController@store')->name('tutor.forgot');
         Route::get('/tutor/password/reset/{token}',  '\Studihub\Http\Controllers\Tutor\Auth\ResetPasswordController@create')->name('tutor.password.reset');
