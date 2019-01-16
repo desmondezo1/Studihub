@@ -16,8 +16,8 @@ class RedirectTeacherIfNotAuthenticated
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('tutor')->guest() || !Auth::guard('tutor')->check()){
-            return redirect()->route('login');
+        if(Auth::guard('tutor')->guest() || !Auth::guard('tutor')->check() ){
+            return redirect()->route('tutor.login');
         }
 
         return $next($request);

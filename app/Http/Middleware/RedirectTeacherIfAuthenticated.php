@@ -17,7 +17,7 @@ class RedirectTeacherIfAuthenticated
     public function handle($request, Closure $next)
     {
         if(Auth::guard('tutor')->check()){
-            return redirect()->route('teacher.index');
+            return redirect()->route('tutor.index');
         }
         return $next($request);
     }

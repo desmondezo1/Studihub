@@ -50,8 +50,10 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/tutor/login','\Studihub\Http\Controllers\Tutor\Auth\LoginController@login')->name('tutor.login');
         Route::get('/tutor/register','\Studihub\Http\Controllers\Tutor\Auth\RegisterController@showRegistrationForm')->name('tutor.getRegister');
         Route::post('/tutor/register', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@register')->name('tutor.auth.register');
-        Route::get('/tutor/register/verify', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@shouldVerify')->name('tutor.auth.verify');
-        Route::post('/tutor/register/verify', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@verifyEmail')->name('tutor.verify');
+        Route::get('/tutor/register/verify', '\Studihub\Http\Controllers\Tutor\Auth\VerificationController@shouldVerify')->name('verification.notice');
+        Route::post('/tutor/register/resend', '\Studihub\Http\Controllers\Tutor\Auth\VerificationController@resend')->name('verification.resend');
+        Route::get('/tutor/register/resend', '\Studihub\Http\Controllers\Tutor\Auth\VerificationController@getResend')->name('verification.getResend');
+        Route::post('/tutor/register/verify/{code}', '\Studihub\Http\Controllers\Tutor\Auth\VerificationController@verifyEmail')->name('tutor.verify');
         Route::get('/tutor/password/forgot', '\Studihub\Http\Controllers\Tutor\Auth\ForgotPasswordController@create')->name('tutor.forgot');
         Route::post('/tutor/password/forgot', '\Studihub\Http\Controllers\Tutor\Auth\ForgotPasswordController@store')->name('tutor.forgot');
         Route::get('/tutor/password/reset/{token}',  '\Studihub\Http\Controllers\Tutor\Auth\ResetPasswordController@create')->name('tutor.password.reset');
@@ -60,7 +62,7 @@ Route::middleware(['throttle'])->group( function () {
     Route::get('/tutor/logout', '\Studihub\Http\Controllers\Tutor\Auth\LoginController@logout')->name('tutor.logout');
 });
 
-Route::group(['middleware'=>['tutor-auth','verified']], function () {
+Route::group(['middleware'=>['tutor-auth','verified-tutor']], function () {
     Route::get('/tutor', '\Studihub\Http\Controllers\Tutor\TutorDashboardController@index')->name('tutor.index');
 
 });

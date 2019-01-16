@@ -24,8 +24,7 @@ class CreateTutorsTable extends Migration
             $table->enum('gender',['male', 'female']);
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('verification_code');
-            $table->boolean('verified')->default(0);
+            $table->string('verification_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

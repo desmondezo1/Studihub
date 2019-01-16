@@ -42,7 +42,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['student-guest','tutor-guest'])->except('logout');
+        $this->middleware(['tutor-guest'])->except('logout');
         $this->lockoutTime = 5;
         $this->maxLoginattempts = 3;
     }
@@ -59,8 +59,6 @@ class LoginController extends Controller
         return [
             $field => $request->input('login'),
             'password' => $request->password,
-            'verified' => 1,
-            'banned' => 0,
         ];
     }
 
@@ -79,18 +77,18 @@ class LoginController extends Controller
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
             return redirect()->back()
-                ->withErrors('Incorrect '.$this->username().' or password.')
+                ->withErrors(trans('auth.failed'))
                 ->with('status', 'danger');
         }else
         {
            if ($this->guard('tutor')->attempt($credentials, $request->has($remember))
             ) {
-                $this->clearLoginAttempts($request);
-                return redirect()->intended('tutor');
+               $this->clearLoginAttempts($request);
+               return redirect()->intended(route('tutor.index'));
             } else {
                 $this->incrementLoginAttempts($request);
                 return redirect()->back()
-                    ->withErrors('Incorrect '.$this->username().' or password.')
+                    ->withErrors(trans('auth.failed'))
                     ->with('status', 'danger')
                     ->withInput($request->only('email'));
             }
@@ -112,7 +110,7 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->route('login')
+        return redirect()->route('tutor.login')
             ->with('status', 'success')
             ->with('message', 'Logged out');
     }

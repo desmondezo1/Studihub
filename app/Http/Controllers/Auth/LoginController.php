@@ -59,7 +59,6 @@ class LoginController extends Controller
         return [
             $field => $request->input('login'),
             'password' => $request->password,
-            'banned' => 0,
         ];
     }
 
@@ -78,7 +77,7 @@ class LoginController extends Controller
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
             return redirect()->back()
-                ->withErrors('Incorrect '.$this->username().' or password.')
+                ->withErrors(trans('auth.failed'))
                 ->with('status', 'danger');
         }else
         {
@@ -89,7 +88,7 @@ class LoginController extends Controller
             } else {
                 $this->incrementLoginAttempts($request);
                 return redirect()->back()
-                    ->withErrors('Incorrect '.$this->username().' or password.')
+                    ->withErrors(trans('auth.failed'))
                     ->with('status', 'danger')
                     ->withInput($request->only('email'));
             }

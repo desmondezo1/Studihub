@@ -31,7 +31,7 @@ class course extends Model
         return 'slug';
     }
 
-    public function authorId()
+    public function tutors()
     {
         return $this->belongsToMany('Studihub\Models\Tutor', 'tutor_id', 'id');
     }
