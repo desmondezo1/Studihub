@@ -11,7 +11,7 @@
 if (!function_exists('script_assets')) {
     function script_assets()
     {
-        $s = app('App\Http\AssetsHelper');
+        $s = app('Studihub\Http\AssetsHelper');
         return $s->scripts();
     }
 
@@ -20,7 +20,7 @@ if (!function_exists('script_assets')) {
 if (!function_exists('style_assets')) {
     function style_assets()
     {
-        $s = app('App\Http\AssetsHelper');
+        $s = app('Studihub\Http\AssetsHelper');
         return $s->styles();
     }
 

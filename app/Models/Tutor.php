@@ -5,8 +5,9 @@ namespace Studihub\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class Tutor extends Authenticatable
+class Tutor extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -18,7 +19,7 @@ class Tutor extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname', 'email', 'password','bio','qualification'
+        'firstname','lastname', 'username', 'email', 'password','bio','qualification','verification_code'
     ];
 
     /**
@@ -27,6 +28,6 @@ class Tutor extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','verification_code'
     ];
 }

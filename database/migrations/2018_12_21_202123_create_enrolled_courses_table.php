@@ -15,6 +15,11 @@ class CreateEnrolledCoursesTable extends Migration
     {
         Schema::create('enrolled_courses', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('course_id');
+            $table->unsignedInteger('student_id');
+            $table->dateTime('date_enrolled');
+            $table->dateTime('date_completed');
+            $table->integer('progress_level')->default(0);
             $table->timestamps();
         });
     }

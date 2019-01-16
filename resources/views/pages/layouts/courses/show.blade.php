@@ -11,34 +11,33 @@
 @endsection
 
 @section('courses')
-    <h5 class="scroll-title"><a href="{{url('/')}}" >Home</a> ><a href="{{url('/text')}}" >{{$course->name}}</a></h5>
+    {{--i will Replace this your code below with a proper breadcum later--}}
+    @component('partials.breadcum', [
+    'page_name' => 'Home',
+    'page_route' => 'home'
+    ])
+    @endcomponent
     <section class="card" style="flex-wrap: wrap;flex-direction: row;justify-content: center;background-color: #f8f9fa59;">
 
-        @foreach ($topic as $topic)
-            <div class="card--content course-details-card-content">
-                <a href="{{url('/learn')}}/{{$topic->title}}" topic="{{$topic->title}}"><div class="container" style="padding: 5px 15px;">
-                        <div class="row" style="align-items:center;">
-                            <div class="col-9">
-                                <p> this is where the topic {{$topic->title}}</p>
-                            </div>
-                            <div class="col-3" >
+        @if (count($course->topics) > 0)
+            @foreach ($course->topics as $topic)
+                <div class="card--content course-details-card-content">
+                    <a href="{{ route('topics.show', $topic->slug) }}"><div class="container" style="padding: 5px 15px;">
+                            <div class="row" style="align-items:center;">
+                                <div class="col-9">
+                                    <p> {{$topic->title}}</p>
+                                </div>
+                                <div class="col-3" >
 
+                                </div>
                             </div>
                         </div>
-                    </div></a>
-            </div>
-        @endforeach
-        <div class="card--content course-details-card-content">2</div>
-        <div class="card--content course-details-card-content">3</div>
-        <div class="card--content course-details-card-content">4</div>
-        <div class="card--content course-details-card-content">5</div>
-        <div class="card--content course-details-card-content">6</div>
-        <div class="card--content course-details-card-content">7</div>
-        <div class="card--content course-details-card-content">8</div>
-        <div class="card--content course-details-card-content">9</div>
-        <div class="card--content course-details-card-content">0</div>
+                    </a>
+                </div>
+            @endforeach
+        @else
+            <div class="card--content course-details-card-content"><h6 class="text-info p-4">No Topic(s) Yet For This Course</h6> </div>
+        @endif
     </section>
 
 @endsection
-
-

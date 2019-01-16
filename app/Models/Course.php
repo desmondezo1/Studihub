@@ -14,9 +14,9 @@ class course extends Model
 
     protected $table = "courses";
 
-    protected $fillable = ['name'];
+    protected $fillable = ['title','slug','summary','image_path'];
 
-    protected $guarded = ['id','seller_id'];
+    protected $guarded = ['id'];
 
     public function sluggable()
     {
@@ -33,6 +33,10 @@ class course extends Model
 
     public function authorId()
     {
-        return $this->belongsTo('Studihub\Models\Tutor', 'tutor_id', 'id');
+        return $this->belongsToMany('Studihub\Models\Tutor', 'tutor_id', 'id');
+    }
+
+    public function topics(){
+        return $this->hasMany('Studihub\Models\Topic');
     }
 }

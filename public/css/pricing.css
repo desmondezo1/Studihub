@@ -178,3 +178,13 @@ input[type="checkbox" i] {
 label:hover:before {
     border: 2px solid #4778d9!important;
 }
+
+/*custom css*/
+.price-box .payment-btn{
+    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 8px 76px;
+    margin: 10px;
+    color: #fff;
+    font-size: 23px;
+}

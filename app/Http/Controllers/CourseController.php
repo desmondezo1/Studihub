@@ -12,8 +12,8 @@ class CourseController extends Controller
 
     //
     public function index(){
-        $course= Course::all();
-        return view('pages.layouts.courses.index')->with('name','Courses')->with('course',$course);
+        $courses = Course::all();
+        return view('pages.layouts.courses.index',compact('courses'));
     }
 
     public function show($slug){

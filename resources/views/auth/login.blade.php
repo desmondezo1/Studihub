@@ -10,7 +10,7 @@
 
                 <div class="card-body">
 
-{{--                    @if ($errors->any())
+                    @if ($errors->any())
                         <div class="alert alert-danger text-center">
                             <ul style="list-style: none">
                                 @foreach ($errors->all() as $error)
@@ -18,19 +18,19 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif--}}
+                    @endif
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="login" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Or Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address Or Username') }}" autofocus>
-                                @if ($errors->has('email'))
+                                <input id="login" type="text" class="form-control{{ ($errors->has('username') or $errors->first('email')) ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="{{ __('E-Mail Address Or Username') }}" autofocus>
+                                @if ($errors->has('username') or $errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ ($errors->first('username')) }}</strong>
                                     </span>
                                 @endif
                             </div>

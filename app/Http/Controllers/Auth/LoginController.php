@@ -42,8 +42,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['student-guest','tutor-guest'])->except('logout');
-        $this->lockoutTime = 6;
+        $this->middleware('student-guest')->except('logout');
+        $this->lockoutTime = 5;
         $this->maxLoginattempts = 3;
     }
 
@@ -52,41 +52,44 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    protected function credentials(Request $request)
+    {
+        $field = $this->username();
+
+        return [
+            $field => $request->input('login'),
+            'password' => $request->password,
+            'banned' => 0,
+        ];
+    }
+
     public function login(Request $request)
     {
 
         $remember = $request->input('remember');
         $data = $request->validate([
-            'email'    => 'required',
+            $this->username() => 'required',
             'password' => 'required'
         ]);
         //dd($data);
+        $credentials = $this->credentials($request);
+        //dd($credentials);
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
             return redirect()->back()
-                ->withErrors('Incorrect email or password.')
+                ->withErrors('Incorrect '.$this->username().' or password.')
                 ->with('status', 'danger');
         }else
         {
-            if ($this->guard('student')->attempt([
-                'email' => $data['email'],
-                'password' => $data['password'],
-            ], $request->has($remember))
+            if ($this->guard('student')->attempt($credentials, $request->has($remember))
             ) {
                 $this->clearLoginAttempts($request);
                 return redirect()->intended('student');
-            }elseif ($this->guard('tutor')->attempt([
-                'email' => $data['email'],
-                'password' => $data['password'],
-            ], $request->has($remember))
-            ) {
-                $this->clearLoginAttempts($request);
-                return redirect()->intended('tutor');
             } else {
                 $this->incrementLoginAttempts($request);
                 return redirect()->back()
-                    ->withErrors('Incorrect email or password.')
+                    ->withErrors('Incorrect '.$this->username().' or password.')
                     ->with('status', 'danger')
                     ->withInput($request->only('email'));
             }
@@ -96,7 +99,11 @@ class LoginController extends Controller
     //make student able to login with email or username
     public function username()
     {
-        return 'email' | 'username';
+        $login = request()->input('login');
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()->merge([$field => $login]);
+        //dd($field);
+        return $field;
     }
 
     public function logout(Request $request)

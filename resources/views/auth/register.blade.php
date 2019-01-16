@@ -80,24 +80,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check-inline">
-                                    <label class="form-check-label" for="student">
-                                        <input class="form-check-input" type="radio" name="type" id="student" value="student" checked>
-                                        {{ __('Student') }}
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <label class="form-check-label" for="tutor">
-                                        <input class="form-check-input" type="radio" name="type" id="tutor" value="tutor">
-                                        {{ __('Tutor') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        {{--NOTE: You can add more input for tutors or student using js when either one of the radio buttons is clicked--}}
-
                         <div class="form-group row mb-md-5">
                             <div class="col-md-6 offset-md-6">
                                 <button type="submit" class="btn btn-primary">
