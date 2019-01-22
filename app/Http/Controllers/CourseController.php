@@ -18,6 +18,6 @@ class CourseController extends Controller
 
     public function show($slug){
         $course = Course::findBySlug($slug);
-        return view('pages.layouts.courses.show',compact('courses'));
+        return view('pages.layouts.courses.show',compact('course'));
     }
 }
