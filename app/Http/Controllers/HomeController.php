@@ -3,7 +3,7 @@
 namespace Studihub\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Studihub\Models\Course;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $courses = Course::all();
+        return view('index',compact('courses'));
     }
 
     public function about(){

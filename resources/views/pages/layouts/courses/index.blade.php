@@ -19,10 +19,10 @@
     <h4 class="scroll-title">Suggestions</h4>
     <section class="cards">
 
-        @if ($course->count()>0)
-            @foreach ($course as $course)
-                <a href="learn/{{$course->id}}">
-                    <div class="card--content">{{$course->name}}</div>
+        @if ($courses->count()>0)
+            @foreach ($courses as $courses)
+                <a href="learn/{{$courses->id}}">
+                    <div class="card--content">{{$courses->name}}</div>
                 </a>
             @endforeach
 
@@ -43,18 +43,20 @@
 @endsection
 
 @section('courses')
-    <h4 class="scroll-title">Subjects</h4>
-    <section class="cards">
-        @foreach ($courses as $course)
-            <div class="card-content p-3">
-                <img class="card-img-top" src="{{ $course->image_path }}" alt="Card image" width="50%">
-                <div class="card-body">
-                    <h4 class="card-title small"><a href="{{ route('courses.show', $course->slug) }}">{{ $course->title }}</a> </h4>
-                    <p class="card-text">Some example text.</p>
-                </div>
+@if(count($courses) > 0)
+<h4 class="scroll-title">Subjects</h4>
+<section class="cards">
+    @foreach ($courses as $course)
+        <div class="card-content p-3">
+            <img class="card-img-top" src="{{ $course->image_path }}" alt="Card image" width="50%">
+            <div class="card-body">
+                <h4 class="card-title small"><a href= "{{ route('courses.show', $course->slug) }}">{{ $course->title }}</a> </h4>
+                <p class="card-text">Some example text.</p>
             </div>
-        @endforeach
-    </section>
+        </div>
+    @endforeach
+</section>
+@endif
 @endsection
 
 @section('skills')

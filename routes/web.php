@@ -68,9 +68,9 @@ Route::group(['middleware'=>['tutor-auth','verified']], function () {
 
 
 Route::middleware(['throttle'])->group( function () {
-    Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+    //Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
 
-    // Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
     Route::get('/about', '\Studihub\Http\Controllers\HomeController@about')->name('about');
 
     //Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
