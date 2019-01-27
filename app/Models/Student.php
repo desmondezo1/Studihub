@@ -33,4 +33,6 @@ class Student extends Authenticatable
     public function getFullnameAttribute($options){
         return $this->firstname .' ' .$this->lastname;
     }
+
+
 }

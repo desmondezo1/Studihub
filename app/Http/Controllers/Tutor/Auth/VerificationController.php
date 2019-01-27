@@ -5,6 +5,9 @@ namespace Studihub\Http\Controllers\Tutor\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Carbon\Carbon;
+use Studihub\Models\Tutor;
+use Studihub\Notifications\VerifyTutor;
 
 class VerificationController extends Controller
 {
@@ -26,7 +29,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/student';
+    //protected $redirectTo = '/tutor';
 
     /**
      * Create a new controller instance.
@@ -35,8 +38,60 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('tutor-auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    public function verifyEmail(Request $request)
+    {
+        $tutor = Tutor::where('email', '=', $request->email)->where('verification_code', '=', $request->code)->first();
+        if($tutor != ''){
+            if ($tutor->verified) {
+                return redirect()->route('tutor.login')
+                    ->with('success', 'You have already verified your email.');
+            } elseif ($tutor) {
+                $tutor->email_verified_at = Carbon::now();
+                $tutor->verification_code = "";
+                $tutor->update();
+
+                return redirect()->route('tutor.login')
+                    ->with('success', 'You have successfully verified your email. Please login now.');
+            } else {
+                return redirect()->route('tutor.register')
+                    ->withErrors('You have successfully verified your email. Please login now.');
+            }
+        }
+        return redirect()->route('tutor.register')
+            ->withErrors("No account found matching verification.Please register if you haven't or contact Admin.");
+    }
+
+    public function shouldVerify()
+    {
+        return view('tutor.auth.verify');
+
+    }
+
+    public function getResend(Request $request)
+    {
+        return view('tutor.auth.email');
+    }
+
+    public function resend(Request $request)
+    {
+        $email = $request->validate([
+            'email' => 'required|string|email|max:255'
+        ]);
+        //dd($email);
+        $tutor = Tutor::where('email', '=', $email)->first();
+        if($tutor != ''){
+           // dd($tutor);
+                $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
+                return redirect()->route('verification.notice');
+        }
+        return redirect()->back()
+            ->withErrors(trans('auth.failed'))
+            ->with('stutus', 'danger');
+
     }
 }

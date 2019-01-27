@@ -4,15 +4,15 @@ namespace Studihub\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+class Choice extends Model
 {
-    protected $table = "student_answers";
+    protected $table = "question_choices";
 
     protected $fillable = ['question_id'];
 
     protected $guarded = ['id'];
 
-    public function choice(){
-        return $this->hasOne('Studihub\Models\Choice');
+    public function questions(){
+        return $this->belongsTo('Studihub\Models\Question');
     }
 }

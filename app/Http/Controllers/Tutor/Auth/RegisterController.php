@@ -2,6 +2,7 @@
 
 namespace Studihub\Http\Controllers\Tutor\Auth;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Studihub\Models\Student;
 use Studihub\Models\User;
@@ -84,7 +85,7 @@ class RegisterController extends Controller
             $tutor = $this->create($data);
             if($tutor->id != ''){
                 $tutor->notify(new VerifyTutor($tutor->verification_code, $tutor));
-                return redirect()->route('tutor.verify');
+                return redirect()->route('verification.notice');
             }
         }
         return back()->withErrors($val);
@@ -96,33 +97,6 @@ class RegisterController extends Controller
         return Auth::guard($guard);
     }
 
-    public function verifyEmail(Request $request)
-    {
-        $tutor = Tutor::where('email', '=', $request->email)->where('verification_code', '=', $request->code)->first();
-        if($tutor != ''){
-            if ($tutor->verified) {
-                return redirect()->route('login')
-                    ->with('success', 'You have already verified your email.');
-            } elseif ($tutor) {
-                $tutor->verified = 1;
-                $tutor->update();
-
-                return redirect()->route('login')
-                    ->with('success', 'You have successfully verified your email. Please login now.');
-            } else {
-                return redirect()->route('register')
-                    ->withErrors('You have successfully verified your email. Please login now.');
-            }
-        }
-        return redirect()->route('register')
-            ->withErrors("No account found matching verification.Please register if you haven't or contact Admin.");
-    }
-
-    public function shouldVerify()
-    {
-        return view('tutor.auth.verify');
-
-    }
     private function vCode(){
         $salt       = str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
         $len        = strlen($salt);
@@ -132,5 +106,9 @@ class RegisterController extends Controller
             $code .= $salt[mt_rand(0,$len - 1)];
         }
         return $code;
+    }
+
+    public function resend(){
+
     }
 }

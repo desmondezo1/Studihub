@@ -3,9 +3,8 @@
 namespace Studihub\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class RedirectTeacherIfAuthenticated
+class CheckEnrolledCourses
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,6 @@ class RedirectTeacherIfAuthenticated
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('tutor')->check()){
-            return redirect()->route('tutor.index');
-        }
         return $next($request);
     }
 }
