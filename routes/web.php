@@ -70,15 +70,15 @@ Route::group(['middleware'=>['tutor-auth','verified-tutor']], function () {
 
 
 Route::middleware(['throttle'])->group( function () {
-    //Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+    Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
 
-    Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
+    //Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
     Route::get('/about', '\Studihub\Http\Controllers\HomeController@about')->name('about');
 
     //Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
     //Route::get('learn/{slug}','\Studihub\Http\Controllers\CourseController@show')->name('topics.index');
 
-    Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+    //Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
     Route::get('/courses/{slug}', '\Studihub\Http\Controllers\CourseController@show')->name('courses.show');
 
     Route::get('/topics', '\Studihub\Http\Controllers\TopicsController@index')->name('topics.index');

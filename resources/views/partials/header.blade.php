@@ -57,17 +57,14 @@
                     </div>
                 </li>
             @endguest
-
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                <a href="" class="nav-link dropdown-toggle" id="Get_tutor_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Request a Tutor</a>
+                <div class="dropdown-menu" aria-labelledby="Get_tutor_dropdown">
+                    <a class="dropdown-item" href="#">Online Tutor</a>
+                    <a class="dropdown-item" href="#">Offline Tutor</a>
                 </div>
             </li>
+           
         </ul>
     </div>
 </nav>
