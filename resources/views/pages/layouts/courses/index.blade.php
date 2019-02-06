@@ -10,24 +10,23 @@
     </div>
     @component('partials.breadcum', [
             'page_name' => 'Home',
-            'page_route' => 'home'
+            'page_route' => 'courses.index'
             ])
     @endcomponent
 @endsection
 
 @section('suggestions')
-    <h4 class="scroll-title">Suggestions</h4>
-    <section class="cards">
+    <h1 class="scroll-title">Suggestions</h1>
+    <section class="cards smallscreen">
 
         @if ($courses->count()>0)
             @foreach ($courses as $course)
-            <div class="card-content p-3">
-                    <img class="card-img-top" src="{{ $course->image_path }}" alt="Card image" width="50%">
-                    <div class="card-body">
-                        <h4 class="card-title small"><a href= "{{ route('courses.show', $course->slug) }}">{{ $course->title }}</a> </h4>
-                        <p class="card-text">Some example text.</p>
+   
+                <a href="{{ route("courses.show", $course->slug) }}">
+                    <div class="card--content">
+                    <img src="{{$course->image_path}}" width="100%" alt="{{$course->name}} Icon">  
                     </div>
-                </div>
+                </a>
             @endforeach
 
          @else
@@ -35,13 +34,33 @@
         @endif
         
     </section>
+    <div  class="container largerscreen">
+            <div class="row" style="justify-content: center;">
+                @foreach ($courses as $suggestions)
+                
+                <a href="{{ route("courses.show", $suggestions->slug) }}">
+                 <div class="col" style="width:200px; height:150px;">
+                <img class="subject-image" src="{{$suggestions->image_path}}" width="100%" alt="{{$suggestions->name}} Icon"> 
+                </div>
+                </a>
+                
+            @endforeach
+            </div>
+            </div>
 @endsection
 
 @section('courses')
 
 @if($courses->count() > 0)
-<h4 class="scroll-title">Subjects</h4>
-<section class="cards">
+<h1 class="scroll-title">Subjects <small class="muted-text" style="font-size: 52%;
+    padding: 5px;
+    background: #6c757d;
+    font-weight: 400;
+    color: #f8f9fa;
+    border-radius: 5%;
+    box-shadow: 0 0 13px -3px black;">SSCE/UTME</small></h1>
+
+<section class="cards smallscreen">
     @foreach ($courses as $subject)
         <a href="courses/{{$subject->id}}">
             <div class="card--content">
@@ -54,11 +73,11 @@
 
 <div  class="container largerscreen">
 <div class="row" style="justify-content: center;">
-    @foreach ($courses as $courses)
+    @foreach ($courses as $subjects)
     
-    <a href="courses/{{$courses->id}}">
+    <a href="courses/{{$subjects->id}}">
      <div class="col" style="width:200px; height:150px;">
-    <img class="subject-image" src="{{$courses->image_path}}" width="100%" alt="{{$courses->name}} Icon"> 
+    <img class="subject-image" src="{{$subjects->image_path}}" width="100%" alt="{{$subjects->name}} Icon"> 
     </div>
     </a>
     
@@ -68,19 +87,29 @@
 @endsection
 
 @section('skills')
-    <h4 class="scroll-title">Learn Skills</h4>
-    <section class="cards">
-        <div class="card--content">1</div>
-        <div class="card--content">2</div>
-        <div class="card--content">3</div>
-        <div class="card--content">4</div>
-        <div class="card--content">5</div>
-        <div class="card--content">6</div>
-        <div class="card--content">7</div>
-        <div class="card--content">8</div>
-        <div class="card--content">9</div>
-        <div class="card--content">0</div>
+    <h1 class="scroll-title">Learn Skills</h1>
+    <section class="cards smallscreen">
+            @foreach ($courses as $skill)
+            <a href="courses/{{$skill->id}}">
+                <div class="card--content">
+                <img src="{{$skill->image_path}}" width="100%" alt="{{$skill->name}} Icon">  
+                </div>
+            </a>
+        @endforeach
     </section>
+    <div  class="container largerscreen">
+            <div class="row" style="justify-content: center;">
+                @foreach ($courses as $skills)
+                
+                <a href="courses/{{$skills->id}}">
+                 <div class="col" style="width:200px; height:150px;">
+                <img class="subject-image" src="{{$skills->image_path}}" width="100%" alt="{{$skills->name}} Icon"> 
+                </div>
+                </a>
+                
+            @endforeach
+            </div>
+            </div>
 @endsection
 
 @section('footer')

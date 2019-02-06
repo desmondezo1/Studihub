@@ -1,0 +1,24 @@
+.tutor-image-jumbotron{
+ 
+}
+.tutor-image{
+    background: url('../img/tutor.jpg');
+    background-size: cover;
+
+}
+.become-tutor-jumbotron{
+    background: transparent;
+}
+.form-col{
+    border-radius: 5px;
+    box-shadow: 0 0 8px -4px black;
+    background: #e7e8ea;
+    padding: 30px;
+}
+.tutor-request-form{
+    padding: 20px;
+    background: #fff;
+}
+main{
+    background: #f0f0f0;
+}

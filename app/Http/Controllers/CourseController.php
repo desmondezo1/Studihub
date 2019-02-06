@@ -18,7 +18,8 @@ class CourseController extends Controller
     
    //Get the Topics of the subject from the id and display the list
     public function show($slug){
-        $course = Course::find($slug);
+        $course = Course::findBySlug($slug);
+        //dd($course);
         $topic = Topic::where('course_id', $slug);
         return view('pages.layouts.courses.show')->with('topic',$topic)->with('course',$course);
     }

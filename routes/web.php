@@ -88,7 +88,12 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/rave/callback', '\Studihub\Http\Controllers\Student\StudentPaymentController@callback')->name('callback');
     });
 
-
+Route::get('/admin', function () {
+        return view('admin.index', ['name' => 'James']);
+    });
+    Route::get('/privatetutor', function () {
+        return view('privatetutor.index', ['name' => 'James']);
+    });
     Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');
 });
 

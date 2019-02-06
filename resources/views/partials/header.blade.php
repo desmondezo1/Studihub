@@ -58,11 +58,12 @@
                 </li>
             @endguest
             <li class="nav-item dropdown">
-                <a href="" class="nav-link dropdown-toggle" id="Get_tutor_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Request a Tutor</a>
-                <div class="dropdown-menu" aria-labelledby="Get_tutor_dropdown">
-                    <a class="dropdown-item" href="#">Online Tutor</a>
-                    <a class="dropdown-item" href="#">Offline Tutor</a>
-                </div>
+                <a href="" style="background: #f32a34;
+                border: 0.7px solid #061c3e;
+                color: #f2f4f7;
+                border-radius: 5%;
+                text-align: center;" class="nav-link" >Private Tutor</a>
+
             </li>
            
         </ul>

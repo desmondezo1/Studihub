@@ -28,6 +28,12 @@
       .scroll-title{
          margin-left: 20px;
          margin-top:10px;
+         text-align: center;
+         padding: 20px;
+         font-size: 33px;
+         font-weight: 400;
+         color: #4e171a;
+         font-family: inherit;
          
       }
       .scroll-title a{
@@ -69,7 +75,7 @@
       }
 
       @media only screen and (min-width:992px){
-        .cards{
+        .smallscreen{
            display: none;
         }
       }
