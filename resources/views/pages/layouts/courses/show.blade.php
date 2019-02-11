@@ -4,7 +4,7 @@
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
         <a href="{{url('/')}}" class="return-button">Back</a>
         <div class="container">
-            <h1 class="display-4">Learn {{$course->title}}</h1>
+            <h1 class="display-4">Learn {{$course->name}}</h1>
             <!-- <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p> -->
         </div>
     </div>
@@ -14,7 +14,7 @@
     {{--i will Replace this your code below with a proper breadcum later--}}
     @component('partials.breadcum', [
     'page_name' => 'Home',
-    'page_route' => 'home'
+    'page_route' => 'courses.index'
     ])
     @endcomponent
     <section class="card" style="flex-wrap: wrap;flex-direction: row;justify-content: center;background-color: #f8f9fa59;">
@@ -41,5 +41,3 @@
     </section>
 
 @endsection
-
-

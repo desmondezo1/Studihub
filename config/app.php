@@ -160,7 +160,7 @@ return [
         // Studihub\Providers\BroadcastServiceProvider::class,
         Studihub\Providers\EventServiceProvider::class,
         Studihub\Providers\RouteServiceProvider::class,
-        //'Illuminate\Html\HtmlServiceProvider',
+       // 'Illuminate\Html\HtmlServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider'
 
     ],

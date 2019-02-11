@@ -57,17 +57,25 @@
                     </div>
                 </li>
             @endguest
-
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+              <div class="holder flipV">
+                <div class="card">
+                    <a href="#tutor1" style="background: #f32a34;
+                    border: 0.7px solid #061c3e;
+                    color: #f2f4f7;
+                    border-radius: 5%;
+                    text-align: center;" class="nav-link front" >Private Tutor1
+                    </a>
+                    <a href="#tutor2" style="background: #f32a34;
+                    border: 0.7px solid #061c3e;
+                    color: #f2f4f7;
+                    border-radius: 5%;
+                    text-align: center;" class="nav-link back" >Private Tutor2
+                    </a>
                 </div>
+              </div>
             </li>
+                   
         </ul>
     </div>
 </nav>

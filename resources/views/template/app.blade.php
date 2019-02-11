@@ -46,6 +46,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/show-topic.css') }}" rel="stylesheet">
 
+
     @yield('styles')
 
     @yield('head')

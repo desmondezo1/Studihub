@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('banned_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 

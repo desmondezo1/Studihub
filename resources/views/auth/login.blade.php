@@ -2,13 +2,13 @@
 @section('site_title', "Login Page")
 
 @section('content')
-<div class="container">
+<div class="container" style="height:90vh; padding:50px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">{{ __('Login') }}</div>
+            <div class="card" style="    box-shadow: 0 0 13px -3px black;">
+                <div class="card-header text-center" style="background-color: rgb(6, 28, 62);">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body" style="border: 1px solid #0b316b;">
 
                     @if ($errors->any())
                         <div class="alert alert-danger text-center">
@@ -64,7 +64,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background-color: #ff2d38;
+                                border-color: #af0912;">
                                     {{ __('Login') }}
                                 </button>
 
