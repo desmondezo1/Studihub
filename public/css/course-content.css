@@ -68,6 +68,51 @@
          box-shadow: 0px 8px 37px -3px black;
       }
 
+      /* ::: HOLDER, CARD, FACES */
+.holder {
+   display:     inline-block;
+   width:       100px;
+   height:      64px;
+   perspective: 700px;
+ }
+ .card, .front, .back{
+   position:   absolute;
+   height:     inherit;
+   width:      inherit;
+   transition: all .7s;
+   transform-style:     preserve-3d;
+   backface-visibility: hidden;
+ }
+ 
+ /* ::: FACES */
+ .front{background: tomato;}
+ .back{background:  slategray;}
+ 
+ /* ::: SETUP FACES */
+ .flipH .back{transform: rotateY(-180deg);}
+ .flipV .back{transform: rotateX(180deg);}
+ 
+ /* ::: HOVER EFFECTS (Remove Automated for this to work) */
+ .flipH:hover .card{ transform: rotateY(180deg); }
+ .flipV:hover .card{ transform: rotateX(-180deg); }
+ 
+ /* ::: AUTOMATED EFFECTS */
+
+ .flipV .card{
+   animation: flipV 3s 1s infinite alternate ease-in-out;
+   -webkit-animation: flipV 3s 1s infinite alternate ease-in-out;
+ }
+
+}
+@keyframes flipV {
+ 0% { transform: rotateX(0deg); }
+ 100% { transform: rotateX(-180deg); }
+}
+@-webkit-keyframes flipV {
+ 0% { transform: rotateX(0deg); }
+ 100% { transform: rotateX(-180deg); }
+}
+
       @media only screen and (max-width:991px){
          .largerscreen{
             display: none;
