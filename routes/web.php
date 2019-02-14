@@ -83,7 +83,7 @@ Route::middleware(['throttle'])->group( function () {
 
     Route::get('/topics', '\Studihub\Http\Controllers\TopicsController@index')->name('topics.index');
     Route::middleware(['student-auth'])->group(function (){
-        Route::get('/topics/{slug}', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show');
+        Route::get('/topics/{slug}', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show')->middleware('enrolled');
         Route::post('/pay', '\Studihub\Http\Controllers\Student\StudentPaymentController@initialize')->name('pay');
         Route::post('/rave/callback', '\Studihub\Http\Controllers\Student\StudentPaymentController@callback')->name('callback');
     });

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Studihub\Models\Course::class, function (Faker $faker) {
+/*$factory->define(Studihub\Models\Course::class, function (Faker $faker) {
     $path = "img/vlcsnap-error705.png";
     return [
         'title' => $faker->sentence(8),
@@ -11,4 +11,4 @@ $factory->define(Studihub\Models\Course::class, function (Faker $faker) {
         'image_path' => $path,
         'course_category_id' => $faker->randomDigit,
     ];
-});
+});*/

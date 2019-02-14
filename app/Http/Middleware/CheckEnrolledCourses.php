@@ -15,6 +15,10 @@ class CheckEnrolledCourses
      */
     public function handle($request, Closure $next)
     {
+        $slug = $request->route('slug');
+        if(!Auth()->guard("student")->user()->isTopicBought($slug)){
+            return redirect('pricing');
+        }
         return $next($request);
     }
 }

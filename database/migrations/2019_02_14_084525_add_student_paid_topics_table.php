@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoursesTable extends Migration
+class AddStudentPaidTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('user_paid_topics', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('slug');
-            $table->text('summary');
-            $table->string('image_path')->nullable();
-            $table->bigInteger('views')->default(0);
-            $table->unsignedInteger('course_category_id');
+            $table->unsignedInteger('topic_id');
+            $table->unsignedInteger('student_id');
+            $table->dateTime('date_paid');
+            $table->dateTime('date_completed');
+            $table->integer('progress_level')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('user_paid_topics');
     }
 }
