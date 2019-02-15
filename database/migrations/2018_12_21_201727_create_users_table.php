@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('phone');
+            $table->enum('gender',['male','female']);
             $table->timestamp('banned_at')->nullable();
             $table->string('password');
             $table->rememberToken();
