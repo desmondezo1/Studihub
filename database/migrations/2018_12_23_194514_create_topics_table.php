@@ -22,8 +22,10 @@ class CreateTopicsTable extends Migration
             $table->string('mime_type');
             $table->string('mime_size');
             $table->string('mime_path');
-            $table->longText('notes');
+            $table->longText('notes')->nullable();
             $table->integer('topic_order');
+            $table->boolean('published')->default(false);
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

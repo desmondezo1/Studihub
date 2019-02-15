@@ -18,7 +18,8 @@ class AddStudentPaidTopicsTable extends Migration
             $table->unsignedInteger('topic_id');
             $table->unsignedInteger('student_id');
             $table->dateTime('date_paid');
-            $table->dateTime('date_completed');
+            $table->dateTime('expired_at');
+            $table->dateTime('date_completed')->nullable();
             $table->integer('progress_level')->default(0);
             $table->timestamps();
         });

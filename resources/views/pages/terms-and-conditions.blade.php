@@ -1,9 +1,17 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: pogbewi
+ * Date: 2/15/2019
+ * Time: 12:18 PM
+ */
+?>
+
 @extends('pages.layouts.template.content')
 
-@section('page_title', "Contact Studihub")
-@section('description', "Email us, call or visit our social media pages for inquiry or conplaint"
-)
-@section('keyword', "email,contact,call,text,social media")
+@section('page_title', "Terms And Servicesa")
+@section('description', "Our Terms and Services")
+@section('keyword', "terms, services")
 
 @section('sub-header')
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
@@ -13,8 +21,8 @@
         </div>
     </div>
     @component('partials.breadcum', [
-            'page_name' => 'contact',
-            'page_route' => 'contact'
+            'page_name' => 'terms',
+            'page_route' => 'terms'
             ])
     @endcomponent
 @endsection

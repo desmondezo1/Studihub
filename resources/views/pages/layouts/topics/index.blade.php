@@ -1,5 +1,9 @@
 @extends('pages.layouts.template.content')
 
+@section('page_title', "Course Topics")
+@section('description', "Course categorized topics available at studihub")
+@section('keyword', "topics,course")
+
 @section('sub-header')
     <div class="container video-box" style="padding:20px;">
         <div class="video-container collapse show" style="border-radius:4%;" id="collapseExample">

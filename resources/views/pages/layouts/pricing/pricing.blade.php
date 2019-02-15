@@ -48,14 +48,19 @@
                                 <li>30+ World Class teachers</li>
                                 <li>Online tutoring</li>
                             </ul>
+
                             <form method="POST" action="{{ route('pay') }}">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="amount" value="200" /> <!-- Replace the value with your transaction amount -->
+                                <input type="hidden" name="amount" value="200" />
+                                <input type="hidden" name="country" value="NG" /> <!-- Replace the value with your transaction country -->
+                                <input type="hidden" name="currency" value="NGN" />
                                 <input type="hidden" name="email" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->email : '' }}" /> <!-- Replace the value with your customer email -->
                                 <input type="hidden" name="firstname" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->firstname : '' }}" /> <!-- Replace the value with your customer firstname -->
                                 <input type="hidden" name="lastname" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->lastname : '' }}" /> <!-- Replace the value with your customer lastname -->
                                 <input type="hidden" name="phonenumber" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->phone : '' }}" /> <!-- Replace the value with your customer phonenumber -->
                                 <input type="hidden" name="paymentplan" value="100" /> <!-- Replace the value with the payment plan id -->
+                                <input type="hidden" name="metadata" value="{{ json_encode(['topic_id'=> $topic->id]) }}"/>
+                                <input type="hidden" name="description" value="Flutterwave Jersey" />
                                 <input type="submit" value="Buy" class="btn btn-block btn-primary payment-btn" style="background: #007bff;box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
                                border-radius: 5px;"/>
                             </form>

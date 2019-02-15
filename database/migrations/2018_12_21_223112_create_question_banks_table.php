@@ -21,6 +21,9 @@ class CreateQuestionBanksTable extends Migration
             $table->text('question_desc');
             $table->unsignedInteger('question_choice_id');
             $table->bigInteger('views')->default(0);
+            $table->boolean('published')->default(false);
+            $table->timestamp('published_at')->nullable();
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }

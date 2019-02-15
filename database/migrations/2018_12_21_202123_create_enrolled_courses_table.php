@@ -18,7 +18,7 @@ class CreateEnrolledCoursesTable extends Migration
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('student_id');
             $table->dateTime('date_enrolled');
-            $table->dateTime('date_completed');
+            $table->dateTime('date_completed')->nullable();
             $table->integer('progress_level')->default(0);
             $table->timestamps();
         });

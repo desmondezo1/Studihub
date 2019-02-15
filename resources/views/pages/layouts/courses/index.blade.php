@@ -1,5 +1,8 @@
-
 @extends('pages.layouts.template.content')
+
+@section('page_title', "List of Courses")
+@section('description', "Courses available for downloads")
+@section('keyword', "subjects, english,mathematics,geography ...")
 
 @section('sub-header')
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
@@ -9,7 +12,7 @@
         </div>
     </div>
     @component('partials.breadcum', [
-            'page_name' => 'Home',
+            'page_name' => 'Courses',
             'page_route' => 'courses.index'
             ])
     @endcomponent
@@ -19,7 +22,7 @@
     <h1 class="scroll-title">Suggestions</h1>
     <section class="cards smallscreen">
 
-        @if ($courses->count()>0)
+        @if ($courses->count() > 0)
             @foreach ($courses as $course)
    
                 <a href="{{ route("courses.show", $course->slug) }}">

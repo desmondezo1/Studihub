@@ -2,6 +2,7 @@
 
 namespace Studihub\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -29,16 +30,20 @@ class Student extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','expired_at', 'date_paid',
     ];
 
     public function getFullnameAttribute($options){
         return $this->firstname .' ' .$this->lastname;
     }
 
-    public function isTopicBought($slug){
-        $topic = Topic::findBySlugOrFail($slug)->first();
-        $paid = DB::table("user_paid_topics")->where('topic_id', $topic->id)->where("student_id", $this->id)->exists();
+    public function isTopicBought($value){
+        $topic = Topic::findBySlugOrFail($value)->first();
+        $paid = DB::table("user_paid_topics")->where([['topic_id', $topic->id],["student_id", $this->id],["expired_at",'>=', Carbon::now()]])->exists();
         return $paid;
+    }
+
+    public function isCourseSubscribed($value){
+        return false;
     }
 }
