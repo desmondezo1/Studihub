@@ -6,8 +6,12 @@
  * Time: 1:40 PM
  */
 ?>
-
 @extends('pages.layouts.template.content')
+
+@section('page_title', "Tutor Sign up")
+@section('description',"Sign up to become a tutor")
+@section('keyword', "tutor,teach,signup")
+
 
 @section('styles')
 <link href="{{ asset('css/privatetutor.css') }}" rel="stylesheet">

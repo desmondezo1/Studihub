@@ -1,5 +1,7 @@
 @extends('template.app')
-@section('page_title', "Login Page")
+@section('page_title', "Admin Login")
+@section('description',"Admin login page")
+@section('keyword', "admin,login")
 
 @section('content')
 <div class="container">

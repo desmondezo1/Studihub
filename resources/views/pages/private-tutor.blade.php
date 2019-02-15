@@ -8,6 +8,10 @@
 ?>
 @extends('pages.layouts.template.content')
 
+@section('page_title', "About Studihub")
+@section('description', "Request for a private tutor")
+@section('keyword', "learn,pass,private-tutor,tutor")
+
 @section('styles')
     <link href="{{ asset('css/privatetutor.css') }}" rel="stylesheet">
 @endsection
