@@ -17,7 +17,7 @@ class CheckEnrolledCourses
     public function handle($request, Closure $next)
     {
         $slug = $request->route('slug');
-        if(!Auth()->guard("student")->user()->isTopicBought($slug)){
+        if(!Auth()->guard("student")->user()->isCourseSubscribed($slug) || !Auth()->guard("student")->user()->isTopicBought($slug)){
             $request->attributes->set('slug',$slug);
             session()->flash('slug', $slug);
             return redirect('pricing')->with('slug', $slug);

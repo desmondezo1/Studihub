@@ -1,5 +1,9 @@
 @extends('pages.layouts.template.content')
 
+@section('page_title', "Pricing")
+@section('description',"Pricing for courses and topics")
+@section('keyword', "buy,cost,price,pricing")
+
 <!-- Css link scetion -->
 @section('styles')
     <link href="{{ asset('css/pricing.css') }}" rel="stylesheet">

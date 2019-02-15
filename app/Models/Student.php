@@ -30,7 +30,7 @@ class Student extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','expired_at', 'date_paid',
+        'password', 'remember_token','expired_at', 'date_paid','username', 'email',
     ];
 
     public function getFullnameAttribute($options){
@@ -44,6 +44,8 @@ class Student extends Authenticatable
     }
 
     public function isCourseSubscribed($value){
-        return false;
+        $topic = Topic::findBySlugOrFail($value)->with('courses')->first();
+        $paid_courses = DB::table("enrolled_courses")->where([['course_id', $topic->course_id],["student_id", $this->id],["expired_at",'>=', Carbon::now()]])->exists();
+        return $paid_courses;
     }
 }

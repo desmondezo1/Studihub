@@ -105,13 +105,10 @@ Route::group(['middleware'=>['tutor-auth','verified-tutor']], function () {
 
 Route::middleware(['throttle'])->group( function () {
     /*Routes for tutors guest routes i.e not yet authenticated*/
-    Route::group(['middleware' => ['throttle']], function () {
-        Route::get('/admin/login','\Studihub\Http\Controllers\Admin\Auth\LoginController@showLoginForm')->name('admin.login');
-    });
-
-    Route::group(['middleware' => ['throttle']], function () {
-        Route::post('/admin/login','\Studihub\Http\Controllers\Admin\Auth\LoginController@login')->name('admin.login');
-    });
+    Route::get('/admin/login','\Studihub\Http\Controllers\Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::post('/admin/login','\Studihub\Http\Controllers\Admin\Auth\LoginController@login')->name('admin.login');
+    Route::get('/admin/password/reset/{token}',  '\Studihub\Http\Controllers\Admin\Auth\ResetPasswordController@create')->name('admin.password.reset');
+    Route::post('/admin/password/reset', '\Studihub\Http\Controllers\Admin\Auth\ResetPasswordController@store')->name('admin.password.reset');
 });
 
 Route::middleware(['auth'])->group(function () {
