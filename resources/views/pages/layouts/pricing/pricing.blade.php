@@ -62,7 +62,7 @@
                                 <input type="hidden" name="firstname" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->firstname : '' }}" /> <!-- Replace the value with your customer firstname -->
                                 <input type="hidden" name="lastname" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->lastname : '' }}" /> <!-- Replace the value with your customer lastname -->
                                 <input type="hidden" name="phonenumber" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->phone : '' }}" /> <!-- Replace the value with your customer phonenumber -->
-                                <input type="hidden" name="paymentplan" value="100" /> <!-- Replace the value with the payment plan id -->
+                                <input type="hidden" name="paymentplan" value="1602" /> <!-- Replace the value with the payment plan id -->
                                 <input type="hidden" name="metadata" value="{{ json_encode(['topic_id'=> $topic->id]) }}"/>
                                 <input type="hidden" name="description" value="Flutterwave Jersey" />
                                 <input type="submit" value="Buy" class="btn btn-block btn-primary payment-btn" style="background: #007bff;box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);

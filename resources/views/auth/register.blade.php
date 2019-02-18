@@ -1,5 +1,9 @@
 @extends('template.app')
 
+@section('page_title', "Account Registration")
+@section('description', "Student Registration")
+@section('keyword', "resgistratiom")
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

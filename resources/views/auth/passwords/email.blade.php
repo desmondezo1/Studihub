@@ -1,5 +1,10 @@
 @extends('template.app')
 
+@section('page_title', "Password Reset")
+@section('description', "Reset Password"
+)
+@section('keyword', "emai,password,reset")
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

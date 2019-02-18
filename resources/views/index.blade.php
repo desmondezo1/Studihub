@@ -38,7 +38,7 @@
         
     </section>
     <div  class="container largerscreen">
-        @if($course->count() > 0)
+        @if($courses->count() > 0)
             <div class="row" style="justify-content: center;">
                 @foreach ($courses as $suggestions)
                     <a href="{{ route("courses.show", $suggestions->slug) }}">
@@ -65,7 +65,7 @@
 
     <section class="cards smallscreen">
         @foreach ($courses as $subject)
-            <a href="courses/{{$subject->id}}">
+            <a href="{{ route("courses.show", $subject->slug) }}">
                 <div class="card--content">
                 <img src="{{$subject->image_path}}" width="100%" alt="{{$subject->name}} Icon">
                 </div>
@@ -78,7 +78,7 @@
     @if($courses->count() > 0)
         <div class="row" style="justify-content: center;">
             @foreach ($courses as $subjects)
-                <a href="courses/{{$subjects->id}}">
+                <a href="{{ route("courses.show", $subject->slug) }}">
                     <div class="col" style="width:200px; height:150px;">
                         <img class="subject-image" src="{{$subjects->image_path}}" width="100%" alt="{{$subjects->name}} Icon">
                     </div>
@@ -94,7 +94,7 @@
        @if($courses->count() > 0)
            <section class="cards smallscreen">
                @foreach ($courses as $skill)
-                   <a href="courses/{{$skill->id}}">
+                   <a href="{{ route("courses.show", $skill->slug) }}">
                        <div class="card--content">
                            <img src="{{$skill->image_path}}" width="100%" alt="{{$skill->name}} Icon">
                        </div>
@@ -106,7 +106,7 @@
         @if($courses->count() > 0)
             <div class="row" style="justify-content: center;">
                 @foreach ($courses as $skills)
-                    <a href="courses/{{$skills->id}}">
+                    <a href="{{ route("courses.show", $skill->slug) }}">
                         <div class="col" style="width:200px; height:150px;">
                             <img class="subject-image" src="{{$skills->image_path}}" width="100%" alt="{{$skills->name}} Icon">
                         </div>
