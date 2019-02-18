@@ -5,5 +5,5 @@
 @endsection
 
 @section('page')
-Questions
+Create Lesson
 @endsection

@@ -45,9 +45,11 @@
     <link href="{{ URL::asset('css/course-content.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/show-topic.css') }}" rel="stylesheet">
+    
 
 
     @yield('styles')
+    
 
     @yield('head')
 
@@ -68,6 +70,7 @@
         <!--/.Footer-->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/animatebuttontext.js') }}" ></script>
      @stack('scripts')
 </body>
 </html>

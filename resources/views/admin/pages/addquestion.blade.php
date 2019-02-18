@@ -5,5 +5,5 @@
 @endsection
 
 @section('page')
-Questions
+Add Question
 @endsection

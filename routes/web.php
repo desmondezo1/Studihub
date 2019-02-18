@@ -88,8 +88,24 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/rave/callback', '\Studihub\Http\Controllers\Student\StudentPaymentController@callback')->name('callback');
     });
 
+    //temporary routes for UI design front end
     Route::get('/admin', function () {
         return view('admin.index', ['name' => 'James']);
+    });
+    Route::get('/admin/messages', function () {
+        return view('admin.pages.messages', ['name' => 'James']);
+    });
+    Route::get('/admin/createlesson', function () {
+        return view('admin.pages.createlesson', ['name' => 'James']);
+    });
+    Route::get('/admin/lessons', function () {
+        return view('admin.pages.lessons', ['name' => 'James']);
+    });
+    Route::get('/admin/addquestion', function () {
+        return view('admin.pages.addquestion', ['name' => 'James']);
+    });
+    Route::get('/admin/questions', function () {
+        return view('admin.pages.questions', ['name' => 'James']);
     });
     Route::get('/privatetutor', function () {
         return view('privatetutor.index', ['name' => 'James']);

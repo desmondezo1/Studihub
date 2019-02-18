@@ -1,0 +1,29 @@
+.card{
+    max-width: 400px;
+    font-size: 12px;
+    color: #000;
+}
+.card-body .reply{
+    background: #0b316b;
+    
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+    box-shadow: 0 0 6px -3px rgb(173,173,173);
+    padding: 10px;
+    
+}
+.reply .reply-message{
+    background: #061c3e;
+    color: #fff;
+}
+ .reply-text{
+    color: #fff;
+ }
+.footer-timestamp{
+    padding: 5px;
+    background: #fff;
+    height: 32px;
+    text-align: center;
+}

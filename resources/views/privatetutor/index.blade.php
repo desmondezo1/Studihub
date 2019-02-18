@@ -10,6 +10,10 @@
             <h1 class="display-4">Find Expert Tutors Near You</h1>
             <p class="lead"></p>
         </div>
+    </div class="jumbotron-fluid ">
+    Qualified? click here to become a tutor <a class="btn btn-primary " href="/becomeatutor">Get Started</a>
+    <div>
+
     </div>
 
 @endsection
