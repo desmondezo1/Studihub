@@ -72,7 +72,7 @@
                             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="far fa-sticky-note"></i>  Lesson Notes</a>
                             <ul class="collapse list-unstyled" id="pageSubmenu">
                                 <li>
-                                    <a href="/admin/createlesson"><i class="fas fa-plus-circle"></i>  Create</a>
+                                    <a href="/admin/addlesson"><i class="fas fa-plus-circle"></i>  Create</a>
                                 </li>
                                 <li>
                                     <a href="/admin/lessons"><i class="fas fa-list-ol"></i>  List Lessons</a>

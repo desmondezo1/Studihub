@@ -90,7 +90,7 @@ Route::middleware(['throttle'])->group( function () {
 
     //temporary routes for UI design front end
     Route::get('/admin', function () {
-        return view('admin.index', ['name' => 'James']);
+        return view('admin.pages.index', ['name' => 'James']);
     });
     Route::get('/admin/messages', function () {
         return view('admin.pages.messages', ['name' => 'James']);

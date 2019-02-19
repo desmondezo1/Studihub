@@ -44,8 +44,8 @@ Add Lesson
         </datalist>
     </div>
     <div class="form-group">
-      <label for="formGroupExampleInput">Video Embed Code</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+      <label for="formGroupExampleInput">Video Embed Code<br><small style="font-weight:400;" >VDOcipher/Youtube/vimeo/Wistia</small></label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Video Embed code">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Lesson Note</label>
@@ -55,7 +55,9 @@ Add Lesson
 @endsection
 
 @section('jsscript')
+
 <script>
+//Script for fileupload for ckeditor
   var options = {
     filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
     filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
