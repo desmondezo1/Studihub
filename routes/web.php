@@ -101,6 +101,9 @@ Route::middleware(['throttle'])->group( function () {
     Route::get('/admin/lessons', function () {
         return view('admin.pages.lessons', ['name' => 'James']);
     });
+    Route::get('/admin/addlesson', function () {
+        return view('admin.pages.addlesson', ['name' => 'James']);
+    });
     Route::get('/admin/addquestion', function () {
         return view('admin.pages.addquestion', ['name' => 'James']);
     });
