@@ -49,7 +49,7 @@ Add Lesson
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Lesson Note</label>
-      <textarea class="form-control textarea" id="lessonnote" placeholder="Required example textarea" required></textarea>
+      <textarea class="form-control textarea" id="lessonnote" placeholder="Add the note here" required></textarea>
     </div>
   </form>
 @endsection
