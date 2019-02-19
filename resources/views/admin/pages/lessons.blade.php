@@ -10,9 +10,15 @@ Lessons
 
 
 @section('content')
+<div class="container" style="padding:15px;">
+<form class="form-inline my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
 
-<table class="table table-bordered table-responsive">
-    <caption>List of users</caption>
+<table class="table table-bordered table-responsive  table-striped table-dark">
+    <caption>List of lessons</caption>
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -30,32 +36,55 @@ Lessons
       <tr >
         <th scope="row">1</th>
         <td>How to convert from one base to another (Base 2 to base 3)</td>
+        <td class="bg-success">Active</td>
         <td>Otto</td>
         <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>Mathematics</td>
+        <td>Jafar</td>
+        <td>
+            <span class="badge badge-pill badge-light">number base</span>
+            <span class="badge badge-pill badge-light">Base 2</span>
+            <span class="badge badge-pill badge-light">Base 3</span>
+        </td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </td>
       </tr>
       <tr>
         <th scope="row">2</th>
         <td>Jacob</td>
-        <td>Otto</td>
+        <td>Pending</td>
         <td>Otto</td>
         <td>Otto</td>
         <td>Otto</td>
         <td>Thornton</td>
         <td>@fat</td>
+        <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-success">Edit</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </td>
       </tr>
       <tr>
         <th scope="row">3</th>
         <td>Larry</td>
-        <td>Otto</td>
+        <td class="bg-danger">Denied</td>
         <td>Otto</td>
         <td>Otto</td>
         <td>Otto</td>
         <td>the Bird</td>
         <td>@twitter</td>
+
+        <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-success">Edit</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </td>
       </tr>
     </tbody>
   </table>
