@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Studihub -@yield('site_title')</title>
+    <title>Studihub - @yield('page_title')</title>
+    <meta name="description" content="@yield('description')"/>
+    <meta name="keywords" content="@yield('keyword')"/>
 
      <!-- favicon -->
      <link href="{{ asset('img/apple-icon-57x57.png') }}" rel="apple-touch-icon">

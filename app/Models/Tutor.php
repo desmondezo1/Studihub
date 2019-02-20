@@ -28,6 +28,6 @@ class Tutor extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','verification_code'
+        'password', 'remember_token','verification_code','username', 'email',
     ];
 }

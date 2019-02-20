@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-    <a class="navbar-brand" href="/" style="margin:0;">
+    <a class="navbar-brand" href="{{ route('home') }}" style="margin:0;">
         <picture>
             <source height="50px" media="(min-width: 481px)" srcset="{{ asset('img/studi-blue.png') }}">
             <source height="50px" media="(max-width: 480px)" srcset="{{ asset('img/logo.png') }}">
@@ -20,10 +20,10 @@
     <div class="collapse navbar-collapse " id="navbarNavDropdown"  >
         <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="{{ route('about') }}">About</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Blog</a>
@@ -41,7 +41,7 @@
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -58,12 +58,14 @@
                 </li>
             @endguest
             <li class="nav-item dropdown">
+
                     <a href="/privatetutor" style="background: #f32a34;
                     border: 0.7px solid #061c3e;
                     color: #f2f4f7;
                     border-radius: 5%;
                     text-align: center;" id="privatetutorbutton" class="nav-link front" >Tutor
                     </a>
+
             </li>
                    
         </ul>

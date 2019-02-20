@@ -18,7 +18,8 @@ class CreateCoursesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('summary');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
+            $table->boolean('visible')->default(true);
             $table->bigInteger('views')->default(0);
             $table->unsignedInteger('course_category_id');
             $table->timestamps();

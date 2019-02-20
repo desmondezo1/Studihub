@@ -26,6 +26,10 @@ class Topic extends Model
 
     protected $guarded = ['id','course_id'];
 
+    protected $hidden = [
+        'course_id'
+    ];
+
     public function sluggable()
     {
         return [

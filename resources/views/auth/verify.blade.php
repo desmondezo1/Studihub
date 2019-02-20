@@ -1,5 +1,10 @@
 @extends('template.app')
 
+@section('page_title', "Verify Your Account")
+@section('description', "Account Verification"
+)
+@section('keyword', "account,verify")
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

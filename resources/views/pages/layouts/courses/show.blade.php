@@ -1,5 +1,10 @@
 @extends('pages.layouts.template.content')
 
+@section('page_title', $course->title)
+@section('description', str_limit($course->summary, 120))
+@section('keyword', "courses,topics")
+
+
 @section('sub-header')
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
         <a href="{{url('/')}}" class="return-button">Back</a>

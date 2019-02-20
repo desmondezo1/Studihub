@@ -21,13 +21,16 @@ class RoleDatabaseSeeder extends Seeder
     {
         $rows = [
             'admin' => [
+                'admin-admin-dashboard-controller' => 'c,r,u,d',
                 'admin-settings-controller'=> 'c,r,u,d',
 
             ],
             'manager' => [
-                'admin-settings-controller'=> 'r,u,',
+                'admin-admin-dashboard-controller' => 'c,r',
+                'admin-settings-controller'=> 'r',
             ],
             'moderator' => [
+                'admin-admin-dashboard-controller' => 'r',
                 'admin-settings-controller'=> 'r',
             ],
         ];

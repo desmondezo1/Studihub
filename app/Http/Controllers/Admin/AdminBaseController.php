@@ -35,6 +35,7 @@ class AdminBaseController extends BaseController
         // Add file
         $controller .= kebab_case($arr[0]);
 
+        //dd($controller);
         // Skip ACL
         $skip = ['admin-admin-controller'];
         if (in_array($controller, $skip)) {

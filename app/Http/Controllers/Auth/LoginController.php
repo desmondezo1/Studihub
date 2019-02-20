@@ -33,7 +33,7 @@ class LoginController extends Controller
 
     protected $auth;
 
-    //protected $redirectTo = '/home';
+    protected $redirectTo = '/student';
 
     /**
      * Create a new controller instance.
@@ -84,7 +84,7 @@ class LoginController extends Controller
             if ($this->guard('student')->attempt($credentials, $request->has($remember))
             ) {
                 $this->clearLoginAttempts($request);
-                return redirect()->intended('student');
+                return redirect()->intended('/student');
             } else {
                 $this->incrementLoginAttempts($request);
                 return redirect()->back()

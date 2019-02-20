@@ -14,7 +14,7 @@ class course extends Model
 
     protected $table = "courses";
 
-    protected $fillable = ['title','slug','summary','image_path'];
+    protected $fillable = ['title','slug','summary','image_path',"course_category_id"];
 
     protected $guarded = ['id'];
 
@@ -38,5 +38,9 @@ class course extends Model
 
     public function topics(){
         return $this->hasMany('Studihub\Models\Topic');
+    }
+
+    public function category(){
+        return $this->belongsTo("Studihub\Models\CourseCategory", "course_category_id");
     }
 }
