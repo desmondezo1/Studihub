@@ -110,6 +110,9 @@ Route::middleware(['throttle'])->group( function () {
     Route::get('/admin/questions', function () {
         return view('admin.pages.questions', ['name' => 'James']);
     });
+    Route::get('/admin/tutoraccounts', function () {
+        return view('admin.pages.tutoraccounts', ['name' => 'James']);
+    });
     Route::get('/privatetutor', function () {
         return view('privatetutor.index', ['name' => 'James']);
     });

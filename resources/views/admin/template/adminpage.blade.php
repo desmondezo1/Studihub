@@ -52,10 +52,10 @@
                     <ul class="list-unstyled components">
                         <p>Welcome Desmond</p>
                         <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Analytics</a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
                                 <li>
-                                    <a href="#">Home 1</a>
+                                    <a href="#">Google Analytics</a>
                                 </li>
                                 <li>
                                     <a href="#">Home 2</a>
@@ -91,7 +91,15 @@
                                 </ul>
                             </li>
                         <li>
-                            <a href="#"><i class="far fa-user"></i>  Account</a>
+                           <a href="#useraccounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="far fa-user"></i>  User Accounts</a>
+                            <ul class="collapse list-unstyled" id="useraccounts">
+                                <li>
+                                    <a href="/admin/tutoraccounts"><i class="fas fa-chalkboard-teacher"></i>  Tutors</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/questions"><i class="fas fa-list-ol"></i>  Students</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#"><i class="far fa-credit-card"></i>  Payments</a>

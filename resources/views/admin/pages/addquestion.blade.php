@@ -19,7 +19,11 @@ Add Question
 @section('content')
 
 <div class="container">
-        <form action="">
+ <form action="">
+    <div class="row">
+        
+            <div  class="col-md-6">
+        
 
     <div class="form-group">
             <label for="formGroupExampleInput">Subject<br><small style="font-weight:400;" >Select a subject</small></label>
@@ -54,13 +58,14 @@ Add Question
                         <option value="Design thinking">
                     </datalist>
             </div>
-            <div class="form-group">
+         
+        </div>
+          <div class="col-md-6">  
+        <div class="form-group">
             <label for="question">Add question</label>
              <textarea class="form-control textarea" name="Question" id="questiontextarea"></textarea>
             </div>
-         
-          
-                
+            <!-- --Add option --->
                 <p class="lead">Add Options and select the correct one</p>
                              
                 <div class="input-group">
@@ -105,7 +110,11 @@ Add Question
           <div class="container" style="width: 50%;padding: 30px;">
           <button type="submit" name="add_question" class="btn btn-success btn-lg btn-block">Add question</button>
           </div>
-        </form>
+        </div>
+    </form>
+</div>
+
+
     
     
     
