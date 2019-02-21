@@ -1,3 +1,13 @@
+## About studihub 
+
+Studihub is an e-learning platform that uses audio visual aids notes and practice questions to help students learn and pass their exams better while we track the knowledge gap of students who learn on the platform, and suggest courses to help them cover that knowledge gap.
+
+## Technology 
+
+studihub was developed using the laravel a PHP framework.
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
