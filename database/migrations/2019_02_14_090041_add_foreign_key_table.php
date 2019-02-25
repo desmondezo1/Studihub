@@ -22,12 +22,6 @@ class AddForeignKeyTable extends Migration
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
         });
 
-
-        Schema::table('user_paid_topics', function (Blueprint $table) {
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade')->onUpdate('cascade');
-        });
-
         Schema::table('question_banks', function (Blueprint $table) {
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');

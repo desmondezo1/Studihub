@@ -3,16 +3,16 @@
 namespace Studihub\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Studihub\Models\Topic;
+use Studihub\Models\Course;
 
 class PricingController extends Controller
 {
     public function index(Request $request)
     {
-        $slug = session()->get('slug');
-        if ($slug  != null){
-            $topic = Topic::findBySlug($slug);
-            return view('pages.layouts.pricing.pricing')->with('topic', $topic);
+        $id = session()->get('id');
+        if ($id  != null){
+            $course = Course::find($id);
+            return view('pages.layouts.pricing.pricing')->with('topic', $course);
         }
         return abort(404);
     }

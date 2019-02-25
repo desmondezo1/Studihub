@@ -3,7 +3,7 @@
 namespace Studihub\Http\Middleware;
 
 use Closure;
-use function Sodium\add;
+use Studihub\Models\Topic;
 
 class CheckEnrolledCourses
 {
@@ -17,10 +17,11 @@ class CheckEnrolledCourses
     public function handle($request, Closure $next)
     {
         $slug = $request->route('slug');
-        if(!Auth()->guard("student")->user()->isCourseSubscribed($slug) || !Auth()->guard("student")->user()->isTopicBought($slug)){
-            $request->attributes->set('slug',$slug);
-            session()->flash('slug', $slug);
-            return redirect('pricing')->with('slug', $slug);
+        if(!Auth()->guard("student")->user()->isCourseSubscribed($slug)){
+            $topic = Topic::findBySlugOrFail($slug)->with('courses')->first();
+            $request->attributes->set('id',$topic->course_id);
+            session()->flash('id', $topic->course_id);
+            return redirect('pricing')->with('id', $topic->course_id);
         }
         return $next($request);
     }

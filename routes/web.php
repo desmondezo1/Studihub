@@ -98,9 +98,9 @@ Route::group(['middleware'=>['tutor-auth','verified-tutor']], function () {
 
 
 Route::middleware(['throttle'])->group( function () {
-    Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+    //Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
 
-    //Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
     Route::get('/about', '\Studihub\Http\Controllers\HomeController@about')->name('about');
 
     //Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
@@ -167,5 +167,13 @@ Route::middleware(['throttle'])->group( function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', '\Studihub\Http\Controllers\Admin\AdminDashboardController@index')->name('admin.index');
+    Route::name('admin.')->group(function (){
+        Route::get('/admin', '\Studihub\Http\Controllers\Admin\AdminDashboardController@index')->name('index');
+
+        Route::resource('/admin/courses', '\Studihub\Http\Controllers\Admin\AdminCourseController');
+
+        Route::resource('/admin/topics', '\Studihub\Http\Controllers\Admin\AdminTopicController');
+
+        Route::resource('/admin/questions', '\Studihub\Http\Controllers\Admin\AdminQuestionController');
+    });
 });

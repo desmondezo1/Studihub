@@ -74,8 +74,7 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">Coppyright &copy; {{ "2018" != date("Y")  ? "2018 - " . date("Y") : "2018" }} :
-        <a href=""> STUDIHUB EDUCATION SERVICES</a>
+    <div class="footer-copyright text-center py-3"><a href="{{ route('home') }}"> STUDIHUB EDUCATION SERVICES</a> &copy; {{ "2018" != date("Y")  ? "2018 - " . date("Y") : "2018" }}
     </div>
     <!-- Copyright -->
 

@@ -18,12 +18,12 @@ class StudentPaymentController extends Controller
     public function callback() {
         // This verifies the transaction and takes the parameter of the transaction reference
         $data = Rave::verifyTransaction(request()->txref);
-        dd($data);
+        //dd($data);
         $chargeResponsecode = $data->data->chargecode;
         $chargeAmount = $data->data->amount;
         $chargeCurrency = $data->data->currency;
 
-        $amount = 4500;
+        $amount = 500;
         $currency = "NGN";
         if (($chargeResponsecode == "00" || $chargeResponsecode == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
             // transaction was successful...
