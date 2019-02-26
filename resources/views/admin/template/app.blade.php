@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Datatables CSS-->
+    <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables/css/jquery.dataTables.min.css">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="/assets/admin/css/fontastic.css">
     <!-- Google fonts - Poppins -->
@@ -62,7 +67,7 @@
             <!-- Page Header-->
             @yield("page-header")
             <!--- Breadcum here -->
-            @yield('breadcum')
+            @include('admin.partials.breadcrumb')
 
             <!-- Page Contents here -->
             @yield('content')
@@ -81,6 +86,11 @@
 <script src="/assets/vendor/chart.js/Chart.min.js"></script>
 <script src="/assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="/assets/admin/js/charts-home.js"></script>
+
+<script src="/assets/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="/assets/vendor/datatables/js/dataTables.jqueryui.min.js"></script>
+<script src="/assets/vendor/datatables/js/dataTables.min.js"></script>
+<script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <!-- Main File-->
 <script src="/assets/admin/js/front.js"></script>
 @stack('scripts')

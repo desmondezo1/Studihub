@@ -1,10 +1,17 @@
 @extends('pages.layouts.template.content')
 
-@section('page_title', $topic->title)
-@section('description', str_limit($topic->note, 120))
-@section('keyword', $topic->course()->title)
+@if($topic != null)
+    @section('page_title', $topic->title)
+    @section('description', str_limit($topic->note, 120))
+    @section('keyword', $topic->course()->title)
+@endif
+
 
 @section('sub-header')
+    @include('partials.breadcrumb')
+@endsection
+
+@section('others')
     <div class="container video-box" style="padding:20px;">
         <div class="video-container collapse show" style="border-radius:4%;" id="collapseExample">
             <iframe width="100%" height="250px" src="https://www.youtube-nocookie.com/embed/rS4NVyGcmr0?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -23,7 +30,6 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ex dicta voluptas minus! Laborum saepe iusto cum ullam molestias itaque sit corrupti omnis sunt, iure iste, accusamus debitis, harum quos!
         Lorem ipsum doslor sit amet consectetur, adipisicing elit. Aliquam consequatur, voluptas quo neque blanditiis doloremque aliquid molestiae tempore officia quae impedit praesentium eligendi reprehenderit doloribus accusantium! Magnam obcaecati fugit distinctio!
     </div>
-
 @endsection
 
 @section('script')

@@ -1,7 +1,6 @@
 @extends('template.app')
 
 @section('content')
-
         @yield('sub-header')
 
         @yield('suggestions')
@@ -12,4 +11,5 @@
 
         @yield('skills')
 
+        @yield('others')
 @endsection

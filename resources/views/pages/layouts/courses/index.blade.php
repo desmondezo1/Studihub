@@ -11,11 +11,7 @@
             <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p>
         </div>
     </div>
-    @component('partials.breadcum', [
-            'page_name' => 'Courses',
-            'page_route' => 'courses.index'
-            ])
-    @endcomponent
+    @include('partials.breadcrumb')
 @endsection
 
 @section('suggestions')

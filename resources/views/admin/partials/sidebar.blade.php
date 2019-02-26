@@ -38,15 +38,17 @@
                 <li><a href="#">Refunds</a></li>
             </ul>
         </li>
+
+        <li><a href="login.html"> <i class="icon-mail"></i>Contact Messages </a></li>
+    </ul>
+    <span class="heading">Extras</span>
+    <ul class="list-unstyled">
         <li><a href="#siteinfodropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> Site Info </a>
             <ul id="siteinfodropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="#">Analytics</a></li>
                 <li><a href="#">Logs</a></li>
             </ul>
         </li>
-        <li><a href="login.html"> <i class="icon-mail"></i>Contact Messages </a></li>
-    </ul><span class="heading">Extras</span>
-    <ul class="list-unstyled">
         <li> <a href="#"> <i class="fa fa-cog"></i> Settings </a></li>
     </ul>
 </nav>

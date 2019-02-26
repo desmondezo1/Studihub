@@ -29,17 +29,7 @@
 
 @endsection
 
-@section("breadcrum")
-    @component('admin.partials.page-header', [
-            'page_name' => 'Topics',
-            'page_route' => 'admin.topics.index'
-            ])
-    @endcomponent
-
-@endsection
-
 @section("content")
-
 
 
 @endsection

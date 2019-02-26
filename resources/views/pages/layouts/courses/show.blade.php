@@ -13,15 +13,11 @@
             <!-- <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p> -->
         </div>
     </div>
+    @include('partials.breadcrumb')
 @endsection
 
 @section('courses')
     {{--i will Replace this your code below with a proper breadcum later--}}
-    @component('partials.breadcum', [
-    'page_name' => 'Home',
-    'page_route' => 'courses.index'
-    ])
-    @endcomponent
     <section class="card" style="flex-wrap: wrap;flex-direction: row;justify-content: center;background-color: #f8f9fa59;">
 
         @if (count($course->topics) > 0)

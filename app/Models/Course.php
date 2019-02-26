@@ -43,4 +43,9 @@ class course extends Model
     public function category(){
         return $this->belongsTo("Studihub\Models\CourseCategory", "course_category_id");
     }
+
+    public function enrolledCourses(){
+        return $this->belongsTo("Studihub\Models\EnrolledCourse", "course_id");
+    }
+
 }

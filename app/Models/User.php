@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname', 'lastname', 'email', 'avatar', 'password','phone','gender'
     ];
 
     /**
@@ -28,4 +28,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token','email'
     ];
+
+    public function getPhotoAttribute($options){
+        if($this->avatar != ''){
+            return asset('storage/uploads/admin/photos/'.$this->avatar);
+        }
+        return '/storage/admin/image/avatar/'.$this->gender.'_avatar.png';
+    }
+
+    public function getFullnameAttribute($value)
+    {
+        return $this->firstname.' '. $this->lastname;
+    }
+
+
 }

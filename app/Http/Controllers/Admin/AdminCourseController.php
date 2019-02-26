@@ -16,7 +16,9 @@ class AdminCourseController extends AdminBaseController
 
 
     public function index(){
-        return view('admin.pages.courses.index');
+        $courses = Course::all();
+
+        return view('admin.pages.courses.index',compact('courses'));
     }
 
     public function show($slug){

@@ -12,7 +12,7 @@
             <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p>
         </div>
     </div>
-    @component('partials.breadcum', [
+    @component('partials.breadcrumb', [
             'page_name' => 'contact',
             'page_route' => 'contact'
             ])
