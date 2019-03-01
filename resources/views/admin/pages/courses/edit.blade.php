@@ -158,7 +158,7 @@
                                 <label for="photo" class="col-sm-3 form-control-label">Upload Photo</label>
                                 <div class="col-sm-9">
                                     <div class="mb-3 p-5">
-                                        <img src="/storage/uploads/courses/icons/thumbnails/{{ $course->photo }}" class="img-thumbnail" width="30%"></div>
+                                        <img src="/storage/{{ $course->photo }}" class="img-thumbnail" width="30%"></div>
                                     {{ Form::file('photo',['id'=>'photo', 'class'=>"form-control-file"]) }}
                                 </div>
                             </div>

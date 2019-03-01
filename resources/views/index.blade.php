@@ -27,7 +27,7 @@
    
                 <a href="{{ route("courses.show", $course->slug) }}">
                     <div class="card-content">
-                    <img src="{{storage_path('uploads/courses/icons/'.$course->photo)}}" width="100%" alt="{{$course->name}} Icon" data-aos="flip-left"
+                    <img src="{{storage_path($course->photo)}}" width="100%" alt="{{$course->name}} Icon" data-aos="flip-left"
                          data-aos-easing="ease-out-cubic"
                          data-aos-duration="2000">
                     </div>
@@ -45,7 +45,7 @@
                 @foreach ($courses as $suggestion)
                     <a href="{{ route("courses.show", $suggestion->slug) }}">
                         <div class="col" style="width:200px; height:150px;">
-                            <img class="subject-image" src="{{ '/storage/uploads/courses/icons/'.$suggestion->photo}}" width="100%" alt="{{$suggestion->name}} Icon" data-aos="flip-left"
+                            <img class="subject-image" src="{{ '/storage/'.$suggestion->photo}}" width="100%" alt="{{$suggestion->name}} Icon" data-aos="flip-left"
                                  data-aos-easing="ease-out-cubic"
                                  data-aos-duration="2000">
                         </div>
@@ -73,7 +73,7 @@
                 <div class="card--content" data-aos="flip-right"
                      data-aos-easing="ease-out-cubic"
                      data-aos-duration="2000">
-                <img src="{{ '/storage/uploads/courses/icons/'.$subject->photo }}" width="100%" alt="{{$subject->name}} Icon">
+                <img src="{{ '/storage/'.$subject->photo }}" width="100%" alt="{{$subject->name}} Icon">
                 </div>
             </a>
         @endforeach
@@ -88,7 +88,7 @@
                     <div class="col" style="width:200px; height:150px;" data-aos="flip-right"
                          data-aos-easing="ease-out-cubic"
                          data-aos-duration="2000">
-                        <img class="subject-image" src="{{ '/storage/uploads/courses/icons/'.$subject->photo }}" width="100%" alt="{{$subjects->name}} Icon">
+                        <img class="subject-image" src="{{ '/storage/'.$subject->photo }}" width="100%" alt="{{$subjects->name}} Icon">
                     </div>
                 </a>
             @endforeach
@@ -106,7 +106,7 @@
                        <div class="card--content" data-aos="flip-left"
                             data-aos-easing="ease-out-cubic"
                             data-aos-duration="2000">
-                           <img src="{{ '/storage/uploads/courses/icons/'.$skill->photo }}" width="100%" alt="{{$skill->name}} Icon">
+                           <img src="{{ '/storage/'.$skill->photo }}" width="100%" alt="{{$skill->name}} Icon">
                        </div>
                    </a>
                @endforeach
@@ -120,7 +120,7 @@
                         <div class="col" style="width:200px; height:150px;" data-aos="flip-left"
                              data-aos-easing="ease-out-cubic"
                              data-aos-duration="2000">
-                            <img class="subject-image" src="{{ '/storage/uploads/courses/icons/'.$skill->photo }}" width="100%" alt="{{$skills->name}} Icon">
+                            <img class="subject-image" src="{{ '/storage/'.$skill->photo }}" width="100%" alt="{{$skills->name}} Icon">
                         </div>
                     </a>
                 @endforeach

@@ -107,11 +107,11 @@ class AdminCourseController extends AdminBaseController
             flash()->success('success', $course->title.' Course Updated');
             return redirect()->route('admin.courses.index');
         }
-        if(File::exists(public_path('storage/uploads/courses/icons/'.$photo))) {
-            File::delete(public_path('storage/uploads/courses/icons/'.$photo));
+        if(File::exists(public_path('storage/'.$photo))) {
+            File::delete(public_path('storage/'.$photo));
         }
-        if(File::exists(public_path('storage/uploads/courses/icons/thumbnails/'.$photo))) {
-            File::delete(public_path('storage/uploads/courses/icons/thumbnails/'.$photo));
+        if(File::exists(public_path('storage/'.$photo))) {
+            File::delete(public_path('storage/'.$photo));
         }
         return back()->withInput();
 
@@ -127,11 +127,11 @@ class AdminCourseController extends AdminBaseController
         }else {
             $course = Course::findOrFail($ids);
             $photo = $course->photo;
-            if(File::exists(public_path('storage/uploads/courses/icons/'.$photo))) {
-                File::delete(public_path('storage/uploads/courses/icons/'.$photo));
+            if(File::exists(public_path('storage/'.$photo))) {
+                File::delete(public_path('storage/'.$photo));
             }
-            if(File::exists(public_path('storage/uploads/courses/icons/thumbnails/'.$photo))) {
-                File::delete(public_path('storage/uploads/courses/icons/thumbnails/'.$photo));
+            if(File::exists(public_path('storage/'.$photo))) {
+                File::delete(public_path('storage/'.$photo));
             }
             $course->delete();
             return response()->json(['success' => "Course Deleted successfully."]);
@@ -153,18 +153,18 @@ class AdminCourseController extends AdminBaseController
                 ->encode($file->getClientOriginalExtension(), 75);
 
             Storage::disk('public')->put($folder.'thumbnails/'.$name, $small_image, 'public');
-            $large_image = Image::make($file)
+/*            $large_image = Image::make($file)
                 ->resize(960, 960, function (Constraint $constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
                 ->encode($file->getClientOriginalExtension(), 75);
             //dd($large_image);
-            Storage::disk('public')->put($folder.$name, $large_image, 'public');
+            Storage::disk('public')->put($folder.$name, $large_image, 'public');*/
             $file_path = $folder.'thumbnails/'.$name;
             //dd(file_exists(public_path('storage/'.$folder.'thumbnails/'.$name)));
             if(file_exists(public_path('storage/'.$folder.'thumbnails/'.$name))){
-                return $name;
+                return $file_path;
             }
             return null;
         }

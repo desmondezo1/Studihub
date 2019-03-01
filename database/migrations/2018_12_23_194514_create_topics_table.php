@@ -21,6 +21,7 @@ class CreateTopicsTable extends Migration
             $table->boolean('isfree')->default(0);
             $table->string('mime_type');
             $table->string('mime_size');
+            $table->string('file_name');
             $table->string('mime_path');
             $table->longText('notes')->nullable();
             $table->enum('exam_type',['GCE','JAMB','WAEC','NECO']);
