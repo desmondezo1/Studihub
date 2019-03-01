@@ -88,12 +88,14 @@
 <script src="/assets/vendor/jquery/jquery.min.js"></script>
 <script src="/assets/vendor/popper.js/umd/popper.min.js"> </script>
 <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/assets/admin/js/moment.min.js"></script>
+<script src="/assets/admin/js/datetimepicker.min.js"></script>
+
 <script src="/assets/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="/assets/vendor/chart.js/Chart.min.js"></script>
 <script src="/assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="/assets/admin/js/charts-home.js"></script>
-
-<script src="/assets/admin/js/datetimepicker.min.js"></script>
 
 <script src="/assets/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="/assets/vendor/datatables/js/dataTables.jqueryui.min.js"></script>
