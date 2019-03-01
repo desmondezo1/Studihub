@@ -23,8 +23,8 @@ class CreateTopicsTable extends Migration
             $table->string('mime_size');
             $table->string('mime_path');
             $table->longText('notes')->nullable();
-            $table->integer('topic_order');
-            $table->boolean('published')->default(false);
+            $table->enum('exam_type',['GCE','JAMB','WAEC','NECO']);
+            $table->boolean('visible')->default(true);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

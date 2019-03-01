@@ -26,8 +26,8 @@
 ?>
 @extends('admin.template.app')
 
-@section('page_title', "Welcome To Studihub")
-@section('description', "Resource center to prepare for SSCE,JAMB,PUME and GCE")
+@section('page_title', "Create Courses")
+@section('description', "Create Courses For each Category of Classes")
 @section('keyword', "subjects, english,mathematics,geography ...")
 
 
