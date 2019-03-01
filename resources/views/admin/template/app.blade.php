@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/assets/admin/css/datetimepicker.min.css">
     <!-- Datatables CSS-->
     <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.jqueryui.min.css">
@@ -90,6 +92,8 @@
 <script src="/assets/vendor/chart.js/Chart.min.js"></script>
 <script src="/assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="/assets/admin/js/charts-home.js"></script>
+
+<script src="/assets/admin/js/datetimepicker.min.js"></script>
 
 <script src="/assets/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="/assets/vendor/datatables/js/dataTables.jqueryui.min.js"></script>
