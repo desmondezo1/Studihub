@@ -38,8 +38,6 @@ Route::middleware(['throttle'])->group( function () {
 });
 
 
-
-
 /************************************** Back End Routes For Students***********************************/
 Route::middleware(['throttle'])->group( function () {
     /*Routes for guest students i.e unauthenticated students*/
@@ -95,7 +93,7 @@ Route::group(['middleware'=>['tutor-auth','verified-tutor']], function () {
 });
 /************************************** End Routes For Tutors***********************************/
 
-
+/*
 
 Route::middleware(['throttle'])->group( function () {
     //Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
@@ -116,7 +114,7 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/rave/callback', '\Studihub\Http\Controllers\Student\StudentPaymentController@callback')->name('callback');
     });
 
-    //temporary routes for UI design front end
+/*    //temporary routes for UI design front end
     Route::get('/admin', function () {
         return view('admin.pages.index', ['name' => 'James']);
     });
@@ -146,9 +144,9 @@ Route::middleware(['throttle'])->group( function () {
     });
     Route::get('/becomeatutor', function () {
         return view('becomeatutor.index', ['name' => 'James']);
-    });
-    Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');
-});
+    });*/
+    /*Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');*/
+/*});*/
 
 
 

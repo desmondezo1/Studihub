@@ -5,7 +5,7 @@
 @section('keyword', "subjects, english,mathematics,geography ...")
 
 @section('sub-header')
-    <div class="jumbotron jumbotron-fluid header-image-jumbotron">
+    <div class="jumbotron jumbotron-fluid header-image-jumbotron" data-aos="zoom-in">
         <div class="container">
             <h1 class="display-4">Learn how to Pass</h1>
             <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p>
@@ -27,7 +27,9 @@
    
                 <a href="{{ route("courses.show", $course->slug) }}">
                     <div class="card-content">
-                    <img src="{{$course->image_path}}" width="100%" alt="{{$course->name}} Icon">  
+                    <img src="{{storage_path('uploads/courses/icons/'.$course->photo)}}" width="100%" alt="{{$course->name}} Icon" data-aos="flip-left"
+                         data-aos-easing="ease-out-cubic"
+                         data-aos-duration="2000">
                     </div>
                 </a>
             @endforeach
@@ -40,10 +42,12 @@
     <div  class="container largerscreen">
         @if($courses->count() > 0)
             <div class="row" style="justify-content: center;">
-                @foreach ($courses as $suggestions)
-                    <a href="{{ route("courses.show", $suggestions->slug) }}">
+                @foreach ($courses as $suggestion)
+                    <a href="{{ route("courses.show", $suggestion->slug) }}">
                         <div class="col" style="width:200px; height:150px;">
-                            <img class="subject-image" src="{{$suggestions->image_path}}" width="100%" alt="{{$suggestions->name}} Icon">
+                            <img class="subject-image" src="{{ '/storage/uploads/courses/icons/'.$suggestion->photo}}" width="100%" alt="{{$suggestion->name}} Icon" data-aos="flip-left"
+                                 data-aos-easing="ease-out-cubic"
+                                 data-aos-duration="2000">
                         </div>
                     </a>
                 @endforeach
@@ -66,8 +70,10 @@
     <section class="cards smallscreen">
         @foreach ($courses as $subject)
             <a href="{{ route("courses.show", $subject->slug) }}">
-                <div class="card--content">
-                <img src="{{$subject->image_path}}" width="100%" alt="{{$subject->name}} Icon">
+                <div class="card--content" data-aos="flip-right"
+                     data-aos-easing="ease-out-cubic"
+                     data-aos-duration="2000">
+                <img src="{{ '/storage/uploads/courses/icons/'.$subject->photo }}" width="100%" alt="{{$subject->name}} Icon">
                 </div>
             </a>
         @endforeach
@@ -79,8 +85,10 @@
         <div class="row" style="justify-content: center;">
             @foreach ($courses as $subjects)
                 <a href="{{ route("courses.show", $subject->slug) }}">
-                    <div class="col" style="width:200px; height:150px;">
-                        <img class="subject-image" src="{{$subjects->image_path}}" width="100%" alt="{{$subjects->name}} Icon">
+                    <div class="col" style="width:200px; height:150px;" data-aos="flip-right"
+                         data-aos-easing="ease-out-cubic"
+                         data-aos-duration="2000">
+                        <img class="subject-image" src="{{ '/storage/uploads/courses/icons/'.$subject->photo }}" width="100%" alt="{{$subjects->name}} Icon">
                     </div>
                 </a>
             @endforeach
@@ -95,8 +103,10 @@
            <section class="cards smallscreen">
                @foreach ($courses as $skill)
                    <a href="{{ route("courses.show", $skill->slug) }}">
-                       <div class="card--content">
-                           <img src="{{$skill->image_path}}" width="100%" alt="{{$skill->name}} Icon">
+                       <div class="card--content" data-aos="flip-left"
+                            data-aos-easing="ease-out-cubic"
+                            data-aos-duration="2000">
+                           <img src="{{ '/storage/uploads/courses/icons/'.$skill->photo }}" width="100%" alt="{{$skill->name}} Icon">
                        </div>
                    </a>
                @endforeach
@@ -107,8 +117,10 @@
             <div class="row" style="justify-content: center;">
                 @foreach ($courses as $skills)
                     <a href="{{ route("courses.show", $skill->slug) }}">
-                        <div class="col" style="width:200px; height:150px;">
-                            <img class="subject-image" src="{{$skills->image_path}}" width="100%" alt="{{$skills->name}} Icon">
+                        <div class="col" style="width:200px; height:150px;" data-aos="flip-left"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000">
+                            <img class="subject-image" src="{{ '/storage/uploads/courses/icons/'.$skill->photo }}" width="100%" alt="{{$skills->name}} Icon">
                         </div>
                     </a>
                 @endforeach

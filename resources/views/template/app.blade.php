@@ -43,10 +43,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <!-- Styles -->
-    <link href="{{ URL::asset('css/apptemplate.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/course-content.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/show-topic.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/apptemplate.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/course-content.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/show-topic.css') }}" rel="stylesheet">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/assets/vendor/aos/aos.css">
     
 
 
@@ -70,9 +72,13 @@
         <!--Footer-->
         @include('partials.footer')
         <!--/.Footer-->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/animatebuttontext.js') }}" ></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('js/animatebuttontext.js') }}" ></script>
+        <script src="/assets/vendor/aos/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
      @stack('scripts')
 </body>
 </html>

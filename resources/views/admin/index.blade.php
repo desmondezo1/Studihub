@@ -32,7 +32,7 @@
 
 @section("content")
     <!-- Dashboard Counts Section-->
-    <section class="dashboard-counts no-padding-bottom">
+    <section class="dashboard-counts no-padding-bottom" data-aos="zoom-in-up">
         <div class="container-fluid">
             <div class="row bg-white has-shadow">
                 <!-- Item -->

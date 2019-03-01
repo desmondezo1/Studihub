@@ -14,6 +14,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{{ csrf_token() }}" >
     <title>Studihub Admin - @yield('page_title')</title>
     <meta name="description" content="@yield('description')"/>
     <meta name="keywords" content="@yield('keyword')"/>
@@ -28,6 +29,8 @@
     <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.jqueryui.min.css">
     <link rel="stylesheet" href="/assets/vendor/datatables/css/dataTables.min.css">
     <link rel="stylesheet" href="/assets/vendor/datatables/css/jquery.dataTables.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/assets/vendor/aos/aos.css">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="/assets/admin/css/fontastic.css">
     <!-- Google fonts - Poppins -->
@@ -36,6 +39,7 @@
     <link rel="stylesheet" href="/assets/admin/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="/assets/admin/css/custom.css">
+    <link rel="stylesheet" href="/assets/admin/css/toastr.min.css">
     <!-- Favicon-->
     <!-- favicon -->
     <link href="{{ asset('img/apple-icon-57x57.png') }}" rel="apple-touch-icon">
@@ -93,6 +97,14 @@
 <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <!-- Main File-->
 <script src="/assets/admin/js/front.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+
+<script src="/assets/admin/js/toastr.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/admin.js"></script>
+<script>
+    AOS.init();
+</script>
+@include('admin.notify.flash')
 @stack('scripts')
 </body>
 </html>

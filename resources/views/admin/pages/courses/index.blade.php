@@ -36,7 +36,7 @@
     <!--Section: Main panel-->
     <section>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" data-aos="flip-down">
                 <div class="col-lg-12 col-xs-12 text-center">
                     <div class="card">
                         <div class="card-close">
@@ -72,7 +72,8 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" data-aos="fade-up"
+                 data-aos-anchor-placement="top-center">
                 <div class="col-lg-12 col-xs-12">
                     <div class="card">
                         <div class="card-close">
@@ -113,7 +114,7 @@
                                             <td>{{ \Carbon\Carbon::parse($course->created_at)->diffForHumans()}}</td>
                                             <td>
                                                 @if(Auth::user()->can('read-admin-admin-course-controller'))
-                                                    <a target="_blank" href="{{ route('admin.courses.show', $course->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> view</a>
+                                                    <a target="_blank" href="{{ route('courses.show', $course->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> view</a>
                                                 @endif
                                                 @if(Auth::user()->can('update-admin-admin-course-controller'))
                                                     <a href="{{ route('admin.courses.edit', $course->slug) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
@@ -135,7 +136,7 @@
                                         <th>Topics count </th>
                                         <th>Date Created </th>
                                         <th>
-                                            Actions </i>
+                                            Actions
                                         </th>
                                     </tr>
                                     </tfoot>
