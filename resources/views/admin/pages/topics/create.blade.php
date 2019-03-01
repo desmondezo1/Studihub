@@ -227,6 +227,7 @@
 @endsection
 
 @push('scripts')
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $('#isFre').on('change',function($){
             $('#isFre').value = '!!this.checked';
@@ -241,6 +242,19 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        //Script for fileupload for ckeditor
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+    <script>
+        CKEDITOR.replace( 'notes', options );
     </script>
 @endpush
 
