@@ -110,11 +110,13 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="video" class="col-sm-3 form-control-label">Video Embed Code<br><small style="font-weight:400;" >VDOcipher/Youtube/vimeo/Wistia</small></label>
+                                <label for="query" class="col-sm-3 form-control-label">Video Embed Code<br><small style="font-weight:400;" >VDOcipher/Youtube/vimeo/Wistia</small></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="video" id="video" placeholder="Video Embed code">
+                                    <input type="text" class="form-control" name="query" id="query" placeholder="Video Embed code">
                                 </div>
                             </div>
+
+
 
                             <div class="line"></div>
                             <div class="form-group row">
@@ -222,11 +224,39 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="modalEmbed" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                    /* <!--Content-->*/
+                    <div class="modal-content text-center">
+                        /*  <!--Header-->*/
+                        <div class="modal-header d-flex justify-content-center">
+                            <p class="heading">Select Video</p>
+                            </div>
+
+                        /*<!--Body-->*/
+                         <div class="modal-body">
+
+                             <ul id="results"></ul>
+                             <div id="buttons"></div>
+
+                             </div>
+
+                        /*<!--Footer-->*/
+                         <div class="modal-footer flex-center">
+                             <a type="button" class="btn btn-danger submit-dialog" style="color: #fff0ff">Yes</a>
+                             <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No</a>
+                             </div>
+                         </div>
+                    /*<!--/.Content-->*/
+                     </div>
+                 </div>
         </div>
     </section>
 @endsection
 
 @push('scripts')
+
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $('#isFre').on('change',function($){
@@ -253,8 +283,20 @@
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
         };
     </script>
-    <script>
+{{--    <script>
         CKEDITOR.replace( 'notes', options );
+    </script>--}}
+    <script type="text/javascript">
+        CKEDITOR.replace('notes', {
+            extraPlugins: 'mathjax',
+            mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML',
+            height: 320,
+            options
+        });
+
+        if (CKEDITOR.env.ie && CKEDITOR.env.version == 8) {
+            document.getElementById('ie8-warning').className = 'tip alert';
+        }
     </script>
 @endpush
 
