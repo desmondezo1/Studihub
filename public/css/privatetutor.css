@@ -1,24 +1,50 @@
 .tutor-image-jumbotron{
  
 }
+
 .tutor-image{
     background: url('../img/tutor.jpg');
     background-size: cover;
 
 }
+
 .become-tutor-jumbotron{
     background: transparent;
 }
+
+.become-tutor-div{
+    text-align: center;
+    color: #fff;
+    z-index: 99;
+    padding: 5px;
+    background: #5d595a;
+}
+
+.become-tutor-btn{
+    color: #fff;
+    background-color: #5d595a;
+    border-color: rgb(209,209,209);
+}
+
 .form-col{
     border-radius: 5px;
-    box-shadow: 0 0 8px -4px black;
     background: #e7e8ea;
     padding: 30px;
 }
+
 .tutor-request-form{
     padding: 20px;
+    box-shadow: 0 0 8px -4px black;
     background: #fff;
 }
+
 main{
     background: #f0f0f0;
+}
+
+.become-tutor-btn:hover, .become-tutor-btn:active{
+    color: #fff;
+    background-color: #ed2935;
+    border-color: #5d595a;
+    box-shadow: 0 0 5px -2px #061c3e;
 }

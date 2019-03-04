@@ -11,9 +11,9 @@
             <p class="lead"></p>
         </div>
     </div class="jumbotron-fluid ">
-    Qualified? click here to become a tutor <a class="btn btn-primary " href="/becomeatutor">Get Started</a>
-    <div>
-
+    
+    <div class="become-tutor-div">
+Qualified? >> <a class="btn btn-primary become-tutor-btn" href="/becomeatutor">Become a tutor</a>
     </div>
 
 @endsection

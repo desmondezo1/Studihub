@@ -63,6 +63,7 @@
                     border: 0.7px solid #061c3e;
                     color: #f2f4f7;
                     border-radius: 5%;
+                    min-width: 126px;
                     text-align: center;" id="privatetutorbutton" class="nav-link front" >Tutor
                     </a>
 

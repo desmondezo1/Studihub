@@ -31,9 +31,9 @@ Route::middleware(['throttle'])->group( function () {
 
     /*Access unrestricted contents below*/
     Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
-    Route::get('learn/{slug}','\Studihub\Http\Controllers\CourseController@show')->name('topics.index');
+    Route::get('learn/{slug}','\Studihub\Http\Controllers\TopicsController@show')->name('topics.display');
     Route::get('/courses/{slug}', '\Studihub\Http\Controllers\CourseController@show')->name('courses.show');
-    Route::get('/topics', '\Studihub\Http\Controllers\TopicsController@index')->name('topics.index');
+    Route::get('/topics', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show');
     Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');
 });
 
