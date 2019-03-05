@@ -36,6 +36,7 @@
     padding: 20px;
     box-shadow: 0 0 8px -4px black;
     background: #fff;
+    border-radius: 5px;
 }
 
 main{

@@ -16,11 +16,11 @@
     <div class="container">
     <div class="row">
         <div class="col-md-3">
-          <div class="container">
+          <div class="container topic-list">
             <div class="input-group mb-3">
-                <input type="text" class="form-control topic-search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
+                <input type="text" class="form-control topic-search" placeholder="Search topic" aria-label="search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search topic</button>
+                    <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </div>
             <ul class="list-group list-group-flush">

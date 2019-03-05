@@ -16,7 +16,7 @@ class AdminTableSeeder extends Seeder
         $admin->firstname = 'Desmond';
         $admin->lastname = 'Admin';
         $admin->email = 'admin@studihub.com.ng';
-        $admin->phone = '0809876655';
+        $admin->phone = '08162099669';
         $admin->gender = 'male';
         $admin->password = bcrypt('secretcode');
         $admin->remember_token = str_random(10);
