@@ -1,5 +1,5 @@
 
-var example = ['Private tutor', 'Become a tutor'];
+var example = ['<a class="nav-link front" href="/privatetutor">Get Private tutor</a>', '<a class="nav-link front" href="/tutor-signup">Become a tutor</a>'];
 
 textSequence(0);
 function textSequence(i) {

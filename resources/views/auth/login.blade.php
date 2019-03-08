@@ -79,7 +79,16 @@
                         </div>
                     </form>
                 </div>
-            </div>
+                <div class="form-group row mb-0">
+                    <div class="col-md-8 offset-md-4">
+        
+                        <a class="btn btn-link" href="{{ route('getRegister') }}" style="text-decoration:none; color:#fff; margin:10px;background-color: #ff2d38;
+                        border-color: #af0912;">
+                            {{ __('Sign up for free!') }}
+                        </a>
+                    </div>
+                </div>
+            .</div>
         </div>
     </div>
 </div>

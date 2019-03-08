@@ -2,6 +2,9 @@ body{
   background: #f8f9fa;;
 }
 
+h1, p, a{
+    font-family: 'Nunito', sans-serif;
+}
 .slant-bg
 { position: absolute;
  top: 0;

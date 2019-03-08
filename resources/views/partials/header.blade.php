@@ -28,16 +28,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Blog</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/practice">Practice</a>
+            </li>
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
-                <li class="nav-item">
-                    @if (Route::has('auth.register'))
-                        <a class="nav-link" href="{{ route('auth.register') }}">{{ __('Register') }}</a>
-                    @endif
-                </li>
+                
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -57,16 +56,14 @@
                     </div>
                 </li>
             @endguest
-            <li class="nav-item dropdown">
-
-                    <a href="/privatetutor" style="background: #f32a34;
+            <li class="nav-item dropdown"style="background: #f32a34;
                     border: 0.7px solid #061c3e;
                     color: #f2f4f7;
+                    padding: 5px;
                     border-radius: 5%;
                     min-width: 126px;
                     text-align: center;" id="privatetutorbutton" class="nav-link front" >Tutor
-                    </a>
-
+                   
             </li>
                    
         </ul>

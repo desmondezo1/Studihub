@@ -35,7 +35,7 @@
             <iframe src="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versUSE323vHRcuMiStcHM0dJa7JHsfo8ZK1fBenFUvKnY7hKT6FQCRw&playbackInfo=eyJ2aWRlb0lkIjoiN2RjY2Y5MmQ3MTFjNGI5MWI2YjRiMTBiZGY2OGI2ZWQifQ==" style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe>
        
     <div class="container notes-container">
-        <h1> This shit aint free </h1>
+        <h1> TOPIC TITLE </h1>
        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nobis exercitationem ullam, consequatur harum modi provident quidem placeat quos commodi rerum optio voluptatum nemo esse ipsa minima dolor aspernatur neque!
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ex dicta voluptas minus! Laborum saepe iusto cum ullam molestias itaque sit corrupti omnis sunt, iure iste, accusamus debitis, harum quos!
         Lorem ipsum doslor sit amet consectetur, adipisicing elit. Aliquam consequatur, voluptas quo neque blanditiis doloremque aliquid molestiae tempore officia quae impedit praesentium eligendi reprehenderit doloribus accusantium! Magnam obcaecati fugit distinctio!

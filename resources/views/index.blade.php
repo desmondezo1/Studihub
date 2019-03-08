@@ -7,8 +7,8 @@
 @section('sub-header')
     <div class="jumbotron jumbotron-fluid header-image-jumbotron" data-aos="zoom-in">
         <div class="container">
-            <h1 class="display-4">Learn how to Pass</h1>
-            <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p>
+            <h1 class="display-4">Learn & Pass</h1>
+            <p class="lead">with 2,500+ videos, notes, and Practice questions on all subjects</p>
         </div>
     </div>
     @component('partials.breadcrumb', [
