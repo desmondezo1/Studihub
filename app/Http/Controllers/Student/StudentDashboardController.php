@@ -2,9 +2,6 @@
 
 namespace Studihub\Http\Controllers\Student;
 
-use Illuminate\Http\Request;
-use Studihub\Http\Controllers\Controller;
-
 class StudentDashboardController extends StudentBaseController
 {
 
@@ -14,6 +11,7 @@ class StudentDashboardController extends StudentBaseController
      */
     public function __construct()
     {
+        parent::__construct();
     }
 
 

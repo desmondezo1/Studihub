@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Studihub\Models\Role;
 use Studihub\Models\Permission;
+use Studihub\Models\Role;
+
 class RoleDatabaseSeeder extends Seeder
 {
     /**
@@ -26,14 +26,38 @@ class RoleDatabaseSeeder extends Seeder
                 'admin-admin-course-controller' => 'c,r,u,d',
                 'admin-admin-topic-controller' => 'c,r,u,d',
                 'admin-admin-question-controller' => 'c,r,u,d',
+                'admin-admin-choice-controller' => 'c,r,u,d',
+                'admin-admin-student-controller' => 'c,r,u,d',
+                'admin-admin-user-controller' => 'c,r,u,d',
+                'admin-admin-role-controller' => 'c,r,u,d',
+                'admin-admin-enrolled-course-controller' => 'c,r,u,d',
+                'admin-admin-student-answer-controller' => 'c,r,u,d',
 
             ],
+
+            'teacher' => [
+                'admin-admin-dashboard-controller' => 'r',
+                'admin-admin-course-controller' => 'r',
+                'admin-admin-topic-controller' => 'c,r,u',
+                'admin-admin-question-controller' => 'c,r,u',
+                'admin-admin-choice-controller' => 'c,r,u',
+                'admin-admin-student-controller' => 'c,r,u',
+                'admin-admin-enrolled-course-controller' => 'c,r,u',
+                'admin-admin-student-answer-controller' => 'c,r,u',
+                ],
+
             'manager' => [
                 'admin-admin-dashboard-controller' => 'c,r',
                 'admin-settings-controller'=> 'r',
                 'admin-admin-course-controller' => 'c,r',
                 'admin-admin-topic-controller' => 'c,r',
                 'admin-admin-question-controller' => 'c,r',
+                'admin-admin-choice-controller' => 'c,r',
+                'admin-admin-student-controller' => 'c,r',
+                'admin-admin-user-controller' => 'c,r',
+                'admin-admin-role-controller' => 'c,r',
+                'admin-admin-enrolled-course-controller' => 'c,r',
+                'admin-admin-student-answer-controller' => 'c,r',
             ],
             'moderator' => [
                 'admin-admin-dashboard-controller' => 'r',
@@ -41,6 +65,11 @@ class RoleDatabaseSeeder extends Seeder
                 'admin-admin-course-controller' => 'r',
                 'admin-admin-topic-controller' => 'r',
                 'admin-admin-question-controller' => 'r',
+                'admin-admin-choice-controller' => 'r',
+                'admin-admin-student-controller' => 'r',
+                'admin-admin-role-controller' => 'r',
+                'admin-admin-enrolled-course-controller' => 'r',
+                'admin-admin-student-answer-controller' => 'r',
             ],
         ];
 

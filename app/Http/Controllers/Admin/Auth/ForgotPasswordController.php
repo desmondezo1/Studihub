@@ -2,8 +2,8 @@
 
 namespace Studihub\Http\Controllers\Admin\Auth;
 
-use Studihub\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Studihub\Http\Controllers\Controller;
 
 class ForgotPasswordController extends Controller
 {

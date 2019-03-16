@@ -2,8 +2,8 @@
 
 namespace Studihub\Http\Controllers\Tutor\Auth;
 
-use Studihub\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Studihub\Http\Controllers\Controller;
 
 class ResetPasswordController extends Controller
 {

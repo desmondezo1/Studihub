@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use Studihub\Models\course;
 use Studihub\Models\Topic;
-use Illuminate\Support\Str;
+
 class TopicDatabaseSeeder extends Seeder
 {
     /**

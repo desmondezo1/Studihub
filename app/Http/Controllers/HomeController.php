@@ -2,8 +2,8 @@
 
 namespace Studihub\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Studihub\Models\Course;
+
 class HomeController extends Controller
 {
     /**
@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Course::where("visible", true)->get();
+        $courses = Course::where("hidden", false)->get();
         return view('index',compact('courses'));
     }
 

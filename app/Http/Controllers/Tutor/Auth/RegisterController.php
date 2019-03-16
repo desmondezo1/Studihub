@@ -2,18 +2,13 @@
 
 namespace Studihub\Http\Controllers\Tutor\Auth;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Studihub\Models\Student;
-use Studihub\Models\User;
-use Studihub\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Studihub\Http\Controllers\Controller;
 use Studihub\Models\Tutor;
 use Studihub\Notifications\VerifyTutor;
-use Studihub\Notifications\StudentRegistrationNotification;
 
 class RegisterController extends Controller
 {

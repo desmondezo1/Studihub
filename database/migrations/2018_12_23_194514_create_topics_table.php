@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTopicsTable extends Migration
 {
@@ -19,14 +19,15 @@ class CreateTopicsTable extends Migration
             $table->string('slug');
             $table->unsignedInteger('course_id');
             $table->boolean('isfree')->default(0);
-            $table->string('mime_type');
-            $table->string('mime_size');
-            $table->string('file_name');
-            $table->string('mime_path');
+            $table->string('mime_type')->nullable();
+            $table->string('mime_size')->nullable();
+            $table->string('file_name')->nullable();
+            $table->string('mime_path')->nullable();
             $table->longText('notes')->nullable();
             $table->enum('exam_type',['GCE','JAMB','WAEC','NECO']);
-            $table->boolean('visible')->default(true);
+            $table->boolean('hidden')->default(true);
             $table->timestamp('published_at')->nullable();
+            $table->bigInteger('views')->default(0);
             $table->timestamps();
         });
     }

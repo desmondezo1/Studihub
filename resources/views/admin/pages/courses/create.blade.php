@@ -6,24 +6,6 @@
  * Time: 23:00
  */
 ?>
-
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 22:19
- */
-?>
-
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 20:31
- */
-?>
 @extends('admin.template.app')
 
 @section('page_title', "Create Courses")
@@ -108,30 +90,13 @@
                                     </div>
                                 </div>
 
-
-                                <div class="line"></div>
-                                <div class="form-group row">
-                                    <label for="category" class="col-sm-3 form-control-label">Category</label>
-                                    <div class="col-sm-9">
-                                        <div class="i-checks">
-                                            <select name="course_category_id" id="course_category_id" class="custom-select">
-                                                <option selected>Select</option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                                 <div class="line"></div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">Toggle Visibility</label>
                                     <div class="col-sm-9">
                                         <div class="i-checks">
-                                            <input id="visible" type="radio" name="visible" class="radio-template">
-                                            <label for="visible"> hide ?</label>
+                                            <input id="hidden" type="checkbox" name="hidden" class="checkbox-template">
+                                            <label for="hidden"> hide ?</label>
                                         </div>
                                     </div>
                                 </div>

@@ -2,10 +2,10 @@
 
 namespace Studihub\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentTaggable\Taggable;
-use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
@@ -21,13 +21,22 @@ class Topic extends Model
         'topic_order',
         'mime_type',
         'mime_size',
-        'mime_path'
+        'mime_path',
+        'isfree',
+        'hidden',
     ];
 
     protected $guarded = ['id','course_id'];
 
     protected $hidden = [
-        'course_id'
+        'course_id',
+        'notes',
+        'topic_order',
+        'mime_type',
+        'mime_size',
+        'mime_path',
+        'isfree',
+        'hidden',
     ];
 
     public function sluggable()
@@ -43,8 +52,18 @@ class Topic extends Model
         return 'slug';
     }
 
-    public function courses()
+    public function course()
     {
         return $this->belongsTo('Studihub\Models\Course', 'course_id', 'id');
+    }
+
+    public function tutors()
+    {
+        return $this->belongsToMany('Studihub\Models\Tutor', 'course_tutors');
+    }
+
+    public function VideoData()
+    {
+        return $this->hasOne('Studihub\Models\VideoData', 'topic_id', 'id');
     }
 }

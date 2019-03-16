@@ -3,15 +3,15 @@
 namespace Studihub\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class Student extends Authenticatable
+class Student extends Authenticatable implements BannableContract
 {
-    use Notifiable;
+    use Notifiable,Bannable;
 
     protected $table = 'students';
 
@@ -21,7 +21,7 @@ class Student extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname','username', 'email', 'password',
+        'firstname','lastname','username', 'email', 'password','gender','avatar','phone',
     ];
 
     /**
@@ -32,6 +32,19 @@ class Student extends Authenticatable
     protected $hidden = [
         'password', 'remember_token','expired_at', 'date_paid','username', 'email',
     ];
+
+    public function shouldApplyBannedAtScope()
+    {
+        return true;
+    }
+
+    public function getPhotoAttribute($options){
+        if($this->avatar != ''){
+            return asset('storage/uploads/admin/photos/'.$this->avatar);
+        }
+        return '/storage/admin/image/avatar/'.$this->gender.'_avatar.png';
+    }
+
 
     public function getFullnameAttribute($options){
         return $this->firstname .' ' .$this->lastname;

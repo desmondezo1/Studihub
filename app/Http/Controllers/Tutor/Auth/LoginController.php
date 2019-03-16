@@ -2,10 +2,10 @@
 
 namespace Studihub\Http\Controllers\Tutor\Auth;
 
-use Illuminate\Http\Request;
-use Studihub\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Studihub\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {

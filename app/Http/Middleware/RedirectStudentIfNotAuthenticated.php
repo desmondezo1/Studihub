@@ -16,6 +16,7 @@ class RedirectStudentIfNotAuthenticated
      */
     public function handle($request, Closure $next)
     {
+        //dd($request);
         if(Auth::guard('student')->guest() || !Auth::guard('student')->check()){
             return redirect()->route('login');
         }

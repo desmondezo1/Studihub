@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Studihub\Models\Course;
-use Illuminate\Support\Str;
+
 class CourseTableSeeder extends Seeder
 {
     /**

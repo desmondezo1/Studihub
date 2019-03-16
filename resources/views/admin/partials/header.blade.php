@@ -78,13 +78,13 @@
                         </ul>
                     </li>
                     <!-- Languages dropdown    -->
-                    <li class="nav-item dropdown"><a id="profile" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="Profile"><span class="d-none d-sm-inline-block">Profile</span></a>
+                    <li class="nav-item dropdown"><a id="profile" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->fullname }}" style="width: 7%"><span class="d-none d-sm-inline-block">Profile</span></a>
                         <ul aria-labelledby="profile" class="dropdown-menu">
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2">Profile</a></li>
+                            <li><a rel="nofollow" href="{{ route('admin.admins.show', Auth()->user()->id) }}" class="dropdown-item"> <img src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->fullname }}" class="mr-2" style="width: 5%">Profile</a></li>
                         </ul>
                     </li>
                     <!-- Logout    -->
-                    <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                    <li class="nav-item"><a href="{{ route('admin.logout') }}" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
                 </ul>
             </div>
         </div>

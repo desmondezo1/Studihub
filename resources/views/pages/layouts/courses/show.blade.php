@@ -1,7 +1,7 @@
 @extends('pages.layouts.template.content')
 
-@section('page_title', $course->title)
-@section('description', str_limit($course->summary, 120))
+@section('page_title', $course ? $course->title : "Course")
+@section('description', $course ? str_limit($course->summary, 120) : "About this course")
 @section('keyword', "courses,topics")
 
 
@@ -9,7 +9,7 @@
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
         <a href="{{url('/')}}" class="return-button">Back</a>
         <div class="container">
-            <h1 class="display-4">Learn {{$course->name}}</h1>
+            <h1 class="display-4">Learn {{$course ? $course->title : ""}}</h1>
             <!-- <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p> -->
         </div>
     </div>
@@ -20,7 +20,7 @@
     {{--i will Replace this your code below with a proper breadcum later--}}
     <section class="card" style="flex-wrap: wrap;flex-direction: row;justify-content: center;background-color: #f8f9fa59;">
 
-        @if (count($course->topics) > 0)
+        @if (count($course ? $course->topics : []) > 0)
             @foreach ($course->topics as $topic)
                 <div class="card--content course-details-card-content">
                     <a href="{{ route('topics.show', $topic->slug) }}"><div class="container" style="padding: 5px 15px;">

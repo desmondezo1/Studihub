@@ -58,14 +58,16 @@
                 </li>
             @endguest
             <li class="nav-item dropdown">
-
-                    <a href="/privatetutor" style="background: #f32a34;
+                    <a href="{{ route('tutor.request') }}" style="background: #f32a34;display: none;
                     border: 0.7px solid #061c3e;
                     color: #f2f4f7;
                     border-radius: 5%;
-                    text-align: center;" id="privatetutorbutton" class="nav-link front" >Tutor
-                    </a>
-
+                    text-align: center;" id="privatetutorbutton" class="nav-link front" >Private tutor</a>
+                    <a href="{{ route('tutor.signup') }}" style="background: #f32a34;
+                    border: 0.7px solid #061c3e;
+                    color: #f2f4f7;
+                    border-radius: 5%;
+                    text-align: center;" id="tutorbutton" class="nav-link front" >Become a tutor</a>
             </li>
                    
         </ul>

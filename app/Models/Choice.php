@@ -8,11 +8,15 @@ class Choice extends Model
 {
     protected $table = "question_choices";
 
-    protected $fillable = ['question_id'];
+    protected $fillable = ['question_id','choice_desc','choice_option','is_correct'];
 
     protected $guarded = ['id'];
 
-    public function questions(){
-        return $this->belongsTo('Studihub\Models\Question');
+    protected $hidden = [
+        'question_id','choice_desc','choice_option','is_correct'
+    ];
+
+    public function question(){
+        return $this->belongsTo('Studihub\Models\Question','question_id','id');
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Studihub\Models\Role;
 use Studihub\Models\User;
+
 class AdminTableSeeder extends Seeder
 {
     /**

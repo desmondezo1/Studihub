@@ -17,11 +17,16 @@ class CheckEnrolledCourses
     public function handle($request, Closure $next)
     {
         $slug = $request->route('slug');
-        if(!Auth()->guard("student")->user()->isCourseSubscribed($slug)){
-            $topic = Topic::findBySlugOrFail($slug)->with('courses')->first();
-            $request->attributes->set('id',$topic->course_id);
-            session()->flash('id', $topic->course_id);
-            return redirect('pricing')->with('id', $topic->course_id);
+        $topic = Topic::findBySlugOrFail($slug)->with('courses')->first();
+        if($topic != null){
+            if(!$topic->isfree){
+                if(!Auth()->guard("student")->user()->isCourseSubscribed($slug)){
+                    $request->attributes->set('id',$topic->course_id);
+                    session()->flash('id', $topic->course_id);
+                    return redirect('pricing')->with('id', $topic->course_id);
+                }
+            }
+            return $next($request);
         }
         return $next($request);
     }

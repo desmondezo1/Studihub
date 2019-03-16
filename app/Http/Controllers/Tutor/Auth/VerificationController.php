@@ -2,10 +2,10 @@
 
 namespace Studihub\Http\Controllers\Tutor\Auth;
 
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Foundation\Auth\VerifiesEmails;
-use Carbon\Carbon;
 use Studihub\Models\Tutor;
 use Studihub\Notifications\VerifyTutor;
 

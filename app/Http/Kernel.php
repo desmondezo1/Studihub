@@ -75,5 +75,8 @@ class Kernel extends HttpKernel
 
         'enrolled' => \Studihub\Http\Middleware\CheckEnrolledCourses::class,
 
+        'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
+        'logs-out-banned-user' => \Cog\Laravel\Ban\Http\Middleware\LogsOutBannedUser::class,
+
     ];
 }
