@@ -97,7 +97,7 @@ Qualified? >> <a class="btn btn-primary become-tutor-btn" href="/tutor-signup">B
   </div>
   <div class="col-md-6 form-col">
   <form class="tutor-request-form">
-    <h3>Get a Good Tutor for your Kids</h3>
+    <h3>Get a Good Tutor, Learn anything</h3>
     <div class="form-group">
         <label for="inputEmail4">Your full Name</label>
         <input type="text" class="form-control" id="inputEmail4" placeholder="Mary Doe">

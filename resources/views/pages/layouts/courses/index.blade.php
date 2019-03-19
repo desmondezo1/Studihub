@@ -14,7 +14,7 @@
     @include('partials.breadcrumb')
 @endsection
 
-@section('suggestions')
+@section('suggestins')
     <h1 class="scroll-title">Suggestions</h1>
     <section class="cards smallscreen">
 
@@ -87,24 +87,90 @@
 @section('skills')
     <h1 class="scroll-title">Learn Skills</h1>
     <section class="cards smallscreen">
+            <a href="/courses/">
+                <div class="card--content" data-aos="flip-down">
+                <img src="img/photo.jpeg" width="100%" alt="Icon">  
+                <h3> Photography </h3>
+                </div>
+            </a>
+            <a href="courses/">
+                <div class="card--content" data-aos="flip-down">
+                <img src="img/programming.jpg" width="100%" alt="Icon">  
+                <h3>Programming</h3>
+                </div>
+            </a>
+            <a href="courses/">
+                <div class="card--content" data-aos="flip-down">
+                <img src="img/baking.jpg" width="100%" alt="Icon"> 
+                <h3>Baking</h3> 
+                </div>
+            </a>
+            <a href="courses/">
+                <div class="card--content" data-aos="flip-down">
+                <img src="img/Fashion.jpg" width="100%" alt="Icon"> 
+                <h3>Fashion Design</h3> 
+                </div>
+            </a>
+            <a href="courses/">
+                <div class="card--content" data-aos="flip-down">
+                <img src="img/baking.jpg" width="100%" alt="Icon"> 
+                <h3>Digital Marketing</h3> 
+                </div>
+            </a>
             @foreach ($courses as $skill)
-            <a href="courses/{{$skill->id}}">
+            <!--<a href="courses/{{$skill->id}}">
                 <div class="card--content" data-aos="flip-down">
                 <img src="{{$skill->image_path}}" width="100%" alt="{{$skill->name}} Icon">  
                 </div>
-            </a>
+            </a>-->
         @endforeach
     </section>
     <div  class="container largerscreen">
             <div class="row" style="justify-content: center;">
-                @foreach ($courses as $skills)
+                    <a href="courses/" data-aos="flip-down" style="color:#333;text-align:center;">
+                        <div class="col" style="width:200px; height:150px;">
+                       <img class="subject-image" src="img/photo.jpeg" width="100%" alt="Icon"> 
+                            <h3>Photogrpahy</h3>
+                    </div>
+                       </a>
+                       <a href="courses/" data-aos="flip-down" style="color:#333;text-align:center;">
+                        <div class="col" style="width:200px; height:150px;">
+                       <img class="subject-image" src="img/baking.jpg" width="100%" alt="Icon"> 
+                            <h3>Baking</h3>
+                    </div>
+                       </a>
+                       <a href="courses/" data-aos="flip-down" style="color:#333;text-align:center;">
+                        <div class="col" style="width:200px; height:150px;">
+                       <img class="subject-image" src="img/programming.jpg" width="100%" alt="Icon">
+                       <h3>Programming</h3> 
+                       </div>
+                       </a>
+                       <a href="courses/" data-aos="flip-down" style="color:#333;text-align:center;">
+                        <div class="col" style="width:200px; height:150px;">
+                       <img class="subject-image" src="img/bead.jpg" width="100%" alt="Icon">
+                       <h3>Bead Making</h3> 
+                       </div>
+                       </a>
+                       <a href="courses/" data-aos="flip-down" style="color:#333;text-align:center;">
+                        <div class="col" style="width:200px; height:150px;">
+                       <img class="subject-image" src="img/fashion.jpg" width="100%" alt="Icon">
+                       <h3>Fashion design</h3> 
+                       </div>
+                       </a>
+                       <a href="courses/" data-aos="flip-down" style="color:#333;text-align:center;">
+                        <div class="col" style="width:200px; height:150px;">
+                       <img class="subject-image" src="img/fashion.jpg" width="100%" alt="Icon">
+                       <h3>Digital Marketing</h3> 
+                       </div>
+                       </a>
+                @foreach ($courses as $skills) 
                 
-                <a href="courses/{{$skills->id}}" data-aos="flip-down">
+                <!--<a href="courses/{{$skills->id}}" data-aos="flip-down">
                  <div class="col" style="width:200px; height:150px;">
                 <img class="subject-image" src="{{$skills->image_path}}" width="100%" alt="{{$skills->name}} Icon"> 
                 </div>
                 </a>
-                
+            -->
             @endforeach
             </div>
             </div>
