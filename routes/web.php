@@ -56,7 +56,7 @@ Route::middleware(['throttle'])->group( function () {
 });
 
 /*Routes for authenticated students i.e requires login before access*/
-Route::group(['middleware' => ['middleware'=>'student-auth']], function () {
+Route::group(['middleware'=>['student-auth','forbid-banned-user']], function () {
     Route::get('/student', '\Studihub\Http\Controllers\Student\StudentDashboardController@index')->name('student.index');
 
     Route::get('/topics/{slug}', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show')->middleware('enrolled');
@@ -115,7 +115,7 @@ Route::middleware(['throttle'])->group( function () {
     });
 
     //temporary routes for UI design front end
-    Route::get('/admin', function () {
+/*    Route::get('/admin', function () {
         return view('admin.pages.index', ['name' => 'James']);
     });
     Route::get('/admin/messages', function () {
@@ -144,8 +144,15 @@ Route::middleware(['throttle'])->group( function () {
     });
     Route::get('/becomeatutor', function () {
         return view('becomeatutor.index', ['name' => 'James']);
-    });
+    });*/
     /*Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');*/
+
+/*    Route::get('/privatetutor', function () {
+        return view('privatetutor.index', ['name' => 'James']);
+    });
+    Route::get('/becomeatutor', function () {
+        return view('becomeatutor.index', ['name' => 'James']);
+    });*/
 });
 
 
@@ -160,18 +167,47 @@ Route::middleware(['throttle'])->group( function () {
     /*Routes for tutors guest routes i.e not yet authenticated*/
     Route::get('/admin/login','\Studihub\Http\Controllers\Admin\Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('/admin/login','\Studihub\Http\Controllers\Admin\Auth\LoginController@login')->name('admin.login');
+
+    Route::get('/admin/register','\Studihub\Http\Controllers\Admin\Auth\RegisterController@register')->name('admin.register.create');
+    Route::post('/admin/register','\Studihub\Http\Controllers\Admin\Auth\RegisterController@store')->name('admin.register.store');
+
     Route::get('/admin/password/reset/{token}',  '\Studihub\Http\Controllers\Admin\Auth\ResetPasswordController@create')->name('admin.password.reset');
     Route::post('/admin/password/reset', '\Studihub\Http\Controllers\Admin\Auth\ResetPasswordController@store')->name('admin.password.reset');
+
+    Route::get('/admin/logout','\Studihub\Http\Controllers\Admin\Auth\LoginController@logout')->name('admin.logout');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','logs-out-banned-user'])->group(function () {
     Route::name('admin.')->group(function (){
         Route::get('/admin', '\Studihub\Http\Controllers\Admin\AdminDashboardController@index')->name('index');
 
         Route::resource('/admin/courses', '\Studihub\Http\Controllers\Admin\AdminCourseController');
 
+        Route::any('/admin/embed/check-embed', '\Studihub\Http\Controllers\Admin\AdminTopicController@checkEmbedUrl');
         Route::resource('/admin/topics', '\Studihub\Http\Controllers\Admin\AdminTopicController');
 
         Route::resource('/admin/questions', '\Studihub\Http\Controllers\Admin\AdminQuestionController');
+        Route::post('/admin/choices/check', '\Studihub\Http\Controllers\Admin\AdminChoiceController@checkChoice');
+        Route::resource('/admin/choices', '\Studihub\Http\Controllers\Admin\AdminChoiceController');
+
+        Route::get('/admin/students/{id}/courses/chart', '\Studihub\Http\Controllers\Admin\AdminStudentController@enrolledChart')->name('student.enrolled.chart');
+        Route::get('/admin/students/{id}/courses', '\Studihub\Http\Controllers\Admin\AdminStudentController@enrolledCourses')->name('students.courses');
+        Route::put('/admin/students/{id}/ban', '\Studihub\Http\Controllers\Admin\AdminStudentController@banstudent')->name('students.ban');
+        Route::put('/admin/students/{id}/unban', '\Studihub\Http\Controllers\Admin\AdminStudentController@unbanstudent')->name('students.unban');
+        Route::resource('/admin/students', '\Studihub\Http\Controllers\Admin\AdminStudentController');
+
+        Route::put('/admin/admins/{id}/ban', '\Studihub\Http\Controllers\Admin\AdminUserController@banadmin')->name('admins.ban');
+        Route::put('/admin/admins/{id}/unban', '\Studihub\Http\Controllers\Admin\AdminUserController@unbanadmin')->name('admins.unban');
+
+        Route::post('/admin/admins/upload', '\Studihub\Http\Controllers\Admin\AdminUserController@upload')->name('admins.upload');
+        Route::resource('/admin/admins', '\Studihub\Http\Controllers\Admin\AdminUserController');
+
+        Route::resource('/admin/roles', '\Studihub\Http\Controllers\Admin\AdminRoleController');
+
+        Route::get('/admin/enrolled/chart', '\Studihub\Http\Controllers\Admin\AdminEnrolledCourseController@chart')->name('enrolled.chart');
+        Route::resource('/admin/enrolled', '\Studihub\Http\Controllers\Admin\AdminEnrolledCourseController');
+
+        Route::get('/admin/answers/chart', '\Studihub\Http\Controllers\Admin\AdminStudentAnswerController@chart')->name('answers.chart');
+        Route::resource('/admin/answers', '\Studihub\Http\Controllers\Admin\AdminStudentAnswerController');
     });
 });

@@ -3,10 +3,10 @@
 namespace Studihub\Http\Controllers\Student;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use KingFlamez\Rave\Facades\Rave;
 use Studihub\Http\Controllers\Controller;
-use Rave;
+
 class StudentPaymentController extends Controller
 {
     public function initialize() {

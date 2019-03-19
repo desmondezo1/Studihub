@@ -2,14 +2,15 @@
 
 namespace Studihub\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements BannableContract
 {
-    use Notifiable ,EntrustUserTrait;
+    use Notifiable ,EntrustUserTrait,Bannable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'avatar', 'password','phone','gender'
+        'firstname', 'lastname', 'email', 'avatar', 'password','phone','gender','city',
+        'state','address'
     ];
 
     /**
@@ -31,7 +33,7 @@ class User extends Authenticatable
 
     public function getPhotoAttribute($options){
         if($this->avatar != ''){
-            return asset('storage/uploads/admin/photos/'.$this->avatar);
+            return asset($this->avatar);
         }
         return '/storage/admin/image/avatar/'.$this->gender.'_avatar.png';
     }
@@ -40,6 +42,8 @@ class User extends Authenticatable
     {
         return $this->firstname.' '. $this->lastname;
     }
+
+
 
 
 }

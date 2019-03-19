@@ -1,29 +1,13 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 22:22
- */
-?>
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 20:31
- */
-?>
 @extends('admin.template.app')
 
-@section('page_title', "Welcome To Studihub")
+@section('page_title', "Manage Topics")
 @section('description', "Resource center to prepare for SSCE,JAMB,PUME and GCE")
 @section('keyword', "subjects, english,mathematics,geography ...")
 
 
 @section("page-header")
     @component('admin.partials.page-header', [
-            'page_name' => 'Topics',
+            'page_name' => 'Manage Topics',
             ])
     @endcomponent
 
@@ -55,7 +39,7 @@
                             <hr class="my-2">
                             <div class="mb-3">
                                 <h4 class="info-color-dark white-text text-center mb-5">
-                                    @if(Auth::user()->can('create-admin-admin-course-controller'))
+                                    @if(Auth::user()->can('create-admin-admin-topic-controller'))
                                         <span class="new-button" style="float:left;">
                                                         <i class="fa fa-admin-plus" style="color: #005983"></i>&nbsp;
                                                     <a href="{{ route('admin.topics.create') }}" class="btn btn-info btn-sm"><span class="fa fa-plus"></span>
@@ -70,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="row" data-aos="fade-up"
+            <div class="row" data-aos="fade-in"
                  data-aos-anchor-placement="top-center">
                 <div class="col-lg-12 col-xs-12">
                     <div class="card">
@@ -105,10 +89,10 @@
                                         <tr>
                                             <th scope="row">{{ ++$index }}</th>
                                             <td>{{ $topic->title }}</td>
-                                            <td>{{ $topic->course->title }}</td>
+                                            <td>{{ $topic->course ? $topic->course->title : '' }}</td>
                                             <td>{{ $topic->views }}</td>
                                             <td>{{ $topic->course->enrolledCourses ? $topic->course->enrolledCourses->count() : 0 }}</td>
-                                            <td>{{ $topic->isFree ? "Yes" : "No" }}</td>
+                                            <td>{{ $topic->isfree ? "Yes" : "No" }}</td>
                                             <td>{{ \Carbon\Carbon::parse($topic->created_at)->diffForHumans()}}</td>
                                             <td>
                                                 @if(Auth::user()->can('read-admin-admin-topic-controller'))

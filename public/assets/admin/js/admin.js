@@ -125,8 +125,34 @@ jQuery(function($) {
     });
 
 
-    function searchVideo() {
-        $('#query').keydown(function (e){
-        })
-    }
+    $('#embed').mouseleave(function (e){
+        let link = $(this).val();
+        const routeLink = "/admin/embed/check-embed";
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: routeLink,
+            data: 'url=' + link,
+            beforeSend: function(xhr){
+                //alert();
+            },
+            success: function (data) {
+                $('#videoModal').modal('show');
+                $('.modal-body').html(data);
+            },
+            error: function (error) {
+                //notify(error);
+                $('#videoModal').modal('hide');
+            },
+            complete: function(){
+                $('.okModal').on('click',function (e) {
+                    $('#videoModal').modal('hide');
+                });
+            }
+        });
+    })
 });

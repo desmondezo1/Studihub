@@ -2,10 +2,10 @@
 
 namespace Studihub\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use Studihub\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Studihub\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
@@ -107,7 +107,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $this->guard()->logout();
+        $this->guard('user')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
         return redirect()->route('login')

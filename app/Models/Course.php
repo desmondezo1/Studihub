@@ -2,10 +2,10 @@
 
 namespace Studihub\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentTaggable\Taggable;
-use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 
 class course extends Model
@@ -15,7 +15,7 @@ class course extends Model
 
     protected $table = "courses";
 
-    protected $fillable = ['title','slug','summary','photo',"course_category_id"];
+    protected $fillable = ['title','slug','summary','photo',"hidden"];
 
     protected $guarded = ['id'];
 
@@ -54,13 +54,8 @@ class course extends Model
         parent::boot();
         Course::deleting(function($courses) {
             foreach($courses as $course){
-                $photo = $course->photo;
-               // dd($photo);
-                if(File::exists(public_path('storage/uploads/courses/icons/'.$photo))) {
-                    File::delete(public_path('storage/uploads/courses/icons/'.$photo));
-                }
-                if(File::exists(public_path('storage/uploads/courses/icons/thumbnails/'.$photo))) {
-                    File::delete(public_path('storage/uploads/courses/icons/thumbnails/'.$photo));
+                if(File::exists(public_path($course->photo))) {
+                    File::delete(public_path($course->photo));
                 }
             }
         });

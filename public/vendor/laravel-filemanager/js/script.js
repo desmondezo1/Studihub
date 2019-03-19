@@ -6,8 +6,8 @@ $(document).ready(function () {
   loadFolders();
   performLfmRequest('errors')
     .done(function (data) {
-      var response = JSON.parse(data);
-      for (var i = 0; i < response.length; i++) {
+      let response = JSON.parse(data);
+      for (let i = 0; i < response.length; i++) {
         $('#alerts').append(
           $('<div>').addClass('alert alert-warning')
             .append($('<i>').addClass('fa fa-exclamation-circle'))
@@ -30,8 +30,8 @@ $('#nav-buttons a').click(function (e) {
 });
 
 $('#to-previous').click(function () {
-  var previous_dir = getPreviousDir();
-  if (previous_dir == '') return;
+  let previous_dir = getPreviousDir();
+  if (previous_dir === '') return;
   goTo(previous_dir);
 });
 
@@ -162,7 +162,7 @@ function displayErrorResponse(jqXHR) {
 }
 
 function displaySuccessMessage(data){
-  if(data == 'OK'){
+  if(data === 'OK'){
     var success = $('<div>').addClass('alert alert-success')
       .append($('<i>').addClass('fa fa-check'))
       .append(' File Uploaded Successfully.');
@@ -175,7 +175,7 @@ function displaySuccessMessage(data){
 
 var refreshFoldersAndItems = function (data) {
   loadFolders();
-  if (data != 'OK') {
+  if (data !== 'OK') {
     data = Array.isArray(data) ? data.join('<br/>') : data;
     notify(data);
   }
@@ -184,7 +184,7 @@ var refreshFoldersAndItems = function (data) {
 var hideNavAndShowEditor = function (data) {
   $('#nav-buttons > ul').addClass('hidden');
   $('#content').html(data);
-}
+};
 
 function loadFolders() {
   performLfmRequest('folders', {}, 'html')
@@ -204,7 +204,7 @@ function loadItems() {
       $('#working_dir').val(response.working_dir);
       $('#current_dir').text(response.working_dir);
       console.log('Current working_dir : ' + $('#working_dir').val());
-      if (getPreviousDir() == '') {
+      if (getPreviousDir() === '') {
         $('#to-previous').addClass('hide');
       } else {
         $('#to-previous').removeClass('hide');
@@ -237,7 +237,7 @@ function rename(item_name) {
 
 function trash(item_name) {
   bootbox.confirm(lang['message-delete'], function (result) {
-    if (result == true) {
+    if (result === true) {
       performLfmRequest('delete', {items: item_name})
         .done(refreshFoldersAndItems);
     }
@@ -275,7 +275,7 @@ function useFile(file_url) {
   function useTinymce3(url) {
     var win = tinyMCEPopup.getWindowArg("window");
     win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = url;
-    if (typeof(win.ImageDialog) != "undefined") {
+    if (typeof(win.ImageDialog) !== "undefined") {
       // Update image dimensions
       if (win.ImageDialog.getImageData) {
         win.ImageDialog.getImageData();
@@ -321,7 +321,7 @@ function useFile(file_url) {
   var url = file_url;
   var field_name = getUrlParam('field_name');
   var is_ckeditor = getUrlParam('CKEditor');
-  var is_fcke = typeof data != 'undefined' && data['Properties']['Width'] != '';
+  var is_fcke = typeof data !== 'undefined' && data['Properties']['Width'] !== '';
   var file_path = url.replace(route_prefix, '');
 
   if (window.opener || window.tinyMCEPopup || field_name || getUrlParam('CKEditorCleanUpFuncNum') || is_ckeditor) {

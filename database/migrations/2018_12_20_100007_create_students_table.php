@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateStudentsTable extends Migration
 {
@@ -19,8 +19,10 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
             $table->string('firstname', 255);
             $table->string('lastname', 255);
-            $table->timestamp('banned_at')->nullable();
+            $table->string('avatar')->nullable();
             $table->enum('gender',['male', 'female'])->nullable();
+            $table->enum('class_category',['sciences','art','social sciences']);
+            $table->string('phone')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

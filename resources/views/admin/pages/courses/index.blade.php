@@ -7,18 +7,10 @@
  */
 ?>
 
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 20:31
- */
-?>
 @extends('admin.template.app')
 
-@section('page_title', "Welcome To Studihub")
-@section('description', "Resource center to prepare for SSCE,JAMB,PUME and GCE")
+@section('page_title', "Manage Courses")
+@section('description', "List of courses to manage")
 @section('keyword', "subjects, english,mathematics,geography ...")
 
 
@@ -72,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="row" data-aos="fade-up"
+            <div class="row" data-aos="fade-in"
                  data-aos-anchor-placement="top-center">
                 <div class="col-lg-12 col-xs-12">
                     <div class="card">
@@ -92,7 +84,6 @@
                                     <tr>
                                         <th># </th>
                                         <th>Title</th>
-                                        <th>course Category </th>
                                         <th>views </th>
                                         <th>Subscription Count </th>
                                         <th>Topics count </th>
@@ -107,7 +98,6 @@
                                         <tr>
                                             <th scope="row">{{ ++$index }}</th>
                                             <td>{{ $course->title }}</td>
-                                            <td>{{ $course->category->name }}</td>
                                             <td>{{ $course->views }}</td>
                                             <td>{{ $course->enrolledCourses ? $course->enrolledCourses->count() : 0 }}</td>
                                             <td>{{ $course->topics ? $course->topics->count() : 0 }}</td>
@@ -130,7 +120,6 @@
                                     <tr>
                                         <th># </th>
                                         <th>Title </th>
-                                        <th>course Category </th>
                                         <th>views </th>
                                         <th>Subscription Count </th>
                                         <th>Topics count </th>

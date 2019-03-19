@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVideoDatasTable extends Migration
 {
@@ -19,6 +19,11 @@ class CreateVideoDatasTable extends Migration
             $table->integer('views');
             $table->integer('replayed');
             $table->integer('completed');
+            $table->string('embed_url')->nullable();
+            $table->string('path')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->string('size')->nullable();
+            $table->string('mime_type')->nullable();
             $table->timestamps();
         });
     }

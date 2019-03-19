@@ -25,6 +25,7 @@ span {
   text-decoration: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  text-underline: none;
 }
 
 a:hover, a:focus,
@@ -3504,4 +3505,8 @@ a > code {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   font-size: 125%;
+}
+
+.invalid-feedback{
+  display: inline-block !important;
 }

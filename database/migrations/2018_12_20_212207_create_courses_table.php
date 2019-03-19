@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCoursesTable extends Migration
 {
@@ -19,9 +19,9 @@ class CreateCoursesTable extends Migration
             $table->string('slug');
             $table->text('summary');
             $table->string('photo')->nullable();
-            $table->boolean('visible')->default(true);
+            $table->boolean('hidden')->default(false);
             $table->bigInteger('views')->default(0);
-            $table->unsignedInteger('course_category_id');
+            $table->enum('class_category',['sciences','art','social sciences']);
             $table->timestamps();
         });
     }

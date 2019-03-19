@@ -23,7 +23,7 @@
    
                 <a href="{{ route("courses.show", $course->slug) }}">
                     <div class="card--content" data-aos="flip-down">
-                    <img src="{{$course->image_path}}" width="100%" alt="{{$course->name}} Icon">  
+                    <img src="{{ public_path($course->photo) }}" width="100%" alt="{{$course->name}} Icon">
                     </div>
                 </a>
             @endforeach
@@ -39,7 +39,7 @@
                 
                 <a href="{{ route("courses.show", $suggestions->slug) }}">
                  <div class="col" style="width:200px; height:150px;" data-aos="flip-down">
-                <img class="subject-image" src="{{$suggestions->image_path}}" width="100%" alt="{{$suggestions->name}} Icon"> 
+                <img class="subject-image" src="{{ public_path($course->photo) }}" width="100%" alt="{{$suggestions->name}} Icon">
                 </div>
                 </a>
                 
@@ -63,7 +63,7 @@
     @foreach ($courses as $subject)
         <a href="courses/{{$subject->id}}">
             <div class="card--content" data-aos="flip-down">
-            <img src="{{$subject->image_path}}" width="100%" alt="{{$subject->name}} Icon">  
+            <img src="{{ public_path($course->photo) }}" width="100%" alt="{{$subject->name}} Icon">
             </div>
         </a>
     @endforeach
@@ -75,7 +75,7 @@
     @foreach ($courses as $subjects)
     <a href="courses/{{$subjects->id}}">
      <div class="col" style="width:200px; height:150px;" data-aos="flip-down">
-    <img class="subject-image" src="{{$subjects->image_path}}" width="100%" alt="{{$subjects->name}} Icon"> 
+    <img class="subject-image" src="{{ public_path($course->photo) }}" width="100%" alt="{{$subjects->name}} Icon">
     </div>
     </a>
     
@@ -120,7 +120,7 @@
             @foreach ($courses as $skill)
             <!--<a href="courses/{{$skill->id}}">
                 <div class="card--content" data-aos="flip-down">
-                <img src="{{$skill->image_path}}" width="100%" alt="{{$skill->name}} Icon">  
+                <img src="{{ public_path($skill->photo) }}" width="100%" alt="{{$skill->name}} Icon">
                 </div>
             </a>-->
         @endforeach
@@ -167,7 +167,7 @@
                 
                 <!--<a href="courses/{{$skills->id}}" data-aos="flip-down">
                  <div class="col" style="width:200px; height:150px;">
-                <img class="subject-image" src="{{$skills->image_path}}" width="100%" alt="{{$skills->name}} Icon"> 
+                <img class="subject-image" src="{{ public_path($skill->photo) }}" width="100%" alt="{{$skills->name}} Icon">
                 </div>
                 </a>
             -->

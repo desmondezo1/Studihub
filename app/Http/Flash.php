@@ -10,6 +10,7 @@ namespace Studihub\Http;
 
 
 use Illuminate\Support\Facades\Session;
+
 class Flash
 {
     public function create($title, $message, $level, $key = 'flash_message')

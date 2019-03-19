@@ -1,37 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 23:00
- */
-?>
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 23:00
- */
-?>
-
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 22:19
- */
-?>
-
-<?php
-/**
- * Created by PhpStorm.
- * User: pogbewi
- * Date: 2/25/2019
- * Time: 20:31
- */
-?>
 @extends('admin.template.app')
 
 @section('page_title', "Create Topic")
@@ -41,7 +7,7 @@
 
 @section("page-header")
     @component('admin.partials.page-header', [
-            'page_name' => 'Manage Topics',
+            'page_name' => 'Create Topics',
             ])
     @endcomponent
 
@@ -94,7 +60,7 @@
                         <div class="card-body">
                             {!! Form::open(['route'=>('admin.topics.store'), 'role' => 'form', 'enctype'=>"multipart/form-data", 'class'=>'form-horizontal']) !!}
                             @if (count($errors) > 0)
-                                <div class="alert alert-danger">
+                                <div class="alert alert-danger text-center">
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li style="list-style: none">{{ $error }}</li>
@@ -109,15 +75,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="query" class="col-sm-3 form-control-label">Video Embed Code<br><small style="font-weight:400;" >VDOcipher/Youtube/vimeo/Wistia</small></label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="query" id="query" placeholder="Video Embed code">
-                                </div>
-                            </div>
-
-
-
                             <div class="line"></div>
                             <div class="form-group row">
                                 <label for="notes" class="col-sm-3 form-control-label">Lesson Notes</label>
@@ -127,22 +84,23 @@
                             </div>
 
                             <div class="line"></div>
-                            <div class="form-group row">
-                                <label for="visible" class="col-sm-3 form-control-label">Toggle Visibility</label>
-                                <div class="col-sm-9">
-                                    <div class="i-checks">
-                                        <input id="visible" type="radio" name="visible" class="radio-template">
-                                        <label for="visible"> is Visible ?</label>
+                            @role('admin')
+                                <div class="form-group row">
+                                    <label for="hidden" class="col-sm-3 form-control-label">Toggle Visibility</label>
+                                    <div class="col-sm-9">
+                                        <div class="i-checks">
+                                            <input id="hidden" type="checkbox" name="hidden" class="checkbox-template">
+                                            <label for="hidden"> is Hidden ?</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            @endrole
                             <div class="line"></div>
                             <div class="form-group row">
                                 <label for="category" class="col-sm-3 form-control-label">Subject/ Course</label>
                                 <div class="col-sm-9">
                                     <div class="i-checks">
-                                        <select name="course_category_id" id="course_category_id" class="custom-select">
+                                        <select name="course_id" id="course_id" class="custom-select">
                                             <option selected>Select</option>
                                             @foreach($courses as $course)
                                                 <option value="{{ $course->id }}">{{ $course->title }}</option>
@@ -156,8 +114,8 @@
                                 <label class="col-sm-3 form-control-label">Toggle Freebie</label>
                                 <div class="col-sm-9">
                                     <div class="i-checks">
-                                        <input id="isFre" type="radio" name="isFre" class="radio-template">
-                                        <label for="isFree"> is Free ?</label>
+                                        <input id="isfree" type="checkbox" name="isfree" class="checkbox-template">
+                                        <label for="isfree"> is Free ?</label>
                                     </div>
                                 </div>
                             </div>
@@ -178,10 +136,9 @@
                                 </div>
                             </div>
 
-
                             <div class="line"></div>
                             <div class="form-group row">
-                                <label for="photo" class="col-sm-3 form-control-label">Upload Photo</label>
+                                <label for="photo" class="col-sm-3 form-control-label">Upload Photo or PDF, Word Doc</label>
                                 <div class="col-sm-9">
                                     <input id="photo" type="file" name="photo" class="form-control-file">
                                 </div>
@@ -214,6 +171,37 @@
 
                             <div class="line"></div>
                             <div class="form-group row">
+                                <label for="uploadtype" class="col-sm-3 form-control-label">Video Upload Type</label>
+                                <div class="col-sm-9">
+                                    <select name="uploadtype" id="uploadtype" class="custom-select">
+                                        <option selected>Select</option>
+                                        <option value="upload">Video Upload</option>
+                                        <option value="embed">Url Embed</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="line embed" style="display: none"></div>
+                            <div class="form-group row embed" style="display: none">
+                                <label for="embed" class="col-sm-3 form-control-label">Video Embed Code<br><small style="font-weight:400;" >VDOcipher/Youtube/vimeo/Wistia</small></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="embed" id="embed" placeholder="Video Embed code" value="{{ old('embed_url') }}">
+                                </div>
+                            </div>
+
+                            <div class="line upload" style="display: none"></div>
+                            <div class="form-group row upload" style="display: none">
+                                <label for="video" class="col-sm-3 form-control-label">Video To Your cdn Automatically</label>
+                                <div class="col-sm-9">
+                                    <input id="video" type="file" name="video" class="form-control-file" value="{{ old('video') }}">
+                                </div>
+                            </div>
+
+
+
+                            <div class="line"></div>
+                            <div class="form-group row">
                                 <div class="col-sm-4 offset-sm-3">
                                     <a href="{{ route('admin.courses.index') }}" type="btn" name="cancel" style="color: #fff0ff" class="btn btn-secondary">Cancel</a>
                                     <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
@@ -225,32 +213,30 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="modalEmbed" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-                    /* <!--Content-->*/
-                    <div class="modal-content text-center">
-                        /*  <!--Header-->*/
-                        <div class="modal-header d-flex justify-content-center">
-                            <p class="heading">Select Video</p>
-                            </div>
+            <!-- The Modal -->
+            <div class="modal fade" id="videoModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
-                        /*<!--Body-->*/
-                         <div class="modal-body">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Embeded Video URl</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
-                             <ul id="results"></ul>
-                             <div id="buttons"></div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Modal body..
+                        </div>
 
-                             </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger okModal" data-dismiss="modal">Ok</button>
+                        </div>
 
-                        /*<!--Footer-->*/
-                         <div class="modal-footer flex-center">
-                             <a type="button" class="btn btn-danger submit-dialog" style="color: #fff0ff">Yes</a>
-                             <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No</a>
-                             </div>
-                         </div>
-                    /*<!--/.Content-->*/
-                     </div>
-                 </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
@@ -259,8 +245,8 @@
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
-        $('#isFre').on('change',function($){
-            $('#isFre').value = '!!this.checked';
+        $('#isfree').on('change',function($){
+            $('#isfree').value = '!!this.checked';
         });
 
 
@@ -269,7 +255,23 @@
                 let option = e.target.value;
                 if(option === 'DRAFT'){
                     $('.scheduled').removeAttr('style');
+                }else {
+                    $('.scheduled').css('display','none');
                 }
+            });
+        });
+
+        $(document).ready(function (){
+            $('select[name="uploadtype"]').on('change',function(e){
+                let option = e.target.value;
+                if(option === 'upload'){
+                    $('.upload').removeAttr('style');
+                    $('.embed').css('display','none');
+                }else if(option === 'embed'){
+                    $('.embed').removeAttr('style');
+                    $('.upload').css('display','none');
+                }
+
             });
         });
     </script>
@@ -284,7 +286,7 @@
         };
     </script>
 {{--    <script>
-        CKEDITOR.replace( 'notes', options );
+        //CKEDITOR.replace( 'notes', options );
     </script>--}}
     <script type="text/javascript">
         CKEDITOR.replace('notes', {

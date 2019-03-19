@@ -3,7 +3,7 @@
 @if($topic != null)
     @section('page_title', $topic->title)
     @section('description', str_limit($topic->note, 120))
-    @section('keyword', $topic->course()->title)
+    @section('keyword', $topic->course()->first() ? $topic->course()->first()->title : '')
 @endif
 
 

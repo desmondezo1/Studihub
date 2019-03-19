@@ -22,6 +22,7 @@
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap-select.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
 
@@ -88,6 +89,7 @@
 <script src="/assets/vendor/jquery/jquery.min.js"></script>
 <script src="/assets/vendor/popper.js/umd/popper.min.js"> </script>
 <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap-select.min.js"></script>
 
 <script src="/assets/admin/js/moment.min.js"></script>
 <script src="/assets/admin/js/datetimepicker.min.js"></script>

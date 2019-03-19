@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateQuestionBanksTable extends Migration
 {
@@ -16,14 +16,12 @@ class CreateQuestionBanksTable extends Migration
         Schema::create('question_banks', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('topic_id');
-            $table->integer('question_difficulty');
-            $table->unsignedInteger('course_id');
+            $table->string('question_difficulty');
             $table->text('question_desc');
-            $table->unsignedInteger('question_choice_id');
             $table->bigInteger('views')->default(0);
-            $table->boolean('published')->default(false);
+            $table->boolean('hidden')->default(true);
             $table->timestamp('published_at')->nullable();
-            $table->boolean('visible')->default(true);
+            $table->enum('exam_type',['GCE','JAMB','WAEC','NECO']);
             $table->timestamps();
         });
     }

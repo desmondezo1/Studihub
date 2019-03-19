@@ -9,16 +9,25 @@ class Question extends Model
     protected $table = "question_banks";
 
     protected $fillable = [
-        'topic_id','views','course_id',
+        'topic_id','views',
         'question_difficulty',
-        'question_choice_id',
-        'question_desc'
+        'question_desc',
+        'hidden','exam_type',
+        'question_desc','published_at'
     ];
 
     protected $guarded = ['id'];
 
 
     public function answers(){
-        return $this->hasMany('Studihub\Models\Topic');
+        return $this->hasMany('Studihub\Models\Answer');
+    }
+
+    public function choices(){
+        return $this->hasMany('Studihub\Models\Choice','question_id','id');
+    }
+
+    public function topic(){
+        return $this->belongsTo('Studihub\Models\Topic','topic_id','id');
     }
 }

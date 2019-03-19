@@ -48,15 +48,15 @@ Messages
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
                   <form action="Post">
+                <div class="modal-body">
                     <textarea name="Reply" id="" cols="50" rows="10"></textarea>  
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="Submit" class="btn btn-primary">Reply</button>
-                </form>
                 </div>
+                  </form>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ Messages
 <script>
 $(document).ready(function(){
     $(".hideorshow").click(function(){
-        $(this).text($(this).text() == 'Show Less' ? 'Show More' : 'Show Less');
+        $(this).text($(this).text() === 'Show Less' ? 'Show More' : 'Show Less');
     });
 });
 </script>

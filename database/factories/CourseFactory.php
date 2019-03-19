@@ -1,7 +1,5 @@
 <?php
 
-use Faker\Generator as Faker;
-
 /*$factory->define(Studihub\Models\Course::class, function (Faker $faker) {
     $path = "img/vlcsnap-error705.png";
     return [
