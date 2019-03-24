@@ -44,7 +44,7 @@ class HomeController extends Controller
     }
 
     public function privateTutorRequest(){
-        return view('pages.private-tutor');
+        return view('privatetutor.index');
     }
 
     public function privateTutorSignup(){

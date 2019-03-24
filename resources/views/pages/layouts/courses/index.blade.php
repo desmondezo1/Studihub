@@ -121,7 +121,7 @@
             <!--<a href="courses/{{$skill->id}}">
                 <div class="card--content" data-aos="flip-down">
                 <img src="{{ public_path($skill->photo) }}" width="100%" alt="{{$skill->name}} Icon">
-                </div>
+                </div>12
             </a>-->
         @endforeach
     </section>

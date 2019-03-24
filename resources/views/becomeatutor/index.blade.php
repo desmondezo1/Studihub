@@ -74,6 +74,14 @@
                     </label>
                   </div>
                 </div>
+                <div class="form-group">
+                    <div class="form-check">
+                      <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+                      <label class="form-check-label" for="bio">
+                        Introduce yourself to clients
+                      </label>
+                    </div>
+                  </div>
                 <button type="submit" class="btn btn-primary">Sign in</button>
               </form>
         </div>

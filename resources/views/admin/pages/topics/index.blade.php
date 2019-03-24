@@ -93,7 +93,7 @@
                                             <td>{{ $topic->views }}</td>
                                             <td>{{ $topic->course->enrolledCourses ? $topic->course->enrolledCourses->count() : 0 }}</td>
                                             <td>{{ $topic->isfree ? "Yes" : "No" }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($topic->created_at)->diffForHumans()}}</td>
+                                            <td>{{ Carbon\Carbon::parse($topic->created_at)->diffForHumans() }}</td>
                                             <td>
                                                 @if(Auth::user()->can('read-admin-admin-topic-controller'))
                                                     <a target="_blank" href="{{ route('topics.show', $topic->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> view</a>

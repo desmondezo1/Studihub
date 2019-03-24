@@ -18,12 +18,13 @@ class TopicsController extends Controller
     }
 
     public function show($slug){
+        $topicList = Topic::all();
         $topic = Topic::findBySlugOrFail($slug);
         $topic_id = 'topic_'.$topic->id;
         if(!Session::has($topic_id)){
             $topic->increment('views');
             Session::put($topic_id, 1);
         }
-        return view('pages.layouts.topics.show')->with('topic',$topic);
+        return view('pages.layouts.topics.show')->with('topic',$topic)->with('topicList',$topicList);
     }
 }

@@ -102,6 +102,13 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                        <label class="form-check-label" for="bio">
+                                Introduce yourself to clients
+                                </label>
+                        <textarea class="form-control" name="bio" id="bio" cols="60" rows="10"></textarea>
+                            
+                        </div>
                         <button type="submit" class="btn btn-primary">Sign in</button>
 
                     </form>

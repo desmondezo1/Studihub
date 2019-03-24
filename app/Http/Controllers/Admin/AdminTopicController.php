@@ -23,6 +23,7 @@ class AdminTopicController extends AdminBaseController
 
     public function index(){
         $topics = Topic::with('course')->get();
+       
         return view('admin.pages.topics.index',compact('topics'));
     }
 
