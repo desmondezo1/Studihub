@@ -74,6 +74,7 @@
         <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('js/animatebuttontext.js') }}" ></script>
         <script src="/assets/vendor/aos/aos.js"></script>
+        @yield('jscript')
         <script>
             AOS.init();
         </script>
