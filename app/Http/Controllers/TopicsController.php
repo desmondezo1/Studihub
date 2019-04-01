@@ -18,6 +18,7 @@ class TopicsController extends Controller
     }
 
     public function show($slug){
+        //select all courses from the table with the same course id 
         $topicList = Topic::all();
         $topic = Topic::findBySlugOrFail($slug);
         $topic_id = 'topic_'.$topic->id;

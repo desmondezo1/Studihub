@@ -63,7 +63,7 @@
     @foreach ($courses as $subject)
         <a href="courses/{{$subject->id}}">
             <div class="card--content" data-aos="flip-down">
-            <img src="{{ public_path($course->photo) }}" width="100%" alt="{{$subject->name}} Icon">
+            <img src="{{$subject->photo}}" width="100%" alt="{{$subject->name}} Icon">
             </div>
         </a>
     @endforeach
@@ -75,7 +75,7 @@
     @foreach ($courses as $subjects)
     <a href="courses/{{$subjects->id}}">
      <div class="col" style="width:200px; height:150px;" data-aos="flip-down">
-    <img class="subject-image" src="{{ public_path($course->photo) }}" width="100%" alt="{{$subjects->name}} Icon">
+    <img class="subject-image" src="{{$subjects->photo}}" width="100%" alt="{{$subjects->name}} Icon">
     </div>
     </a>
     

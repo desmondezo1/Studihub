@@ -160,7 +160,7 @@
                             <div class="form-group row embed" style="display: none">
                                 <label for="embed" class="col-sm-3 form-control-label">Video Embed Code<br><small style="font-weight:400;" >VDOcipher/Youtube/vimeo/Wistia</small></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="embed" id="embed" placeholder="Video Embed code" value="{{ $topic->VideoData()->first()->embed_url }}">
+                                   <!-- <input type="text" class="form-control" name="embed" id="embed" placeholder="Video Embed code" value="{{ @$topic->VideoData()->first()->embed_url }}">-->
                                 </div>
                             </div>
 

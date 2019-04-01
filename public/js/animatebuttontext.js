@@ -15,8 +15,9 @@ function textSequence(i) {
     }
 
 }*/
-
+   
     setTimeout(function() {
         $('#privatetutorbutton').removeAttr('display');
-        $('#tutorbutton').css('display','none');
+        $('#privatetutorbutton').css('display','none');
     }, 3000);
+     

@@ -84,11 +84,11 @@
     @if($courses->count() > 0)
         <div class="row" style="justify-content: center;">
             @foreach ($courses as $subjects)
-                <a href="{{ route("courses.show", $subject->slug) }}">
+                <a href="{{ route("courses.show", $subjects->slug) }}">
                     <div class="col" style="width:200px; height:150px;" data-aos="flip-right"
                          data-aos-easing="ease-out-cubic"
                          data-aos-duration="2000">
-                        <img class="subject-image" src="{{ public_path($subject->photo) }}" width="100%" alt="{{$subjects->name}} Icon">
+                        <img class="subject-image" src="{{$subjects->photo}}" width="100%" alt="{{$subjects->name}} Icon">
                     </div>
                 </a>
             @endforeach

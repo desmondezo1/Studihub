@@ -11,8 +11,8 @@ neccessary resources available to them"
 @section('sub-header')
     <div class="jumbotron jumbotron-fluid header-image-jumbotron">
         <div class="container">
-            <h1 class="display-4">Learn how to Pass</h1>
-            <p class="lead">with 2,500+ videos, notes, and Practise questions on all subjects</p>
+            <h1 class="display-4">About us</h1>
+            <p class="lead">At Studihub we work hard every day to you learn and pass your exams better</p>
         </div>
     </div>
     @component('partials.breadcrumb', [
@@ -23,31 +23,18 @@ neccessary resources available to them"
 @endsection
 
 @section('skills')
-    <h1 class="scroll-title">Learn Skills</h1>
-{{--    @if($courses->count() > 0)
-        <section class="cards smallscreen">
-            @foreach ($courses as $skill)
-                <a href="courses/{{$skill->id}}">
-                    <div class="card--content">
-                        <img src="{{$skill->image_path}}" width="100%" alt="{{$skill->name}} Icon">
-                    </div>
-                </a>
-            @endforeach
-        </section>
-    @endif
-    <div  class="container largerscreen">
-        @if($courses->count() > 0)
-            <div class="row" style="justify-content: center;">
-                @foreach ($courses as $skills)
-                    <a href="courses/{{$skills->id}}">
-                        <div class="col" style="width:200px; height:150px;">
-                            <img class="subject-image" src="{{$skills->image_path}}" width="100%" alt="{{$skills->name}} Icon">
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        @endif
-    </div>--}}
+<div class="container">
+    <p>Studihub is an educational platform that uses audio-visual aids, notes, practice questions and tutors to help students learn and pass their exams better</p>
+    <div class="row">
+        <div class="col-md-6">
+text
+        </div>
+        <div class="col-md-6">
+image
+        </div>
+
+    </div>
+</div>
 @endsection
 
 @section('footer')
