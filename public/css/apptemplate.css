@@ -53,6 +53,13 @@ nav div input.nav-search::-ms-input-placeholder { /* Microsoft Edge */
     display: none;
 }
 
+/***********FOOTER STYLING**************/
+.footer-list li a{
+    color: #fff;
+    font-weight: 400;
+}
+/** END OF FOOTER STYLING ***/
+
 /*SMALL SCREENS*/
 @media only screen and (max-width: 600px) {
     .navbar-brand{
