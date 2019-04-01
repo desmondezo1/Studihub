@@ -56,7 +56,9 @@
   /* The following line adds momentum scrolling on iOS and feels a lot smoother. */
   -webkit-overflow-scrolling: touch;
 }
-
+.accordion .card{
+  box-shadow: 0 0 20px 7px #ccc!important;
+}
 .Card {
   /* Set scroll snapping */
   scroll-snap-align: start;
@@ -67,14 +69,34 @@
   border-radius: 15px;
   white-space: normal;
   display: inline-block;
-  box-shadow: 0px 2px 20px rgba(8, 0, 58, 0.2);
+  box-shadow: 0 0 20px 7px #ccc!important;
+  
 }
 
 .Card:last-child {
   margin-right: 0;
 }
-
-
+.card-header{
+  background: #031633;
+  border-radius: 5px;
+  color: #f8e1e4;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+}
+.btn-link{
+  color: #f8f9fa;
+  text-decoration: none;
+  font-weight: 400;
+}
+.btn-link:hover, .btn-link:active {
+    color: #f8f9fa;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: 500;
+}
     </style>
 @endsection
 
@@ -96,7 +118,8 @@
             </div>
             <ul class="list-group list-group-flush">
               @foreach ($topicList as $topicList)
-                <li class="list-group-item">{{$topicList->title}}</li>
+                <li class="list-group-item">
+                <a style="color:#fff; text-decoration:none;" href="{{ route('topics.display', $topicList->slug) }}">{{$topicList->title}}</a></li>
               @endforeach
               </ul>
           </div>
@@ -106,10 +129,7 @@
        
           <div class="container notes-container">
               <h1>{{$topic->title}} </h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nobis exercitationem ullam, consequatur harum modi provident quidem placeat quos commodi rerum optio voluptatum nemo esse ipsa minima dolor aspernatur neque!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ex dicta voluptas minus! Laborum saepe iusto cum ullam molestias itaque sit corrupti omnis sunt, iure iste, accusamus debitis, harum quos!
-              Lorem ipsum doslor sit amet consectetur, adipisicing elit. Aliquam consequatur, voluptas quo neque blanditiis doloremque aliquid molestiae tempore officia quae impedit praesentium eligendi reprehenderit doloribus accusantium! Magnam obcaecati fugit distinctio!
-            </p>
+            <p>{{$topic->notes}}</p>
           </div>
 
       <div class="flip-cards">
@@ -179,7 +199,7 @@
                         <div class="card-header" id="headingOne">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Collapsible Group Item #1
+                              How do i calculate the net profit of the equation?
                             </button>
                           </h2>
                         </div>
