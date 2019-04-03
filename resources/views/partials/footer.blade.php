@@ -17,7 +17,7 @@
 
                 <!-- Content -->
                
-                <img class="img-responsive" style="max-height:150px" src="img/logo.png" alt="studihub logo">
+                <img class="img-responsive" style="max-height:150px" src="{{ asset('img/logo.png') }}" alt="studihub logo">
                 <h5 class="text-uppercase">STUDIHUB</h5>
                 <p>Helping students learn better!</p>
             </div>

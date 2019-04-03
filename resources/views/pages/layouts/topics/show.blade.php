@@ -125,11 +125,11 @@
           </div>
         </div>
         <div class="col-md-9">
-            <iframe src="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versUSE323vHRcuMiStcHM0dJa7JHsfo8ZK1fBenFUvKnY7hKT6FQCRw&playbackInfo=eyJ2aWRlb0lkIjoiN2RjY2Y5MmQ3MTFjNGI5MWI2YjRiMTBiZGY2OGI2ZWQifQ==" style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe>
+            <iframe src="{{$topic->mime_path}}" style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe>
        
           <div class="container notes-container">
               <h1>{{$topic->title}} </h1>
-            <p>{{$topic->notes}}</p>
+            {!!$topic->notes!!}
           </div>
 
       <div class="flip-cards">
