@@ -28,9 +28,29 @@
                                 <div class="col-9">
                                     <p> {{$topic->title}}</p>
                                 </div>
+                                @if($topic->isfree === 0)
                                 <div class="col-3" >
-
-                                </div>
+                                    <span class="lock" style="font-size: 13px;
+                                    background: #f8f9fa;
+                                    padding: 9px;
+                                    color: #061c3e;
+                                    border-radius: 50%;
+                                    border: 2px solid;
+                                    box-shadow: 0 0 9px #888;"><i class="fas fa-lock"></i><span>
+                                </div> 
+                                @endif
+                                @if($topic->isfree === 1)
+                                <div class="col-3" >
+                                    <span class="lock" style="font-size: 13px;
+                                    background: #f8f9fa;
+                                    padding: 6px;
+                                    font-weight: 600;
+                                    color: #02ff3c;
+                                    border-radius: 5px;
+                                    /* border: 2px solid; */
+                                    box-shadow: 0 0 9px #28a745;">Free<span>
+                                </div> 
+                                @endif
                             </div>
                         </div>
                     </a>
