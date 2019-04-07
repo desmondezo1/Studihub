@@ -17,7 +17,8 @@
 | FrontEnd Routes
 |--------------------------------------------------------------------------
 */
-
+Route::get('/search','\Studihub\Http\Controllers\TopicsController@search')->name('topics.search');
+   
 Route::middleware(['throttle'])->group( function () {
     /*Site main pages routes below*/
     Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');

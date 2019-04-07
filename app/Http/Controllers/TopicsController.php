@@ -3,7 +3,9 @@
 namespace Studihub\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 use Studihub\Models\Topic;
+use Illuminate\Support\Facades\DB;
 
 class TopicsController extends Controller
 {
@@ -32,5 +34,15 @@ class TopicsController extends Controller
             Session::put($topic_id, 1);
         }
         return view('pages.layouts.topics.show')->with('topic',$topic)->with('topicList',$topicList);
+    }
+
+    public function search(Request $request){
+
+        $q =  $request->input('q');  
+    //$TopicsFound = \DB::select('select * from topics WHERE  title LIKE "% . $q . %"');
+        $TopicsFound =\DB::table('topics')->select(DB::raw('SELECT * FROM topics WHERE  title LIKE %' . $q . '%'));
+         //\DB::table('topics')->where('title','LIKE','%'.$q.'%')->get();
+        //dd($TopicsFound);
+        return view('pages.layouts.topics.search', ['TopicsFound' => $TopicsFound]);
     }
 }

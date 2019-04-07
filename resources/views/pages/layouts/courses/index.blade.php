@@ -61,7 +61,7 @@
 
 <section class="cards smallscreen">
     @foreach ($courses as $subject)
-        <a href="courses/{{$subject->id}}">
+        <a href="courses/{{$subject->slug}}">
             <div class="card--content" data-aos="flip-down">
             <img src="{{$subject->photo}}" width="100%" alt="{{$subject->name}} Icon">
             </div>
@@ -73,7 +73,7 @@
 <div  class="container largerscreen">
 <div class="row" style="justify-content: center;">
     @foreach ($courses as $subjects)
-    <a href="courses/{{$subjects->id}}">
+    <a href="courses/{{$subjects->slug}}">
      <div class="col" style="width:200px; height:150px;" data-aos="flip-down">
     <img class="subject-image" src="{{$subjects->photo}}" width="100%" alt="{{$subjects->name}} Icon">
     </div>

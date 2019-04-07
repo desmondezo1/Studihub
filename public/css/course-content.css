@@ -49,9 +49,18 @@
          margin: 20px 0px;
          /*height: 69px;*/ height: auto;
          min-height: 69px;
+
          margin: 16px 8px;
          border: 0.5px solid #dee2e6;
          box-shadow: 0px 4px 41px -21px black;
+      }
+      
+      .course-details-card-content a{
+         text-decoration: none;
+      }
+
+      .course-details-card-content:hover{
+         box-shadow: 0px 5px 31px -7px #343a40;
       }
       
       .course-details-card-content p{
