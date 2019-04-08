@@ -17,8 +17,13 @@
 | FrontEnd Routes
 |--------------------------------------------------------------------------
 */
+
 Route::get('/search','\Studihub\Http\Controllers\TopicsController@search')->name('topics.search');
-   
+Route::get('ajax',function (){
+    return view('pages.layouts.topics.show');
+});
+Route::get('/getTopicsFromSearch','\Studihub\Http\Controllers\AjaxController@AjaxTopicSearch')->name('Ajax.topic.search');
+
 Route::middleware(['throttle'])->group( function () {
     /*Site main pages routes below*/
     Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');

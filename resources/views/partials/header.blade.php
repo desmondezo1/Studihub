@@ -7,10 +7,10 @@
         </picture>
     <!--<img height="50px" src="{{-- asset('img/logo.png') --}}" alt="Studihub Logo">-->
     </a>
-    <form action="{{ route('topics.search') }}" method="get" name="q" class="form-inline mx-auto" >
+    <form action="{{ route('topics.search')}}" method="get" class="form-inline mx-auto" >
         {{ csrf_field() }}
         <div class="input-group">
-            <input type="text" class="form-control nav-search" placeholder="Learn anything" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" name="q" class="form-control nav-search" placeholder="Learn anything" aria-label="q" aria-describedby="q">
         </div>
     </form>
 

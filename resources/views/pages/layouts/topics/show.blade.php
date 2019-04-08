@@ -113,15 +113,17 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control topic-search" placeholder="Search topic" aria-label="search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                    <button class="btn btn-outline-secondary" onclick="getTopicsFromSearch()" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-            <ul class="list-group list-group-flush">
+            <!--- Topic lists ---->
+            <ul id="AjaxSearchtopic" class="list-group list-group-flush">
               @foreach ($topicList as $topicList)
                 <li class="list-group-item">
                 <a style="color:#fff; text-decoration:none;" href="{{ route('topics.display', $topicList->slug) }}">{{$topicList->title}}</a></li>
               @endforeach
               </ul>
+              <!--- END OF TOPIC LISTS --->
           </div>
         </div>
         <div class="col-md-9">
@@ -314,6 +316,17 @@
 @section('script')
 
     <script>
+      function getTopicsFromSearch() {
+       $.ajax({
+         type: 'POST',
+         url: '/getTopicsFromSearch',
+         data: '_token= <?php echo csrf_token() ?>',
+         success:function(data){
+           $('#AjaxSearchtopic').html(data.AjaxSearchtopic);
+         }
+       })  
+      }
+
         $("#hide-button").click(function() {
             $("#hide-button").removeClass( "display" ).addClass( "display-none" );
             $("#show-button").removeClass( "display-none" ).addClass( "display" );
