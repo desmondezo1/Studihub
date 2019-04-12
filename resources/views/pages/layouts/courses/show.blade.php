@@ -23,8 +23,13 @@
         @if (count($course ? $course->topics : []) > 0)
             @foreach ($course->topics as $topic)
                 <div class="card--content course-details-card-content">
+                    @if($topic->isfree === 0)
+                    <a href="{{ route('topics.show', $topic->slug) }}" style="text-decoration:none;"><div class="container" style="padding: 5px 15px;">
+                     @endif    
+                     @if($topic->isfree === 1)
                     <a href="{{ route('topics.display', $topic->slug) }}" style="text-decoration:none;"><div class="container" style="padding: 5px 15px;">
-                            <div class="row" style="align-items:center;">
+                     @endif 
+                        <div class="row" style="align-items:center;">
                                 <div class="col-9">
                                     <p> {{$topic->title}}</p>
                                 </div>

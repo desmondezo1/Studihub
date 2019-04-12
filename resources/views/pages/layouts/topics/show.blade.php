@@ -111,10 +111,11 @@
         <div class="col-md-3">
           <div class="container topic-list">
             <div class="input-group mb-3">
-                <input type="text" class="form-control topic-search" placeholder="Search topic" aria-label="search" aria-describedby="basic-addon2">
+                <input type="text" name="search" class="form-control topic-search" placeholder="Search topic" id="search" aria-label="search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" onclick="getTopicsFromSearch()" type="submit"><i class="fas fa-search"></i></button>
-                </div>
+                    <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                
+                  </div>
             </div>
             <!--- Topic lists ---->
             <ul id="AjaxSearchtopic" class="list-group list-group-flush">
@@ -313,19 +314,9 @@
 </div>
 @endsection
 
-@section('script')
+@section('jscript')
 
     <script>
-      function getTopicsFromSearch() {
-       $.ajax({
-         type: 'POST',
-         url: '/getTopicsFromSearch',
-         data: '_token= <?php echo csrf_token() ?>',
-         success:function(data){
-           $('#AjaxSearchtopic').html(data.AjaxSearchtopic);
-         }
-       })  
-      }
 
         $("#hide-button").click(function() {
             $("#hide-button").removeClass( "display" ).addClass( "display-none" );
@@ -337,7 +328,21 @@
             $("#hide-button").removeClass( "display-none" ).addClass( "display" );
         });
 
+    $('#search').on('keyup',function(){
+    $value=$(this).val();
+    $.ajax({
+    type : 'get',
+    url : '{{ route('Ajax.topic.search')}}',
+    data:{'search':$value},
+    success:function(data){
+      
+     $('#AjaxSearchtopic').html(data);
+    }
+    });
+    })
+
     </script>
-
+   <script type="text/javascript">
+    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+   </script> 
 @endsection
-
