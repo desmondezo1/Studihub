@@ -107,7 +107,8 @@
                                             <td>{{ \Carbon\Carbon::parse($question->created_at)->diffForHumans()}}</td>
                                             <td>
                                                 @if(Auth::user()->can('read-admin-admin-question-controller'))
-                                                    <a target="_blank" href="{{ route('admin.questions.show', $question->id) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> view</a>
+                                
+                                                <a target="_blank" href="{{ route('admin.questions.show', $question->id) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> view</a>
                                                 @endif
                                                 @if(Auth::user()->can('update-admin-admin-question-controller'))
                                                     <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
