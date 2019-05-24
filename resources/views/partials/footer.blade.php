@@ -48,7 +48,7 @@
                         <a href="#!">Studihub Careers</a>
                     </li>
                     <li>
-                        <a href="#!">Become a Tutor</a>
+                        <a href="{{ route('admin.choices.create') }}">Become a Tutor</a>
                     </li>
                     <li>
                         <a href="#!">Hire a Private Tutor</a>

@@ -335,7 +335,6 @@
     url : '{{ route('Ajax.topic.search')}}',
     data:{'search':$value},
     success:function(data){
-      
      $('#AjaxSearchtopic').html(data);
     }
     });
