@@ -19,6 +19,7 @@
         "laravelcollective/html": "^5.7",
         "merujan99/laravel-video-embed": "dev-master",
         "twbs/bootstrap": "4.1.3",
+        "unicodeveloper/laravel-paystack": "^1.0",
         "unisharp/laravel-ckeditor": "^4.7",
         "unisharp/laravel-filemanager": "~1.8",
         "zizaco/entrust": "^1.9"

@@ -6,45 +6,39 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use KingFlamez\Rave\Facades\Rave;
 use Studihub\Http\Controllers\Controller;
+use Paystack;
 
 class StudentPaymentController extends Controller
 {
-    public function initialize() {
-        //This initializes payment and redirects to the payment gateway
-        //The initialize method takes the parameter of the redirect URL
-        Rave::initialize(route('callback'));
+
+    public function redirectToGateway()
+    {
+        try{
+            return Paystack::getAuthorizationUrl()->redirectNow();
+        }catch (\Exception $e){
+            return redirect()->route('callback');
+        }
     }
 
-    public function callback() {
-        // This verifies the transaction and takes the parameter of the transaction reference
-        $data = Rave::verifyTransaction(request()->txref);
-        //dd($data);
-        $chargeResponsecode = $data->data->chargecode;
-        $chargeAmount = $data->data->amount;
-        $chargeCurrency = $data->data->currency;
+    public function handleGatewayCallback()
+    {
 
-        $amount = 500;
-        $currency = "NGN";
-        if (($chargeResponsecode == "00" || $chargeResponsecode == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
-            // transaction was successful...
-            // please check other things like whether you already gave value for this ref
-            // if the email matches the customer who owns the product etc
-            //Give Value and return to Success page
+        $paymentDetails = Paystack::getPaymentData();
+        if($paymentDetails['data']['status'] == 'success'){
             DB::table('user_paid_topics')->insert([
-                "topic_id" => $data->metadata['topic_id'],
-                "student_id" => Auth()->guard('student')->id(),
-                "date_paid" => Carbon::now(),
-                "expired_at" => Carbon::now()->subDays($data->data->duration)
+                "topic_id" => $paymentDetails['data']['metadata']['topic_id'],
+                "student_id" => $paymentDetails['data']['metadata']['student_id'],
+                "date_paid" => Carbon::parse($paymentDetails['data']['paid_at']),
+                "expired_at" => Carbon::now()->subDays(Carbon::parse($paymentDetails['data']['metadata']['expires_at'])),
+                'amount' => $paymentDetails['data']['amount'],
+                'ip_address' => $paymentDetails['data']['ip_address'],
+                'reference' => $paymentDetails['data']['reference'],
+                'customer_code' => $paymentDetails['data']['customer']['customer_code'],
+                'transaction_details' => $paymentDetails['message'],
 
             ]);
-
             return redirect('/success');
-
-        } else {
-            //Dont Give Value and return to Failure page
-
-            return redirect('/failed');
-        }
-        // dd($data->data);
+       }
+        return redirect('/failed');
     }
 }

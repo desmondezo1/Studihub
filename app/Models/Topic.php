@@ -62,7 +62,7 @@ class Topic extends Model
         return $this->belongsToMany('Studihub\Models\Tutor', 'course_tutors');
     }
 
-    public function VideoData()
+    public function videoData()
     {
         return $this->hasOne('Studihub\Models\VideoData', 'topic_id', 'id');
     }

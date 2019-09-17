@@ -30,15 +30,15 @@ Route::middleware(['throttle'])->group( function () {
     Route::get('/privacy', '\Studihub\Http\Controllers\HomeController@privacy')->name('privacy');
     Route::get('/terms', '\Studihub\Http\Controllers\HomeController@terms')->name('terms');
 
-    Route::get('/private-tutor', '\Studihub\Http\Controllers\HomeController@privateTutorRequest')->name('tutor.request');
-    Route::get('/tutor-signup', '\Studihub\Http\Controllers\HomeController@privateTutorSignup')->name('tutor.signup');
+    Route::get('/private/tutor', '\Studihub\Http\Controllers\RequestPrivateTutorController@create')->name('tutor.request');
+    Route::post('/private/tutor', '\Studihub\Http\Controllers\RequestPrivateTutorController@store')->name('tutor.request.store');
 
     /*Access unrestricted contents below*/
     Route::get('/courses', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
     Route::get('/learn', '\Studihub\Http\Controllers\CourseController@index')->name('learn.index');
     Route::get('learn/{slug}','\Studihub\Http\Controllers\TopicsController@show')->name('topics.display');
     Route::get('/courses/{slug}', '\Studihub\Http\Controllers\CourseController@show')->name('courses.show');
-    Route::get('/topics', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show');
+    Route::get('/topics', '\Studihub\Http\Controllers\TopicsController@index')->name('topics.index');
     Route::get('/pricing', '\Studihub\Http\Controllers\PricingController@index')->name('pricing.index');
 });
 
@@ -62,11 +62,14 @@ Route::middleware(['throttle'])->group( function () {
 
 /*Routes for authenticated students i.e requires login before access*/
 Route::group(['middleware'=>['student-auth','forbid-banned-user']], function () {
-    Route::get('/student', '\Studihub\Http\Controllers\Student\StudentDashboardController@index')->name('student.index');
+    Route::get('/student', '\Studihub\Http\Controllers\Student\StudentDashboardController@index')->name('students.index');
 
     Route::get('/topics/{slug}', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show')->middleware('enrolled');
     Route::post('/pay', '\Studihub\Http\Controllers\Student\StudentPaymentController@initialize')->name('pay');
     Route::post('/rave/callback', '\Studihub\Http\Controllers\Student\StudentPaymentController@callback')->name('callback');
+
+    Route::get('/student/profile/{user_name}', '\Studihub\Http\Controllers\Student\StudentProfileController@show')->name('students.profile');
+    Route::get('/student/questions', '\Studihub\Http\Controllers\Student\StudentQuestionsController@index')->name('students.questions.index');
 });
 /************************************** End Routes For Students***********************************/
 
@@ -89,6 +92,8 @@ Route::middleware(['throttle'])->group( function () {
         Route::post('/tutor/password/reset', '\Studihub\Http\Controllers\Tutor\Auth\ResetPasswordController@store')->name('tutor.password.reset');
     });
     Route::get('/tutor/logout', '\Studihub\Http\Controllers\Tutor\Auth\LoginController@logout')->name('tutor.logout');
+
+    Route::post('/tutor/register/upload', '\Studihub\Http\Controllers\Tutor\Auth\RegisterController@uploadPhoto')->name('tutor.photo.upload');
 });
 
   /*Routes for tutors only*/
@@ -101,7 +106,7 @@ Route::group(['middleware'=>['tutor-auth','verified-tutor']], function () {
 
 
 Route::middleware(['throttle'])->group( function () {
-    //Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
+  /*  //Route::get('/', '\Studihub\Http\Controllers\CourseController@index')->name('courses.index');
 
     Route::get('/', '\Studihub\Http\Controllers\HomeController@index')->name('home');
     Route::get('/about', '\Studihub\Http\Controllers\HomeController@about')->name('about');
@@ -117,7 +122,7 @@ Route::middleware(['throttle'])->group( function () {
         Route::get('/topics/{slug}', '\Studihub\Http\Controllers\TopicsController@show')->name('topics.show');
         Route::post('/pay', '\Studihub\Http\Controllers\Student\StudentPaymentController@initialize')->name('pay');
         Route::post('/rave/callback', '\Studihub\Http\Controllers\Student\StudentPaymentController@callback')->name('callback');
-    });
+    });*/
 
     //temporary routes for UI design front end
 /*    Route::get('/admin', function () {

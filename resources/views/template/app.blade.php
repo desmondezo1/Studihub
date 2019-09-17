@@ -46,10 +46,11 @@
     <link href="{{ URL::asset('/css/course-content.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/show-topic.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/vendor/bootstrap-select/css/bootstrap-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/vendor/fancybox/jquery.fancybox.min.css') }}" rel="stylesheet">
     <!-- animate css -->
     <link rel="stylesheet" href="/assets/vendor/aos/aos.css">
-    
-
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
 
     @yield('styles')
     
@@ -71,14 +72,16 @@
         <!--Footer-->
         @include('partials.footer')
         <!--/.Footer-->
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('js/animatebuttontext.js') }}" ></script>
-        <script src="/assets/vendor/aos/aos.js"></script>
-        @yield('jscript')
+        <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('/assets/vendor/aos/aos.js') }}"></script>
+        <script src="{{ asset('/assets/vendor/bootstrap-select/js/bootstrap-select.js') }}"></script>
+        <script src="{{ asset('/assets/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
+        <script src="{{ asset('/js/main.js') }}"></script>
+        @stack('scripts')
         <script>
             AOS.init();
         </script>
-     @stack('scripts')
+
 </body>
 </html>

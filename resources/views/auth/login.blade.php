@@ -118,16 +118,12 @@ body {
 <div class="login-page">
     @if ($errors->any())
     <div class="alert alert-danger text-center">
-        <ul style="list-style: none">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        <p class="text-danger">Please check and correct the following errors</p>
     </div>
     @endif
     <div class="form">
-      <form class="register-form loginsignup" method="POST" action="{{ route('auth.register') }}">
-        <input id="firstname" placeholder="First Name" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" autofocus>
+          {!! Form::open(['route'=>('auth.register'), 'role' => 'form', 'enctype'=>"multipart/form-data", 'class'=>'form-horizontal register-form loginsignup']) !!}
+          <input id="firstname" placeholder="First Name" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" autofocus>
         @if ($errors->has('firstname'))
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('firstname') }}</strong>
@@ -157,20 +153,44 @@ body {
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
         @endif
-        <button>create</button>
+        <select id="gender" name="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }} ">
+            <option value="">Select Your Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        @if ($errors->has('gender'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('gender') }}</strong>
+            </span>
+        @endif
+        <br>
+        <select id="class_category" name="class_category" class="form-control{{ $errors->has('class_category') ? ' is-invalid' : '' }}">
+            <option value="">Select Your Class</option>
+            <option value="sciences">Sciences</option>
+            <option value="social_sciences">Social Sciences</option>
+            <option value="arts">Arts</option>
+        </select>
+        @if ($errors->has('class_category'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('class_category') }}</strong>
+            </span>
+        @endif
+        <br>
+        <p class="text-info mb-2">Note: the word before @ in your emails will be your username e.g {example}@email.com</p>
+        <button type="submit">create</button>
         <p class="message">Already registered? <a href="#" class="signin">Sign In</a></p>
-      </form>
+        {!! Form::close() !!}
       <!--- END OF CREATE ACCOUNT FORM --->
 
       <!--- LOGIN FORM ---->
-      <form class="login-form loginsignup" method="POST" action="{{ route('login') }}">
-        <input type="text" id="login" type="text" class="form-control{{ ($errors->has('username') or $errors->first('email')) ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="{{ __('User@example.com') }}" autofocus/>
+          {!! Form::open(['route'=>('login'), 'role' => 'form', 'enctype'=>"multipart/form-data", 'class'=>'form-horizontal login-form loginsignup']) !!}
+        <input type="text" id="login" class="form-control{{ ($errors->has('username') or $errors->first('email')) ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="{{ __('User@example.com') }}" autofocus/>
         @if ($errors->has('username') or $errors->has('email'))
         <span class="invalid-feedback" role="alert">
             <strong>{{ ($errors->first('username')) }}</strong>
         </span>
          @endif
-        <input type="password" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Your Password') }}" name="password"/>
+        <input type="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Your Password') }}" name="password"/>
         @if ($errors->has('password'))
         <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('password') }}</strong>
@@ -178,16 +198,16 @@ body {
         @endif
 
         <button>login</button>
-        <p> <a class="btn btn-link" href="{{ route('password.reset') }}" style="color: #ff2c38;">
+        <p> <a class="btn btn-link" href="{{ route('forgot') }}" style="color: #ff2c38;">
                 {{ __('Forgot Your Password?') }}
             </a></p>
         <p class="message">Not registered? <a href="#" class="create_account">Create an account</a></p>
-      </form>
+        {!! Form::close() !!}
     </div>
   </div>
 @endsection
 
-@section('jscript')
+@push('scripts')
 <script>
     //Script for login form animation
     $('.message .create_account').click(function(){
@@ -197,4 +217,4 @@ body {
     $('form.loginsignup').animate({height: "toggle", opacity: "toggle"}, "slow");
     });
 </script>
-@endsection
+@endpush

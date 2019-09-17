@@ -40,9 +40,9 @@ class Student extends Authenticatable implements BannableContract
 
     public function getPhotoAttribute($options){
         if($this->avatar != ''){
-            return asset('storage/uploads/admin/photos/'.$this->avatar);
+            return asset('storage/uploads/student/photos/'.$this->avatar);
         }
-        return '/storage/admin/image/avatar/'.$this->gender.'_avatar.png';
+        return '/img/dashboard/avatar/'.$this->gender.'_avatar.png';
     }
 
 
@@ -51,7 +51,7 @@ class Student extends Authenticatable implements BannableContract
     }
 
     public function isCourseSubscribed($value){
-        $topic = Topic::findBySlugOrFail($value)->with('courses')->first();
+        $topic = Topic::findBySlugOrFail($value)->with('course')->first();
         $paid_courses = DB::table("enrolled_courses")->where([['course_id', $topic->course_id],["student_id", $this->id],["expired_at",'>=', Carbon::now()]])->exists();
         return $paid_courses;
     }

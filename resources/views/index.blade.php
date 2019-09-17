@@ -22,12 +22,12 @@
     <h1 class="scroll-title">Suggestions</h1>
     <section class="cards smallscreen">
 
-        @if ($courses->count()>0)
+        @if ($courses->count() > 0)
             @foreach ($courses as $course)
    
                 <a href="{{ route("courses.show", $course->slug) }}">
                     <div class="card-content">
-                    <img src="{{$course->photo}}" width="100%" alt="{{$course->name}} Icon" data-aos="flip-left"
+                    <img src="{{ asset($course->photo) }}" width="100%" alt="{{$course->name}} Icon" data-aos="flip-left"
                          data-aos-easing="ease-out-cubic"
                          data-aos-duration="2000">
                     </div>
@@ -45,7 +45,7 @@
                 @foreach ($courses as $suggestion)
                     <a href="{{ route("courses.show", $suggestion->slug) }}">
                         <div class="col" style="width:200px; height:150px;">
-                            <img class="subject-image" src="{{$suggestion->photo}}" width="100%" alt="{{$suggestion->name}} Icon" data-aos="flip-left"
+                            <img class="subject-image" src="{{ asset($suggestion->photo) }}" width="100%" alt="{{$suggestion->name}} Icon" data-aos="flip-left"
                                  data-aos-easing="ease-out-cubic"
                                  data-aos-duration="2000">
                         </div>
@@ -73,7 +73,7 @@
                 <div class="card--content" data-aos="flip-right"
                      data-aos-easing="ease-out-cubic"
                      data-aos-duration="2000">
-                <img src="{{ $subject->photo }}" width="100%" alt="{{$subject->name}} Icon">
+                <img src="{{ asset($subject->photo) }}" width="100%" alt="{{$subject->name}} Icon">
                 </div>
             </a>
         @endforeach
@@ -88,7 +88,7 @@
                     <div class="col" style="width:200px; height:150px;" data-aos="flip-right"
                          data-aos-easing="ease-out-cubic"
                          data-aos-duration="2000">
-                        <img class="subject-image" src="{{$subjects->photo}}" width="100%" alt="{{$subjects->name}} Icon">
+                        <img class="subject-image" src="{{ asset($subjects->photo) }}" width="100%" alt="{{$subjects->name}} Icon">
                     </div>
                 </a>
             @endforeach
@@ -107,7 +107,7 @@
                             data-aos-easing="ease-out-cubic"
                             data-aos-duration="2000">
 
-                           <img src="{{$skill->photo}}" width="100%" alt="{{$skill->name}} Icon">
+                           <img src="{{ asset($skill->photo) }}" width="100%" alt="{{$skill->name}} Icon">
                        </div>
                    </a>
                @endforeach
@@ -121,7 +121,7 @@
                         <div class="col" style="width:200px; height:150px;" data-aos="flip-left"
                              data-aos-easing="ease-out-cubic"
                              data-aos-duration="2000">
-                            <img class="subject-image" src="{{$skill->photo}}" width="100%" alt="{{$skills->name}} Icon">
+                            <img class="subject-image" src="{{ asset($skill->photo) }}" width="100%" alt="{{$skills->name}} Icon">
                         </div>
                     </a>
                 @endforeach

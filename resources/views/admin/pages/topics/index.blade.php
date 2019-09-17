@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="card-header d-flex align-items-center">
-                            <h3 class="h4">List of Courses</h3>
+                            <h3 class="h4">List of Topics</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

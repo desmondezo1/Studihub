@@ -45,7 +45,7 @@ class AdminTopicController extends AdminBaseController
             'hidden' => 'nullable',
             'published_at' => 'nullable|date',
             'status' => 'required',
-            'isfree' => 'required',
+            'isfree' => 'nullable',
             'embed' => 'nullable',
             'exam_type' => 'required',
         ]);
@@ -97,7 +97,7 @@ class AdminTopicController extends AdminBaseController
             'notes' => 'required|min:3',
             'course_id' => 'required',
             'hidden' => 'nullable',
-            'isfree' => 'required',
+            'isfree' => 'nullable',
             'embed' => 'nullable',
             'exam_type' => 'required',
         ]);

@@ -17,7 +17,7 @@ class CheckEnrolledCourses
     public function handle($request, Closure $next)
     {
         $slug = $request->route('slug');
-        $topic = Topic::findBySlugOrFail($slug)->with('courses')->first();
+        $topic = Topic::findBySlugOrFail($slug)->with('course')->first();
         if($topic != null){
             if(!$topic->isfree){
                 if(!Auth()->guard("student")->user()->isCourseSubscribed($slug)){

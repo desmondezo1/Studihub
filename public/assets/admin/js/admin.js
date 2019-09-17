@@ -125,7 +125,7 @@ jQuery(function($) {
     });
 
 
-    $('#embed').mouseleave(function (e){
+/*    $('#embed').mouseleave(function (e){
         let link = $(this).val();
         const routeLink = "/admin/embed/check-embed";
         $.ajaxSetup({
@@ -154,5 +154,67 @@ jQuery(function($) {
                 });
             }
         });
-    })
+    });*/
+
+    $('#embed').mouseleave(function (e){
+        const url = $("this").val();
+        // image_url = getVideoThumbnail(url);
+        let notice = $('.notify');
+        let urlSrc;
+        notice.show();
+        if(url !== undefined || url !== ''){
+            const videoObj = parseUrl(url);
+
+            if(videoObj.type === 'youtube'){
+                urlSrc = "https://www.youtube.com/embed/" + videoObj.id + "?rel=0&wmode=transparent&showinfo=0";
+                console.log(urlSrc);
+                $("#iframSrc").attr('src',urlSrc);
+                $('#videoModal').modal('show');
+            }else if(videoObj.type === 'vimeo'){
+                urlSrc = "https://player.vimeo.com/video/" +  videoObj.id + "?rel=0&wmode=transparent&showinfo=0";
+                $("#iframSrc").attr('src',urlSrc );
+                $('#videoModal').modal('show');
+            }else{
+                notice.html('<div class="alert alert-warning alert-dismissible">No Match, Probably url doeanot exists</div>');
+                notice.slideUp(8000);
+            }
+        }else {
+            notice.html('<div class="alert alert-warning alert-dismissible">Url empty or not valid</div>');
+            notice.slideUp(8000);
+        }
+
+        if(urlSrc !== null){
+            $(this).val("");
+            $(this).val(urlSrc);
+        }
+        $('.okModal').on('click',function (e) {
+            $('#videoModal').modal('hide');
+        });
+
+    });
+
+    function parseUrl(url){
+        let type;
+        const pattern = url.match(/(http:|https:|)\/\/(player.|www.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/);
+
+        if (RegExp.$3.indexOf('youtu') > -1) {
+            type = 'youtube';
+            return {
+                type: type,
+                id: RegExp.$6
+            };
+        } else if (RegExp.$3.indexOf('vimeo') > -1) {
+            const v = url.match(/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/);
+            type = 'vimeo';
+            return {
+                type: type,
+                id: RegExp.$3
+            };
+        }
+        return {
+            type: type,
+            id: RegExp.$6
+        };
+    }
+
 });

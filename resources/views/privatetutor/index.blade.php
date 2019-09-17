@@ -81,7 +81,7 @@ li{
             <h1 class="display-4">Find Expert Tutors Near You</h1>
             <p class="lead"></p>
         </div>
-    </div class="jumbotron-fluid ">
+    </div>
     
     <div class="become-tutor-div">
 Qualified? >> <a class="btn btn-primary become-tutor-btn" href="/tutor-signup">Become a tutor</a>
@@ -121,8 +121,10 @@ Qualified? >> <a class="btn btn-primary become-tutor-btn" href="/tutor-signup">B
       <div class="form-group col-md-4">
         <label for="inputState">State</label>
         <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
+            <option value="" selected="selected">Select an option</option>
+            @foreach($states as $state)
+                <option value="{{ $state->id }}">{{ $state->name }}</option>
+            @endforeach
         </select>
       </div>
       <div class="form-group col-md-6">
@@ -148,14 +150,16 @@ Qualified? >> <a class="btn btn-primary become-tutor-btn" href="/tutor-signup">B
       <div class="col-lg-12">
           <label for="class">Kid's Class<small>(Multiple selection)</small></label>
           <div class="button-group">
-             <button type="button" class="btn btn-default btn-sm dropdown-toggle class" data-toggle="dropdown" name="class">Choose...</span></button>
-     <ul class="dropdown-menu class-list">
-       <li><input type="checkbox" class=" form-check-inputclass-list-item" id="nursery"/><label class="form-check-label" for="nursery">&nbsp;Nursery</label></li>
-       <li><input type="checkbox" class=" form-check-inputclass-list-item" id="primary"/><label class="form-check-label" for="primary">&nbsp;Primary</label></li>
-       <li><input type="checkbox" class=" form-check-inputclass-list-item " id="juniorsecondary"/><label class="form-check-label" for="juniorsecondary">&nbsp;Junior Secondary</label></li>
-       <li><input type="checkbox" class=" form-check-inputclass-list-item " id="seniorsecondary"/><label class="form-check-label" for="seniorsecondary">&nbsp;Senior Secondary</label></li>
-       <li><input type="checkbox" class=" class-list-item " id="exam"/><label class="form-check-label" for="exam">&nbsp;Exam (UTME/POST-UTME/WASSCE)</label></li>
-      </ul>
+             <button type="button" class="btn btn-default btn-sm dropdown-toggle class" data-toggle="dropdown" name="class">Choose...</button>
+                 <ul class="dropdown-menu class-list">
+                   <li><input type="checkbox" class=" form-check-inputclass-list-item" id="nursery"/><label class="form-check-label" for="nursery">&nbsp;Nursery</label></li>
+                   <li><input type="checkbox" class=" form-check-inputclass-list-item" id="primary"/><label class="form-check-label" for="primary">&nbsp;Primary</label></li>
+                   <li><input type="checkbox" class=" form-check-inputclass-list-item " id="juniorsecondary"/><label class="form-check-label" for="juniorsecondary">&nbsp;Junior Secondary</label></li>
+                   <li><input type="checkbox" class=" form-check-inputclass-list-item " id="seniorsecondary"/><label class="form-check-label" for="seniorsecondary">&nbsp;Senior Secondary</label></li>
+                   <li><input type="checkbox" class=" class-list-item " id="exam"/><label class="form-check-label" for="exam">&nbsp;Exam (UTME/POST-UTME/WASSCE)</label></li>
+                 </ul>
+          </div>
+
        </div>
      </div>
 

@@ -21,7 +21,7 @@ class CreateStudentsTable extends Migration
             $table->string('lastname', 255);
             $table->string('avatar')->nullable();
             $table->enum('gender',['male', 'female'])->nullable();
-            $table->enum('class_category',['sciences','art','social sciences']);
+            $table->enum('class_category',['sciences','arts','social_sciences']);
             $table->string('phone')->nullable();
             $table->string('password');
             $table->rememberToken();
