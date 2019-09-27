@@ -128,8 +128,8 @@
           </div>
         </div>
         <div class="col-md-9">
-            <iframe src="{{$topic->mime_path}}" style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe>
-       
+ <!--         <iframe src="https://youtu.be/TdVMyb9FbaU" style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe> -->
+            <iframe style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);"  src="https://www.youtube.com/embed/TdVMyb9FbaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="container notes-container">
               <h1>{{$topic->title}} </h1>
             {!!$topic->notes!!}
@@ -319,7 +319,7 @@
     <script>
 
         $("#hide-button").click(function() {
-            $("#hide-button").removeClass( "display" ).addClass( "display-none" );
+            $("#hide-button").removeClass( "display" ).addhpClass( "display-none" );
             $("#show-button").removeClass( "display-none" ).addClass( "display" );
         });
 
