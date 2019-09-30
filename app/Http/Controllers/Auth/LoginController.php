@@ -107,7 +107,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $this->guard('user')->logout();
+        $this->guard('student')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
         return redirect()->route('login')

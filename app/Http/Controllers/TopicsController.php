@@ -24,13 +24,13 @@ class TopicsController extends Controller
         //select all courses from the table with the same course id 
        
         $topic = Topic::findBySlugOrFail($slug);
-        $topicList = Topic::where('course_id', $topic->course_id)->get();
+        $related_topics = Topic::where('course_id', $topic->course_id)->get();
         $topic_id = 'topic_'.$topic->id;
         if(!Session::has($topic_id)){
             $topic->increment('views');
             Session::put($topic_id, 1);
         }
-        return view('pages.layouts.topics.show')->with('topic',$topic)->with('topicList',$topicList);
+        return view('pages.layouts.topics.show', compact('topic','related_topics'));
     }
 
     public function search(Request $request){

@@ -55,7 +55,7 @@
 
                             <form method="POST" action="{{ route('pay') }}">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="amount" value="200" />
+                                <input type="hidden" name="amount" value="20000" />
                                 <input type="hidden" name="country" value="NG" /> <!-- Replace the value with your transaction country -->
                                 <input type="hidden" name="currency" value="NGN" />
                                 <input type="hidden" name="email" value="{{ auth()->guard('student')->user() != null ? auth()->guard('student')->user()->email : '' }}" /> <!-- Replace the value with your customer email -->
@@ -83,7 +83,7 @@
                             </ul>
                             <form method="POST" action="{{ route('pay') }}">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="amount" value="500" /> <!-- Replace the value with your transaction amount -->
+                                <input type="hidden" name="amount" value="50000" /> <!-- Replace the value with your transaction amount -->
                                 <input type="hidden" name="country" value="NG" /> <!-- Replace the value with your transaction country -->
                                 <input type="hidden" name="currency" value="NGN" />
                                 <input type="hidden" name="email" value="test@test.com" /> <!-- Replace the value with your customer email -->
@@ -108,7 +108,7 @@
                             </ul>
                             <form method="POST" action="{{ route('pay') }}">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="amount" value="1000" /> <!-- Replace the value with your transaction amount -->
+                                <input type="hidden" name="amount" value="100000" /> <!-- Replace the value with your transaction amount -->
                                 <input type="hidden" name="country" value="NG" /> <!-- Replace the value with your transaction country -->
                                 <input type="hidden" name="currency" value="NGN" />
                                 <input type="hidden" name="email" value="test@test.com" /> <!-- Replace the value with your customer email -->

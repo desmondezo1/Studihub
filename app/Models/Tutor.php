@@ -18,7 +18,22 @@ class Tutor extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname', 'username', 'email', 'password','bio','qualification','verification_code'
+        'firstname','lastname', 'email', 'password','bio','qualification','verification_code',
+        'gender',
+        'dob',
+        'address',
+        'state',
+        'city',
+        'school',
+        'course',
+        'degree',
+        'company',
+        'experience',
+        'role',
+        'stillworkthere',
+        'classname',
+        'curriculum',
+        'social_media',
     ];
 
     /**

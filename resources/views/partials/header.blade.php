@@ -37,7 +37,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('getRegister') }}">{{ __('Signup') }}</a>
+                </li>
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -58,19 +60,18 @@
                 </li>
             @endguest
             <li class="nav-item dropdown">
-                    <a href="{{ route('tutor.request') }}" style="background: #f32a34;display: none;
+                    <a href="{{ route('tutor.request') }}" style="background: #f32a34;
                     border: 0.7px solid #061c3e;
                     color: #f2f4f7;
                     padding: 5px;
                     border-radius: 5%;
                     text-align: center;" id="privatetutorbutton" class="nav-link front" >Private tutor</a>
-                    <a href="{{ route('tutor.signup') }}" style="background: #f32a34;
+                    <a href="{{ route('tutor.getRegister') }}" style="background: #f32a34;display: none;
                     border: 0.7px solid #061c3e;
                     color: #f2f4f7;
                     border-radius: 5%;
                     text-align: center;" id="tutorbutton" class="nav-link front" >Become a tutor</a>
             </li>
-                   
         </ul>
     </div>
 </nav>

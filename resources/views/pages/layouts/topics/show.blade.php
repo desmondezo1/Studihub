@@ -80,10 +80,7 @@
   background: #031633;
   border-radius: 5px;
   color: #f8e1e4;
-  padding-top: 0px;
-  padding-left: 0px;
-  padding-bottom: 0px;
-  padding-right: 0px;
+  padding: 0;
 }
 .btn-link{
   color: #f8f9fa;
@@ -113,26 +110,27 @@
             <div class="input-group mb-3">
                 <input type="text" name="search" class="form-control topic-search" placeholder="Search topic" id="search" aria-label="search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                    <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
                 
                   </div>
             </div>
             <!--- Topic lists ---->
             <ul id="AjaxSearchtopic" class="list-group list-group-flush">
-              @foreach ($topicList as $topicList)
+              @foreach ($related_topics as $related_topic)
                 <li class="list-group-item">
-                <a style="color:#fff; text-decoration:none;" href="{{ route('topics.display', $topicList->slug) }}">{{$topicList->title}}</a></li>
+
+                <a style="color:#fff; text-decoration:none;" href="{{ route('topics.display', $related_topic->slug) }}">{{$related_topic->title}}</a></li>
               @endforeach
               </ul>
               <!--- END OF TOPIC LISTS --->
           </div>
         </div>
         <div class="col-md-9">
- <!--         <iframe src="https://youtu.be/TdVMyb9FbaU" style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe> -->
-            <iframe style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);"  src="https://www.youtube.com/embed/TdVMyb9FbaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="{{$topic->videoData->embed_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:0;height:360px;width:640px;max-width: 100%;border-radius: 5px;box-shadow: 0px 4px 40px rgba(255, 44, 56, 0.36);" allowFullScreen="true" allow="encrypted-media"></iframe>
+       
           <div class="container notes-container">
               <h1>{{$topic->title}} </h1>
-            {!!$topic->notes!!}
+            {!! htmlspecialchars_decode($topic->notes) !!}
           </div>
 
       <div class="flip-cards">

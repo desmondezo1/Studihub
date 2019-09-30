@@ -18,7 +18,7 @@ class RedirectStudentIfAuthenticated
     {
         //dd($next);
         if(Auth::guard('student')->check()){
-            return redirect()->route('student.index');
+            return redirect()->route('students.index');
         }
         return $next($request);
     }

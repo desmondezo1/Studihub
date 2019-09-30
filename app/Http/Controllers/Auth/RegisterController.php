@@ -50,6 +50,8 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:students',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
+            'gender' => 'required',
+            'class_category' => 'required',
             'password' => 'required|string|min:6|max:255|confirmed',
             'password_confirmation' => 'required|string',
         ]);
@@ -61,6 +63,8 @@ class RegisterController extends Controller
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
+            'gender' => $data['gender'],
+             'class_category' => $data['class_category'],
             'username' => $this->generateUsername($data['email']),
             'password' => bcrypt($data['password']),
         ]);
@@ -74,6 +78,8 @@ class RegisterController extends Controller
             'lastname' => request()->input('lastname'),
             'email' => request()->input('email'),
             'username' => request()->input('username'),
+            'gender' => request()->input('gender'),
+            'class_category' => request()->input('class_category'),
             'password' => request()->input('password'),
             'password_confirmation' => request()->input('password_confirmation'),
         ];

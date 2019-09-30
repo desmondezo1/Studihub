@@ -1,0 +1,76 @@
+.hide{
+    display: none;
+}
+
+.custom-select {
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: 0.95rem 1rem 0.95rem 1rem;
+    line-height: 1;
+    height: auto;
+}
+
+.custom-date-input{
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: 0.95rem 1rem 0.95rem 1rem;
+    line-height: 1;
+    height: auto;
+}
+
+.animated-modal {
+    color: #fff;
+    max-width: 550px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: linear-gradient(45deg, #543093 32%, #d960ae 100%) !important;
+    transform: translateY(-80px);
+    transition: all .5s;
+    transition-duration: 0.5s;
+}
+
+.fancybox-slide--current .animated-modal, .fancybox-slide--current .animated-modal h2, .fancybox-slide--current .animated-modal p {
+    transform: translateY(0);
+    opacity: 1;
+    transition-duration: .3s;
+}
+
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px){
+    table, thead, tbody, th, td, tr, tfoot{
+        display: block;
+    }
+    thead tr, tfoot tr{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+
+
+    tr{
+        margin: 0 0 1rem 0;
+    }
+
+    tr:nth-child(odd){
+        background: #f4f4f4;;
+    }
+
+    td{
+        /* Behave like a row */
+        border: none !important;
+        border-bottom: 1px solid #eee !important;
+        position: relative !important;
+        padding-left: 50% !important;
+    }
+
+    td:before{
+        /* Like table header */
+        position: absolute !important;
+        top: 0 !important;
+        left: 6px !important;
+        width: 45% !important;
+        padding-right: 10px !important;
+        white-space: nowrap !important;
+    }
+
+}

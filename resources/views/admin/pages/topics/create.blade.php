@@ -225,8 +225,9 @@
                         </div>
 
                         <!-- Modal body -->
-                        <div class="modal-body">
-                            Modal body..
+                        <div class="modal-body body">
+                            <p class="text-center notify"></p>
+                            <iframe src="" id="iframSrc"></iframe>
                         </div>
 
                         <!-- Modal footer -->

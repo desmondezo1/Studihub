@@ -3,6 +3,7 @@
 namespace Studihub\Http\Controllers;
 
 use Studihub\Models\Course;
+use Studihub\Models\State;
 
 class HomeController extends Controller
 {
@@ -42,15 +43,6 @@ class HomeController extends Controller
     public function terms(){
         return view('pages.terms-and-conditions');
     }
-
-    public function privateTutorRequest(){
-        return view('privatetutor.index');
-    }
-
-    public function privateTutorSignup(){
-        return view('pages.tutor-signup');
-    }
-
 
 
 }
