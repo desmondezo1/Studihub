@@ -48,9 +48,9 @@ class AddForeignKeyTable extends Migration
             $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('restrict')->onUpdate('restrict');
         });
 
-        Schema::table('tutors', function (Blueprint $table) {
-            $table->foreign('state')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');
-        });
+        // Schema::table('tutors', function (Blueprint $table) {
+        //     $table->foreign('state')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');
+        // });
     }
 
     /**
