@@ -13,7 +13,7 @@ class StudentTableSeeder extends Seeder
     {
         //student database seeded here
         $student = \Studihub\Models\Student::firstOrNew(['email' => 'desezo@gmail.com']);
-        $student->email = 'desezo@gmail.com';
+        $student->email = 'desezo1@gmail.com';
         $student->username = 'desezo';
         $student->firstname = 'Desmond';
         $student->lastname = 'Ezo-Ojile';

@@ -35,7 +35,7 @@ class CreateTutorsTable extends Migration
             $table->boolean('stillworkthere')->nullable();
             $table->enum('classname',['nursery','jsecondary','ssecondary'])->nullable();
             $table->enum('curriculum',['nigerian','british','american'])->nullable();
-            $table->json('social_media')->nullable();
+           // $table->json('social_media')->nullable();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('verification_code')->nullable();

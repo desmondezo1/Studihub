@@ -33,7 +33,7 @@ class CourseTableSeeder extends Seeder
         $course->category()->associate($category);
         $course->save();
 
-        $path = "chemistry.png";
+        $path = "img/subject_icons/chemistry.png";
         $category = \Studihub\Models\CourseCategory::create(["category"=>"Chemistry", "exam_type"=>"Jamb"]);
         $course = Course::firstOrNew([
             "title" => str::title("Chemistry"),
